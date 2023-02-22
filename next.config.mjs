@@ -18,7 +18,6 @@ const config = {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: true,
-  swcMinify: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   i18n: {
     locales: ["en"],
