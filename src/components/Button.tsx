@@ -14,7 +14,11 @@ function ArrowIcon(props: any) {
   )
 }
 
-const variantStyles = {
+type variantStylesType = {
+  [key: string]: string
+}
+
+const variantStyles: variantStylesType = {
   'primary':
     'rounded-full bg-zinc-900 py-1 px-3 text-white hover:bg-zinc-700 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-1 dark:ring-inset dark:ring-emerald-400/20 dark:hover:bg-emerald-400/10 dark:hover:text-emerald-300 dark:hover:ring-emerald-300',
   'secondary':
@@ -24,7 +28,7 @@ const variantStyles = {
   'outline':
     'rounded-full py-1 px-3 text-zinc-700 ring-1 ring-inset ring-zinc-900/10 hover:bg-zinc-900/2.5 hover:text-zinc-900 dark:text-zinc-400 dark:ring-white/10 dark:hover:bg-white/5 dark:hover:text-white',
   'text': 'text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500',
-};
+}
 
 export function Button({
   variant = 'primary',
@@ -38,7 +42,6 @@ export function Button({
 
   className = clsx(
     'cursor-pointer inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     variantStyles[variant],
     className
   );

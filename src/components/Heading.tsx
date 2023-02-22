@@ -6,7 +6,7 @@ import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
 
-function AnchorIcon(props) {
+function AnchorIcon(props: any) {
   return (
     <svg
       viewBox="0 0 20 20"
@@ -20,7 +20,7 @@ function AnchorIcon(props) {
   )
 }
 
-function Eyebrow({ tag, label }) {
+function Eyebrow({ tag, label }: { tag: string; label: string }) {
   if (!tag && !label) {
     return null
   }
@@ -38,7 +38,7 @@ function Eyebrow({ tag, label }) {
   )
 }
 
-function Anchor({ id, inView, children }) {
+function Anchor({ id, inView, children }: { id: string; inView: boolean; children: string }) {
   return (
     <Link
       href={`#${id}`}

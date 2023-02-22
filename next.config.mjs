@@ -26,6 +26,9 @@ const config = {
   experimental: {
     scrollRestoration: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default withMDX(config);

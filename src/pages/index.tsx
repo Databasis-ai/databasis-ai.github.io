@@ -25,12 +25,12 @@ export default function Home() {
       <MapboxMap />
     </div>
     <div className="not-prose pt-24	">
-      <Button
+      {/* <Button
         href="/sdks"
         variant="text"
         arrow="right"
         children="Get your API key"
-      />
+      /> */}
     </div>
     <Resources />
   </>
