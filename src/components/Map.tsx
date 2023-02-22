@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, LegacyRef } from 'react';
+import type { LegacyRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import maplibregl from 'maplibre-gl';
 
 
@@ -7,7 +8,6 @@ export default function MapboxMap() {
   const mapContainerRef = useRef<HTMLElement>(window?.document?.createElement('div'));
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
       style: 'https://api.maptiler.com/maps/streets/style.json?key=BEPD3dKrYKPpIjMmbxes',
@@ -15,16 +15,13 @@ export default function MapboxMap() {
       zoom: 12
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     map.addControl(new maplibregl.NavigationControl({}), 'top-right');
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     new maplibregl.Marker({ color: "#FF0000" })
       .setLngLat([139.7525, 35.6846])
       .addTo(map);
 
     return () => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       map.remove();
     }
   }, []);

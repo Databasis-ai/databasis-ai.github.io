@@ -21,11 +21,15 @@ export const green = '#e5fd3d';
 const purple = '#9caff6';
 
 const data = cityTemperature.slice(0, 8);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 const keys = Object.keys(data[0] as any).filter((d) => d !== 'date') as CityName[];
 const defaultMargin = { top: 40, right: 0, bottom: 40, left: 0 };
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 const parseDate = timeParse('%Y-%m-%d');
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 const format = timeFormat('%b %d');
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
 const formatDate = (date: string) => format(parseDate(date) as Date);
 
 // accessors

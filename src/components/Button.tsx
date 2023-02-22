@@ -31,17 +31,19 @@ export function Button({
   className,
   children,
   arrow,
+  href,
   ...props
-}: {className: string, variant: string, arrow: string, children: string}) {
-  let Component = props.href ? Link : 'button'
+}: {className: string, variant: string, arrow: string, children: string, href: string}) {
+  const Component = href ? Link : 'button'
 
   className = clsx(
     'cursor-pointer inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     variantStyles[variant],
     className
   );
 
-  let arrowIcon = (
+  const arrowIcon = (
     <ArrowIcon
       className={clsx(
         'mt-0.5 h-5 w-5',
@@ -53,7 +55,7 @@ export function Button({
   )
 
   return (
-    <Component className={className} {...props}>
+    <Component href={''} className={className} {...props}>
       {arrow === 'left' && arrowIcon}
       {children}
       {arrow === 'right' && arrowIcon}

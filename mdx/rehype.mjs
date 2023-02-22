@@ -7,7 +7,7 @@ import * as acorn from 'acorn'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
 
 function rehypeParseCodeBlocks() {
-  return (tree) => {
+  return (/** @type {any} */ tree) => {
     visit(tree, 'element', (node, _nodeIndex, parentNode) => {
       if (node.tagName === 'code' && node.properties.className) {
         parentNode.properties.language = node.properties.className[0]?.replace(
@@ -19,10 +19,13 @@ function rehypeParseCodeBlocks() {
   }
 }
 
+/**
+ * @type {shiki.Highlighter}
+ */
 let highlighter
 
 function rehypeShiki() {
-  return async (tree) => {
+  return async (/** @type {any} */ tree) => {
     highlighter =
       highlighter ?? (await shiki.getHighlighter({ theme: 'css-variables' }))
 
@@ -53,7 +56,7 @@ function rehypeShiki() {
 }
 
 function rehypeSlugify() {
-  return (tree) => {
+  return (/** @type {any} */ tree) => {
     let slugify = slugifyWithCounter()
     visit(tree, 'element', (node) => {
       if (node.tagName === 'h2' && !node.properties.id) {
@@ -63,8 +66,11 @@ function rehypeSlugify() {
   }
 }
 
+/**
+ * @param {(arg0: any) => { [s: string]: any; } | ArrayLike<any>} getExports
+ */
 function rehypeAddMDXExports(getExports) {
-  return (tree) => {
+  return (/** @type {{ children: { type: string; value: string; data: { estree: acorn.Node; }; }[]; }} */ tree) => {
     let exports = Object.entries(getExports(tree))
 
     for (let [name, value] of exports) {
@@ -93,6 +99,10 @@ function rehypeAddMDXExports(getExports) {
   }
 }
 
+/**
+ * @param {{ children: any; }} node
+ */
+// @ts-ignore
 function getSections(node) {
   let sections = []
 
@@ -119,7 +129,7 @@ export const rehypePlugins = [
   rehypeMdxTitle,
   [
     rehypeAddMDXExports,
-    (tree) => ({
+    (/** @type {any} */ tree) => ({
       sections: `[${getSections(tree).join()}]`,
     }),
   ],

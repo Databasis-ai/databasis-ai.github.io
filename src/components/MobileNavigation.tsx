@@ -1,4 +1,5 @@
-import { createContext, Fragment, SVGProps, SVGProps, useContext } from 'react'
+import type { SVGProps, SVGProps} from 'react';
+import { createContext, Fragment, useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { motion } from 'framer-motion'
 import { create } from 'zustand'

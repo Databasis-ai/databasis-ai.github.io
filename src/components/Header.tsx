@@ -27,12 +27,12 @@ function TopLevelNavItem({ href, children }) {
 }
 
 export const Header = forwardRef(function Header({ className }, ref) {
-  let { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
-  let isInsideMobileNavigation = useIsInsideMobileNavigation()
+  const { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
+  const isInsideMobileNavigation = useIsInsideMobileNavigation()
 
-  let { scrollY } = useScroll()
-  let bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
-  let bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
+  const { scrollY } = useScroll()
+  const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
+  const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
 
   return (
     <motion.div

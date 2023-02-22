@@ -2,7 +2,7 @@ import { mdxAnnotations } from 'mdx-annotations'
 import recmaNextjsStaticProps from 'recma-nextjs-static-props'
 
 function recmaRemoveNamedExports() {
-  return (tree) => {
+  return (/** @type {{ body: any[]; }} */ tree) => {
     tree.body = tree.body.map((node) => {
       if (node.type === 'ExportNamedDeclaration') {
         return node.declaration
