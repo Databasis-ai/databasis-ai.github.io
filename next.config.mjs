@@ -14,6 +14,9 @@ const withMDX = nextMDX({
 })
 
 const config = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],

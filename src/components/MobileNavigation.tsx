@@ -1,4 +1,4 @@
-import { createContext, Fragment, useContext } from 'react'
+import { createContext, Fragment, SVGProps, SVGProps, useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { motion } from 'framer-motion'
 import { create } from 'zustand'
@@ -6,7 +6,7 @@ import { create } from 'zustand'
 import { Header } from '@/components/Header'
 import { Navigation } from '@/components/Navigation'
 
-function MenuIcon(props) {
+function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 10 9"
@@ -20,7 +20,7 @@ function MenuIcon(props) {
   )
 }
 
-function XIcon(props) {
+function XIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 10 9"
@@ -44,13 +44,14 @@ export const useMobileNavigationStore = create((set) => ({
   isOpen: false,
   open: () => set({ isOpen: true }),
   close: () => set({ isOpen: false }),
-  toggle: () => set((state) => ({ isOpen: !state.isOpen })),
+  toggle: () => set((state: { isOpen: any }) => ({ isOpen: !state.isOpen })),
 }))
 
+
 export function MobileNavigation() {
-  let isInsideMobileNavigation = useIsInsideMobileNavigation()
-  let { isOpen, toggle, close } = useMobileNavigationStore()
-  let ToggleIcon = isOpen ? XIcon : MenuIcon
+  const isInsideMobileNavigation = useIsInsideMobileNavigation()
+  const { isOpen, toggle, close } = useMobileNavigationStore()
+  const ToggleIcon = isOpen ? XIcon : MenuIcon
 
   return (
     <IsInsideMobileNavigationContext.Provider value={true}>
