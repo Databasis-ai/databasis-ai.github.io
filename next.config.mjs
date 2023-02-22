@@ -1,24 +1,29 @@
-// @ts-check
+import nextMDX from '@next/mdx'
+import { remarkPlugins } from './mdx/remark.mjs'
+import { rehypePlugins } from './mdx/rehype.mjs'
+import { recmaPlugins } from './mdx/recma.mjs'
+!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
 
-/**
- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
- * This is especially useful for Docker builds.
- */
-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
+const withMDX = nextMDX({
+  options: {
+    remarkPlugins,
+    rehypePlugins,
+    recmaPlugins,
+    providerImportSource: '@mdx-js/react',
+  },
+})
 
-/** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-
-  /**
-   * If you have the "experimental: { appDir: true }" setting enabled, then you
-   * must comment the below `i18n` config out.
-   *
-   * @see https://github.com/vercel/next.js/issues/41980
-   */
+  swcMinify: true,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 };
-export default config;
+
+export default withMDX(config);

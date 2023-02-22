@@ -10,10 +10,10 @@ import { UsersIcon } from '@/components/icons/UsersIcon'
 
 const resources = [
   {
-    href: '/contacts',
-    name: 'Contacts',
+    href: '/',
+    name: 'NOI',
     description:
-      'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
+      'Take the best opportunities and run.',
     icon: UserIcon,
     pattern: {
       y: 16,
@@ -24,10 +24,10 @@ const resources = [
     },
   },
   {
-    href: '/conversations',
-    name: 'Conversations',
+    href: '/',
+    name: 'Cap Rate',
     description:
-      'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
+      'We calculate cap rate on a per address basis so you can easily scan your area for opportunities.',
     icon: ChatBubbleIcon,
     pattern: {
       y: -6,
@@ -38,10 +38,10 @@ const resources = [
     },
   },
   {
-    href: '/messages',
+    href: '/',
     name: 'Messages',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
+      'Bleh blah blah.',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
@@ -52,10 +52,10 @@ const resources = [
     },
   },
   {
-    href: '/groups',
-    name: 'Groups',
+    href: '/apis',
+    name: 'Api',
     description:
-      'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
+      'We have an api.',
     icon: UsersIcon,
     pattern: {
       y: 22,
@@ -64,7 +64,7 @@ const resources = [
   },
 ]
 
-function ResourceIcon({ icon: Icon }) {
+function ResourceIcon({ icon: Icon }: { icon: React.ComponentType }) {
   return (
     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
@@ -72,9 +72,9 @@ function ResourceIcon({ icon: Icon }) {
   )
 }
 
-function ResourcePattern({ mouseX, mouseY, ...gridProps }) {
-  let maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`
-  let style = { maskImage, WebkitMaskImage: maskImage }
+function ResourcePattern({ mouseX, mouseY, ...gridProps }: any) {
+  const maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`
+  const style = { maskImage, WebkitMaskImage: maskImage }
 
   return (
     <div className="pointer-events-none">
@@ -107,12 +107,12 @@ function ResourcePattern({ mouseX, mouseY, ...gridProps }) {
   )
 }
 
-function Resource({ resource }) {
-  let mouseX = useMotionValue(0)
-  let mouseY = useMotionValue(0)
+function Resource({ resource }: { resource: typeof resources[number] }) {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
 
-  function onMouseMove({ currentTarget, clientX, clientY }) {
-    let { left, top } = currentTarget.getBoundingClientRect()
+  function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top }  =  currentTarget.getBoundingClientRect()
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
   }
