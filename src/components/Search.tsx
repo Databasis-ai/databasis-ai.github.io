@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useEffect, useId, useRef, useState } from 'react'
+import { ButtonHTMLAttributes, ClassAttributes, forwardRef, Fragment, SVGProps, useEffect, useId, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { createAutocomplete } from '@algolia/autocomplete-core'
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia'
@@ -271,7 +271,7 @@ const SearchInput = forwardRef(function SearchInput(
   )
 })
 
-function AlgoliaLogo(props) {
+function AlgoliaLogo(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 71 16" role="img" aria-label="Algolia" {...props}>
       <path
@@ -290,11 +290,11 @@ function AlgoliaLogo(props) {
   )
 }
 
-function SearchButton(props) {
+function SearchButton(props: JSX.IntrinsicAttributes & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>) {
   const [modifierKey, setModifierKey] = useState()
 
   useEffect(() => {
-    setModifierKey(
+    return setModifierKey(
       /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? '⌘' : 'Ctrl '
     )
   }, [])
@@ -355,7 +355,7 @@ function SearchDialog({ open, setOpen, className }) {
       return
     }
 
-    function onKeyDown(event) {
+    function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault()
         setOpen(true)
@@ -457,7 +457,7 @@ function useSearchProps() {
     },
     dialogProps: {
       open,
-      setOpen(open) {
+      setOpen(open: boolean | ((prevState: boolean) => boolean)) {
         const { width, height } = buttonRef.current.getBoundingClientRect()
         if (!open || (width !== 0 && height !== 0)) {
           setOpen(open)
@@ -468,14 +468,14 @@ function useSearchProps() {
 }
 
 export function Search() {
-  const [modifierKey, setModifierKey] = useState()
+  const [modifierKey, setModifierKey] = useState<String>()
   const { buttonProps, dialogProps } = useSearchProps()
 
   useEffect(() => {
-    setModifierKey(
+    return setModifierKey(
       /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? '⌘' : 'Ctrl '
     )
-  }, [])
+  }, []);
 
   return (
     <div className="hidden lg:block lg:max-w-md lg:flex-auto">

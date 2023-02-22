@@ -1,7 +1,7 @@
 import type { LegacyRef } from 'react';
 import React, { useRef, useEffect } from 'react';
 import maplibregl from 'maplibre-gl';
-
+import { CogIcon } from './icons/CogIcon';
 
 export default function MapboxMap() {
 
@@ -30,7 +30,8 @@ export default function MapboxMap() {
     <div>
       <div style={
         { height: 450, width: '100%' }
-      } ref={mapContainerRef as LegacyRef<HTMLDivElement> } className="map-container" />
+      }
+      ref={mapContainerRef as LegacyRef<HTMLDivElement> } className="map-container" />
     </div>
   )
 }
