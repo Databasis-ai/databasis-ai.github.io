@@ -14,7 +14,7 @@ export function Layout({ children, sections = [] }) {
       <div className="">
         <motion.header
           layoutScroll
-          className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex"
+          className="contents lg:fixed lg:inset-0 lg:z-40 lg:flex"
         >
           <Header />
         </motion.header>
