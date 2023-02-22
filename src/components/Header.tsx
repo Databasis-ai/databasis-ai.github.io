@@ -7,13 +7,13 @@ import { Button } from '@/components/Button'
 import { Logo } from '@/components/Logo'
 import {
   MobileNavigation,
-  useIsInsideMobileNavigation,
+  useIsInsideMobileNavigation
 } from '@/components/MobileNavigation'
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { ModeToggle } from '@/components/ModeToggle'
-import { MobileSearch, Search } from '@/components/Search'
+import { MobileSearch } from '@/components/Search'
 
-function TopLevelNavItem({ href, children }) {
+function TopLevelNavItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
       <Link
@@ -79,7 +79,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
           <ModeToggle />
         </div>
         <div className="hidden min-[416px]:contents">
-          <Button href="#">Sign in</Button>
+          <Button href="/">Sign in</Button>
         </div>
       </div>
     </motion.div>
