@@ -25,7 +25,7 @@ export default function Home() {
     <HeroPattern />
     <div >
       <h1>
-        Real estate data made easy
+        Real Estate data made easy
       </h1>
       <div className="not-prose mb-16 mt-6 flex gap-3">
         <Search />
