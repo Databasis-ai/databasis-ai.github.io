@@ -10,20 +10,20 @@ import { CogIcon } from '@/components/icons/CogIcon';
 import { MapPinIcon } from '@/components/icons/MapPinIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
 import { useState } from 'react';
+import Receipt from '@/components/Recipt';
 export const sections = [
   { title: 'Resources', id: 'resources' },
   { title: 'Companies', id: 'companies' },
 ];
 
-type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all';
-
+type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
 export default function Home() {
   const [activeSearchFilter, setActiveSearchFilter] = useState<ActiveSearchFilter>('all');
 
   return <>
     <HeroPattern />
-    <div className=''>
+    <div >
       <h1>
         Real estate data made easy
       </h1>
@@ -35,8 +35,9 @@ export default function Home() {
       <div className='w-48 inline-flex pb-6'>
         <div className="pl-6 ">
           <CogIcon
+            onClick={() => setActiveSearchFilter(activeSearchFilter === 'cap' ? 'none' : 'cap')}
             className={`
-            hover:scale-105 duration-200 cursor-pointer
+          hover:scale-105 duration-200 cursor-pointer
           h-5
           w-5
           fill-zinc-700/10
@@ -49,7 +50,9 @@ export default function Home() {
           dark:hover:stroke-emerald-400`} />
         </div>
         <div className="pl-12 ">
-          <MapPinIcon className={`
+          <MapPinIcon
+            onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
+            className={`
           hover:scale-105 cursor-pointer
           h-5
           w-5
@@ -64,7 +67,9 @@ export default function Home() {
           dark:hover:stroke-emerald-400`} />
         </div>
         <div className="pl-12 ">
-          <UsersIcon className={`
+          <UsersIcon
+            onClick={() => setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}
+            className={`
           hover:scale-105 duration-200 cursor-pointer
           h-5
           w-5
@@ -78,14 +83,19 @@ export default function Home() {
           dark:hover:stroke-emerald-400`} />
         </div>
       </div>
-      <div className=''>
-        <div>
-
+    </div>
+    <div className="grid grid-cols-3 gap-4 xl:max-w-none">
+      <div className="col-span-2 ">
+        <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-105 cursor-pointer duration-200	">
+          <MapboxMap />
         </div>
       </div>
-    </div>
-    <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-105 cursor-pointer duration-200	">
-      <MapboxMap />
+      <div className="col-span-1">
+        <Receipt items={[
+          { name: 'State Tax', price: 5.5 },
+          { name: 'Rent', price: 5.5 },
+        ]} tax={0} />
+      </div>
     </div>
     <div className="not-prose pt-24	">
       <Button href="/sdks" variant="text" arrow="right" className={''}>
