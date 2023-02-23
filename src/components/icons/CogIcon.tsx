@@ -1,4 +1,6 @@
-export function CogIcon(props) {
+import type { SVGProps } from "react";
+
+export function CogIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
       <path

@@ -44,6 +44,7 @@
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
     "react-map-gl": "^7.0.21",
     "react-motion": "^0.5.2",
     "recma-nextjs-static-props": "^1.0.0",

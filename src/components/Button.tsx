@@ -37,7 +37,7 @@ export function Button({
   arrow,
   href,
   ...props
-}: {className: string, variant: string, arrow: string, children: string, href: string}) {
+}: {className: string, variant: string, arrow: string, children: React.ReactElement, href: string}) {
   const Component = href ? Link : 'button'
 
   className = clsx(
