@@ -86,7 +86,7 @@ export default function Home() {
     </div>
     <div className="grid grid-cols-3 gap-4 xl:max-w-none">
       <div className="col-span-2 ">
-        <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-105 cursor-pointer duration-200	">
+        <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-[1.005] cursor-pointer duration-200	">
           <MapboxMap />
         </div>
       </div>
@@ -98,7 +98,7 @@ export default function Home() {
         ]} tax={0} />
       </div>
     </div>
-    <div className="not-prose pt-24	">
+    <div className="not-prose pt-24">
       <Button href="/sdks" variant="text" arrow="right" className={''}>
         <div>
           Get your API key
