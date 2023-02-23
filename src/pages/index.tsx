@@ -18,16 +18,14 @@ export const sections = [
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all';
 
 
-
 export default function Home() {
   const [activeSearchFilter, setActiveSearchFilter] = useState<ActiveSearchFilter>('all');
-
 
   return <>
     <HeroPattern />
     <div className=''>
       <h1>
-        Real estate data done easy
+        Real estate data made easy
       </h1>
       <div className="not-prose mb-16 mt-6 flex gap-3">
         <Search />
