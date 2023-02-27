@@ -1,35 +1,33 @@
 import * as React from 'react';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-import { useRef, useState, useEffect } from 'react';
-mapboxgl.accessToken = 'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ';
+import { useState } from 'react';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 
+
+// mapbox://anonrose.03pn9osn
 export default function Mapbox() {
-  const mapContainer = useRef(null);
-  const map = useRef(null) as any;
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
-
-  useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/anonrose/cle89tby2000401p973lnrnei',
-      center: [lng, lat],
-      zoom: zoom
-    });
-    map.current.on('load', () => {
-      map.current.addSource('counties', {
-        'type': 'tile',
-        'url': 'anonrose.03pn9osn'
-        });
-    });
-
+  const [viewport, setViewport] = useState({
+    latitude: 37.78,
+    longitude: -122.41,
+    zoom: 11
   });
 
-  return (
-    <div>
-      <div style={{width: '100%', height: 400}} ref={mapContainer} className="map-container" />
-    </div>
-  );
-}
+  return <MapGL
+    style={{ width: '100%', height: '400px' }}
+    mapStyle='mapbox://styles/mapbox/light-v9'
+    accessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
+    onViewportChange={setViewport}
+    {...viewport}
+  >
+    <Source id='tracts' type='vector' url='mapbox://anonrose.03pn9osn' />
+    <Layer
+      id='tracts'
+      type='line'
+      source='tracts'
+      source-layer='tracts'
+      paint={{
+        'line-color': '#877b59',
+        'line-width': 1
+      }}
+    />
+  </MapGL>;
+  }
