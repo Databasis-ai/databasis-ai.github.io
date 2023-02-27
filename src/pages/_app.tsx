@@ -10,6 +10,8 @@ import { Router, useRouter } from 'next/router'
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { Layout } from '@/components/Layout'
 import "../styles/globals.css";
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 function onRouteChange() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   useMobileNavigationStore.getState().close()

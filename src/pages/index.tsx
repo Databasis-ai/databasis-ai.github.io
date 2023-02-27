@@ -94,7 +94,9 @@ export default function Home() {
         <Receipt items={[
           { name: 'State Tax', price: 5.5 },
           { name: 'Rent', price: 5.5 },
-          { name: 'Mortgage', price: 2_450 }
+          { name: 'Mortgage', price: 2_450 },
+          { name: 'Rental Estimate', price: 2_750 },
+          { name: 'Maintenance', price: 750 }
         ]} tax={0} />
       </div>
     </div>
