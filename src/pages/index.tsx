@@ -6,7 +6,6 @@ export const description =
 import dynamic from "next/dynamic";
 import { Search } from '@/components/Search'
 const MapboxMap = dynamic(() => import('@/components/Map'), { ssr: false });
-import { CogIcon } from '@/components/icons/CogIcon';
 import { MapPinIcon } from '@/components/icons/MapPinIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
 import { useState } from 'react';
@@ -15,6 +14,8 @@ export const sections = [
   { title: 'Resources', id: 'resources' },
   { title: 'Companies', id: 'companies' },
 ];
+
+import Toggle from '@/components/Toggle';
 
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
@@ -31,28 +32,16 @@ export default function Home() {
         <Search />
       </div>
     </div>
-    <div className="flex justify-between">
-      <div className='w-48 inline-flex pb-6'>
-        <div className="pl-6 ">
-          <CogIcon
-            onClick={() => setActiveSearchFilter(activeSearchFilter === 'cap' ? 'none' : 'cap')}
-            className={`
-          hover:scale-105 duration-200 cursor-pointer
-          h-5
-          w-5
-          fill-zinc-700/10
-          stroke-zinc-700
-          transition-colors
-          hover:stroke-zinc-900
-          dark:fill-white/10
-          dark:stroke-zinc-400
-          dark:hover:fill-emerald-300/10
-          dark:hover:stroke-emerald-400`} />
-        </div>
-        <div className="pl-12 ">
-          <MapPinIcon
-            onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
-            className={`
+
+    <div className="grid grid-cols-3 gap-4 xl:max-w-none">
+      <div className="col-span-2 ">
+        <div className="flex justify-between">
+          <div className='w-48 inline-flex pb-6'>
+            <div className="pl-6">
+
+              <MapPinIcon
+                onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
+                className={`
           hover:scale-105 cursor-pointer
           h-5
           w-5
@@ -65,11 +54,11 @@ export default function Home() {
           dark:stroke-zinc-400
           dark:hover:fill-emerald-300/10
           dark:hover:stroke-emerald-400`} />
-        </div>
-        <div className="pl-12 ">
-          <UsersIcon
-            onClick={() => setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}
-            className={`
+            </div>
+            <div className="pl-12 ">
+              <UsersIcon
+                onClick={() => setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}
+                className={`
           hover:scale-105 duration-200 cursor-pointer
           h-5
           w-5
@@ -81,11 +70,14 @@ export default function Home() {
           dark:stroke-zinc-400
           dark:hover:fill-emerald-300/10
           dark:hover:stroke-emerald-400`} />
+            </div>
+          </div>
+          <div className='inline-block'>
+            <div className='inline-block pr-5'>
+            <Toggle/>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div className="grid grid-cols-3 gap-4 xl:max-w-none">
-      <div className="col-span-2 ">
         <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-[1.005] cursor-pointer duration-200	">
           <MapboxMap />
         </div>

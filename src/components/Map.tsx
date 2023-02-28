@@ -15,8 +15,7 @@ export default function Mapbox() {
     mapStyle='mapbox://styles/mapbox/light-v9'
     accessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
     onViewportChange={setViewport}
-    {...viewport}
-  >
+    {...viewport}>
     <Source id='tracts' type='vector' url='mapbox://anonrose.08vc4x0b' />
     <Layer
       onClick={(e) => console.log(e, 'layer')}
@@ -24,7 +23,6 @@ export default function Mapbox() {
       type='fill'
       source='tracts'
       source-layer='tracts'
-      onClick={(e) => console.log(e, 'layer')}
       paint={{
         "fill-color": [
           "step",
