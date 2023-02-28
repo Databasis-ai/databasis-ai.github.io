@@ -38,7 +38,6 @@ export default function Home() {
         <div className="flex justify-between">
           <div className='w-48 inline-flex pb-6'>
             <div className="pl-6">
-
               <MapPinIcon
                 onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
                 className={`
