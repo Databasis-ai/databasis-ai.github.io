@@ -24,19 +24,21 @@ export default function Mapbox() {
       type='fill'
       source='tracts'
       source-layer='tracts'
+      onClick={(e) => console.log(e, 'layer')}
       paint={{
         "fill-color": [
           "step",
           ["get", "employment"],
-          "#eff3ff", 1,
-          "#c6dbef", 2,
-          "#9ecae1", 3,
-          "#6baed6", 4,
-          "#4292c6", 5,
-          "#2171b5", 6,
-          "#084594", 250002,
+          "#ffffd4", 1,
+          "#fee391", 2,
+          "#fec44f", 3,
+          "#fe9929", 4,
+          "#ec7014", 5,
+          "#cc4c02", 6,
+          "#8c2d04", 250002,
           "#fff"
-        ]
+        ],
+        'fill-opacity': 0.3,
       }}
     />
   </MapGL>;
