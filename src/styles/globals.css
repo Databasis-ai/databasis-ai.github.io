@@ -14,3 +14,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.mapboxgl-ctrl-logo {
+	display: none !important;
+}
+.mapbox-logo{
+	display: none !important;
+}
