@@ -6,7 +6,7 @@ import * as mdxComponents from '@/components/mdx'
 import { MDXProvider } from "@mdx-js/react";
 
 import { trpc } from "../utils/api";
-import { Router, useRouter } from 'next/router'
+import { Router } from 'next/router'
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { Layout } from '@/components/Layout'
 import "../styles/globals.css";

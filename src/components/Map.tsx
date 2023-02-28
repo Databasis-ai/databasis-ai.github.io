@@ -3,7 +3,6 @@ import { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 
 
-// mapbox://anonrose.03pn9osn
 export default function Mapbox() {
   const [viewport, setViewport] = useState({
     latitude: 37.78,
@@ -18,16 +17,27 @@ export default function Mapbox() {
     onViewportChange={setViewport}
     {...viewport}
   >
-    <Source id='tracts' type='vector' url='mapbox://anonrose.03pn9osn' />
+    <Source id='tracts' type='vector' url='mapbox://anonrose.08vc4x0b' />
     <Layer
+      onClick={(e) => console.log(e, 'layer')}
       id='tracts'
-      type='line'
+      type='fill'
       source='tracts'
       source-layer='tracts'
       paint={{
-        'line-color': '#877b59',
-        'line-width': 1
+        "fill-color": [
+          "step",
+          ["get", "employment"],
+          "#eff3ff", 1,
+          "#c6dbef", 2,
+          "#9ecae1", 3,
+          "#6baed6", 4,
+          "#4292c6", 5,
+          "#2171b5", 6,
+          "#084594", 250002,
+          "#fff"
+        ]
       }}
     />
   </MapGL>;
-  }
+}
