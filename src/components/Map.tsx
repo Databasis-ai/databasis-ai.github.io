@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState, useCallback, useMemo } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+const CRAZY_HIGH_EMPLOYMENT = 1_000_000_000;
+const DEFAULT_FILTER = ["<", ["get", "employment"], CRAZY_HIGH_EMPLOYMENT];
 
 const highlightLayer = {
   id: 'tracts',
@@ -23,12 +25,20 @@ export default function Mapbox() {
     zoom: 11
   });
 
-  const [tract, setTract] = useState({ employment: 100000000 }) as any;
-
-  const [employmentFilter, setFilter] = useState(["<", ["get", "employment"], tract?.employment]) as any;
+  const [tract, setTract] = useState({ employment: CRAZY_HIGH_EMPLOYMENT }) as any;
+  const [employmentFilter, setFilter] = useState(DEFAULT_FILTER) as any;
 
   const onClick = useCallback((event: any) => {
     const county = event.features && event.features[0];
+    console.log(tract);
+
+
+    if (tract.employment !== CRAZY_HIGH_EMPLOYMENT) {
+      setTract({ employment: CRAZY_HIGH_EMPLOYMENT });
+      setFilter(DEFAULT_FILTER);
+      return;
+    }
+
     setFilter(["==", ["get", "employment"], county.properties.employment]);
     setTract({
       longitude: event.lngLat.lng,
@@ -44,6 +54,12 @@ export default function Mapbox() {
     mapStyle='mapbox://styles/mapbox/light-v9'
     accessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
     onViewportChange={setViewport}
+    onClick={() => {
+      if (tract.employment !== CRAZY_HIGH_EMPLOYMENT) {
+        setTract({ employment: CRAZY_HIGH_EMPLOYMENT });
+        setFilter(DEFAULT_FILTER);
+      }
+    }}
     {...viewport}>
     <Source id='tracts' type='vector' url='mapbox://anonrose.08vc4x0b' >
       <Layer
@@ -68,7 +84,7 @@ export default function Mapbox() {
           "#800026", 90,
           '#fff'
         ],
-        'fill-opacity': 0.25,
+        'fill-opacity': 0.25
       }}
     />
     <Layer {...highlightLayer} filter={filter} />
