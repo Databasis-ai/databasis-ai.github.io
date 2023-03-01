@@ -1,15 +1,17 @@
-import * as React from 'react';
+import { useRef } from 'react';
 import { useState, useCallback, useMemo } from 'react';
-import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import type { MapRef } from 'react-map-gl';
+import Map, { Source, Layer } from 'react-map-gl';
 const CRAZY_HIGH_EMPLOYMENT = 1_000_000_000;
 const DEFAULT_FILTER = ["<", ["get", "employment"], CRAZY_HIGH_EMPLOYMENT];
-import {COLOR_RANGE} from '../lib/constants';
+import { COLOR_RANGE } from '../lib/constants';
+import bbox from '@turf/bbox';
+
 const highlightLayer = {
-  id: 'tracts',
+  id: 'tracts-highlighted',
   type: 'fill',
   source: 'tracts',
   'source-layer': 'tracts',
-  beforeId: 'tracts-highlight',
   paint: {
     'fill-outline-color': '#484896',
     'fill-color': '#6e599f',
@@ -17,18 +19,15 @@ const highlightLayer = {
   }
 };
 
-
 export default function Mapbox() {
-  const [viewport, setViewport] = useState({
-    latitude: 37.78,
-    longitude: -122.41,
-    zoom: 11
-  });
+  const mapRef = useRef<MapRef>();
 
   const [tract, setTract] = useState({ employment: CRAZY_HIGH_EMPLOYMENT }) as any;
   const [employmentFilter, setFilter] = useState(DEFAULT_FILTER) as any;
 
   const onClick = useCallback((event: any) => {
+    console.log(event);
+
     const county = event.features && event.features[0];
 
     setFilter(["==", ["get", "employment"], county.properties.employment]);
@@ -37,41 +36,51 @@ export default function Mapbox() {
       latitude: event.lngLat.lat,
       employment: county.properties.employment
     });
+    const [minLng, minLat, maxLng, maxLat] = bbox(county);
+    console.log(minLng, minLat, maxLng, maxLat);
+    console.log(mapRef?.current?.fitBounds);
+
+      mapRef?.current?.fitBounds(
+        [
+          [minLng, minLat],
+          [maxLng, maxLat]
+        ],
+        { padding: 40, duration: 1000 }
+      );
+
   }, []);
 
   const filter = useMemo(() => employmentFilter, [tract?.employment]);
 
-  return <MapGL
+  return <Map
+    ref={mapRef}
+    initialViewState={{
+      latitude: 37.78,
+      longitude: -122.4,
+      zoom: 11
+    }}
     style={{ width: '100%', height: '400px' }}
     mapStyle='mapbox://styles/mapbox/light-v9'
-    accessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
-    onViewportChange={setViewport}
-    onClick={() => {
-      if (tract.employment !== CRAZY_HIGH_EMPLOYMENT) {
-        setTract({ employment: CRAZY_HIGH_EMPLOYMENT });
-        setFilter(DEFAULT_FILTER);
-      }
-    }}
-    {...viewport}>
+    mapboxAccessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
+    onClick={onClick}
+    interactiveLayerIds={['tracts']}>
     <Source id='tracts' type='vector' url='mapbox://anonrose.08vc4x0b' >
       <Layer
         id='tracts'
         type='fill'
         source='tracts'
-        beforeId='tracts-highlight'
         source-layer='tracts'
-        onClick={onClick}
         paint={{
-        "fill-color": [
-          "step",
-          ["get", "employment"],
-          ...COLOR_RANGE,
-          '#fff'
-        ],
-        'fill-opacity': 0.25
-      }}
-    />
-    <Layer {...highlightLayer} filter={filter} />
+          "fill-color": [
+            "step",
+            ["get", "employment"],
+            ...COLOR_RANGE,
+            '#fff'
+          ],
+          'fill-opacity': 0.25
+        }}
+      />
+      <Layer {...highlightLayer} filter={filter} />
     </Source>
-  </MapGL>;
+  </Map>;
 }

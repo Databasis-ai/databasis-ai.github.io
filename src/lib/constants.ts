@@ -97,4 +97,5 @@ export const COLOR_RANGE = [
 	'#F96966', 96,
 	'#FA6967', 97,
 	'#FC6867', 98,
+	'#ffffff', 99,
 ]
