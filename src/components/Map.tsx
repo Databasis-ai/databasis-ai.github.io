@@ -3,7 +3,7 @@ import { useState, useCallback, useMemo } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 const CRAZY_HIGH_EMPLOYMENT = 1_000_000_000;
 const DEFAULT_FILTER = ["<", ["get", "employment"], CRAZY_HIGH_EMPLOYMENT];
-
+import {COLOR_RANGE} from '../lib/constants';
 const highlightLayer = {
   id: 'tracts',
   type: 'fill',
@@ -30,14 +30,6 @@ export default function Mapbox() {
 
   const onClick = useCallback((event: any) => {
     const county = event.features && event.features[0];
-    console.log(tract);
-
-
-    if (tract.employment !== CRAZY_HIGH_EMPLOYMENT) {
-      setTract({ employment: CRAZY_HIGH_EMPLOYMENT });
-      setFilter(DEFAULT_FILTER);
-      return;
-    }
 
     setFilter(["==", ["get", "employment"], county.properties.employment]);
     setTract({
@@ -73,15 +65,7 @@ export default function Mapbox() {
         "fill-color": [
           "step",
           ["get", "employment"],
-          "#ffffcc", 10,
-          "#ffeda0", 20,
-          "#fed976", 30,
-          "#feb24c", 40,
-          "#fd8d3c", 50,
-          "#fc4e2a", 60,
-          "#e31a1c", 70,
-          "#bd0026", 80,
-          "#800026", 90,
+          ...COLOR_RANGE,
           '#fff'
         ],
         'fill-opacity': 0.25
