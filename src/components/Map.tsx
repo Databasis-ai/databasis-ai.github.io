@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useState, useCallback, useMemo } from 'react';
 import type { MapRef } from 'react-map-gl';
 import Map, { Source, Layer } from 'react-map-gl';
-const CRAZY_HIGH_EMPLOYMENT = 1_000_000_000;
+const CRAZY_HIGH_EMPLOYMENT = 0;
 const DEFAULT_FILTER = ["<", ["get", "employment"], CRAZY_HIGH_EMPLOYMENT];
 import { COLOR_RANGE } from '../lib/constants';
 import bbox from '@turf/bbox';
@@ -37,8 +37,6 @@ export default function Mapbox() {
       employment: county.properties.employment
     });
     const [minLng, minLat, maxLng, maxLat] = bbox(county);
-    console.log(minLng, minLat, maxLng, maxLat);
-    console.log(mapRef?.current?.fitBounds);
 
       mapRef?.current?.fitBounds(
         [
