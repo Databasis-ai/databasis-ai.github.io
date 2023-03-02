@@ -25,7 +25,6 @@
     "@trpc/server": "^10.9.0",
     "@turf/bbox": "^6.5.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
-
     "@visx/axis": "^3.0.0",
     "@visx/group": "^3.0.0",
     "@visx/mock-data": "^3.0.0",
@@ -45,6 +44,7 @@
     "next-auth": "^4.19.0",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
+    "react-code-blocks": "^0.0.9-0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-map-gl": "^7.0.21",

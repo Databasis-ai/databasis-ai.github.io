@@ -6,8 +6,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
-  const [enabled, setEnabled] = useState(false)
+export default function Toggle({enabled, setEnabled}: {enabled: boolean, setEnabled: (enabled: boolean) => void}) {
 
   return (
     <Switch

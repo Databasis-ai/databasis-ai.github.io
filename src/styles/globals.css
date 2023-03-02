@@ -14,9 +14,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .mapboxgl-ctrl-logo {
 	display: none !important;
 }
 .mapbox-logo{
 	display: none !important;
+}
+
+.flashcards__container {
+	max-width: 100%;
+	width:100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+	perspective: 150px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.card {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	background: white;
+	cursor: pointer;
+}
+
+.flashcards {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center center;
+	background: #4da6ff;
 }

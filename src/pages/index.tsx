@@ -10,17 +10,21 @@ import { MapPinIcon } from '@/components/icons/MapPinIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
 import { useState } from 'react';
 import Receipt from '@/components/Recipt';
+import Toggle from '@/components/Toggle';
+import { CopyBlock, dracula } from "react-code-blocks";
+
 export const sections = [
   { title: 'Resources', id: 'resources' },
   { title: 'Companies', id: 'companies' },
 ];
 
-import Toggle from '@/components/Toggle';
+import Mapbox from '@/components/Map';
 
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
 export default function Home() {
   const [activeSearchFilter, setActiveSearchFilter] = useState<ActiveSearchFilter>('all');
+  const [enabled, setEnabled] = useState(false);
 
   return <>
     <HeroPattern />
@@ -73,12 +77,31 @@ export default function Home() {
           </div>
           <div className='inline-block'>
             <div className='inline-block pr-5'>
-            <Toggle/>
+            <Toggle enabled={enabled} setEnabled={setEnabled} />
             </div>
           </div>
         </div>
         <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-[1.005] cursor-pointer duration-200	">
-          <MapboxMap />
+          {enabled ? <CopyBlock
+          language={'graphql'}
+          text={`query FirstSevenStarShips {
+            allStarships(first: 7) {
+              edges {
+                node {
+                  id
+                  name
+                  model
+                  costInCredits
+                }
+              }
+          }
+
+          `}
+          showLineNumbers={false}
+          theme={dracula}
+          wrapLines={true}
+          codeBlock
+        /> : <Mapbox />}
         </div>
       </div>
       <div className="col-span-1">
