@@ -3,9 +3,8 @@ import { HeroPattern } from '@/components/HeroPattern'
 import { Button } from '@/components/Button'
 export const description =
   'Learn everything there is to know about the Protocol API and integrate Protocol into your product.'
-import dynamic from "next/dynamic";
 import { Search } from '@/components/Search'
-const MapboxMap = dynamic(() => import('@/components/Map'), { ssr: false });
+import Mapbox from '@/components/Map';
 import { MapPinIcon } from '@/components/icons/MapPinIcon';
 import { UsersIcon } from '@/components/icons/UsersIcon';
 import { useState } from 'react';
@@ -18,7 +17,6 @@ export const sections = [
   { title: 'Companies', id: 'companies' },
 ];
 
-import Mapbox from '@/components/Map';
 
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
@@ -77,7 +75,7 @@ export default function Home() {
           </div>
           <div className='inline-block'>
             <div className='inline-block pr-5'>
-            <Toggle enabled={enabled} setEnabled={setEnabled} />
+              <Toggle enabled={enabled} setEnabled={setEnabled} />
             </div>
           </div>
         </div>
@@ -94,9 +92,7 @@ export default function Home() {
                   costInCredits
                 }
               }
-          }
-
-          `}
+          }`}
           showLineNumbers={false}
           theme={dracula}
           wrapLines={true}
