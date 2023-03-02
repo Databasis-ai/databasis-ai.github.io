@@ -62,7 +62,7 @@ export default function Mapbox() {
     mapboxAccessToken={'pk.eyJ1IjoiYW5vbnJvc2UiLCJhIjoiY2xlNjloc2doMDNydjNvcHA5aDZycWdldyJ9.uLp08yXVWfvGFVGQHjRIoQ'}
     onClick={onClick}
     interactiveLayerIds={['tracts']}>
-    <Source id='tracts' type='vector' url='mapbox://anonrose.4237a8lo' >
+    <Source id='tracts' type='vector' url='mapbox://anonrose.9z1grxxg' >
       <Layer
         id='tracts'
         type='fill'

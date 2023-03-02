@@ -39,9 +39,9 @@ const resources = [
   },
   {
     href: '/',
-    name: 'Messages',
+    name: 'Notifications',
     description:
-      'Bleh blah blah.',
+      'Get a notification when things have become repriced or available on the market matching your criteria.',
     icon: EnvelopeIcon,
     pattern: {
       y: 32,
