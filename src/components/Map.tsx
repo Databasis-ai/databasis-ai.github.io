@@ -3,7 +3,7 @@ import { useState, useCallback, useMemo } from 'react';
 import type { MapRef } from 'react-map-gl';
 import Map, { Source, Layer } from 'react-map-gl';
 const CRAZY_HIGH_EMPLOYMENT = 0;
-const DEFAULT_FILTER = ["<", ["get", "employment"], CRAZY_HIGH_EMPLOYMENT];
+const DEFAULT_FILTER = ["<", ["get", "total_se_2013-2017"], CRAZY_HIGH_EMPLOYMENT];
 import { COLOR_RANGE } from '../lib/constants';
 import bbox from '@turf/bbox';
 
@@ -22,7 +22,7 @@ const highlightLayer = {
 export default function Mapbox() {
   const mapRef = useRef<MapRef>();
 
-  const [tract, setTract] = useState({ employment: CRAZY_HIGH_EMPLOYMENT }) as any;
+  const [tract, setTract] = useState({ 'total_se_2013-2017': CRAZY_HIGH_EMPLOYMENT }) as any;
   const [employmentFilter, setFilter] = useState(DEFAULT_FILTER) as any;
 
   const onClick = useCallback((event: any) => {
@@ -30,11 +30,11 @@ export default function Mapbox() {
 
     const county = event.features && event.features[0];
 
-    setFilter(["==", ["get", "employment"], county.properties.employment]);
+    setFilter(["==", ["get", "total_se_2013-2017"], county.properties['total_se_2013-2017']]);
     setTract({
       longitude: event.lngLat.lng,
       latitude: event.lngLat.lat,
-      employment: county.properties.employment
+      'total_se_2013-2017': county.properties['total_se_2013-2017']
     });
     const [minLng, minLat, maxLng, maxLat] = bbox(county);
 
@@ -48,7 +48,7 @@ export default function Mapbox() {
 
   }, []);
 
-  const filter = useMemo(() => employmentFilter, [tract?.employment]);
+  const filter = useMemo(() => employmentFilter, [tract['total_se_2013-2017']]);
 
   return <Map
     ref={mapRef}
@@ -71,7 +71,7 @@ export default function Mapbox() {
         paint={{
           "fill-color": [
             "step",
-            ["get", "employment"],
+            ["get", "total_se_2013-2017"],
             ...COLOR_RANGE,
             '#fff'
           ],
