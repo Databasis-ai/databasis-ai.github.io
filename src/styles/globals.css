@@ -47,3 +47,9 @@
 	place-items: center center;
 	background: #4da6ff;
 }
+
+code {
+	font-size: small;
+	box-shadow: none !important;
+		 background-color: transparent !important;
+}

@@ -17,6 +17,28 @@ export const sections = [
   { title: 'Companies', id: 'companies' },
 ];
 
+const codeString = `query TractData {
+  tractData(tractID: "06001400100") {
+    id
+    name
+    state
+    county
+    market {
+      capRate
+      noi
+      growth
+    }
+    residents {
+      income
+      population
+      netMigration {
+        value
+        range
+      }
+    }
+  }
+}
+`;
 
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
@@ -82,22 +104,12 @@ export default function Home() {
         <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-[1.005] cursor-pointer duration-200	">
           {enabled ? <CopyBlock
           language={'graphql'}
-          text={`query FirstSevenStarShips {
-            allStarships(first: 7) {
-              edges {
-                node {
-                  id
-                  name
-                  model
-                  costInCredits
-                }
-              }
-          }`}
-          showLineNumbers={false}
+          text={codeString}
           theme={dracula}
           wrapLines={true}
           codeBlock
-        /> : <Mapbox />}
+        /> : <Mapbox />
+        }
         </div>
       </div>
       <div className="col-span-1">
