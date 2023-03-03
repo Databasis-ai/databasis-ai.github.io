@@ -53,9 +53,9 @@ const resources = [
   },
   {
     href: '/apis',
-    name: 'Api',
+    name: 'Data access',
     description:
-      'We have an api.',
+      'We have an API or you can have us drop data into the cloud provider of your choice.',
     icon: UsersIcon,
     pattern: {
       y: 22,
