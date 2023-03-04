@@ -2,74 +2,119 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
+  previewFeatures = ["views"]
 }
 
 datasource db {
-    provider = "postgresql"
-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+  // Further reading:
+  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+  url      = env("DATABASE_URL")
 }
 
 // Necessary for Next auth
 model Account {
-    id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? // @db.Text
-    access_token      String? // @db.Text
-    expires_at        Int?
-    token_type        String?
-    scope             String?
-    id_token          String? // @db.Text
-    session_state     String?
-    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
 }
 
 model VerificationToken {
-    identifier String
-    token      String   @unique
-    expires    DateTime
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
-    @@unique([identifier, token])
+  @@unique([identifier, token])
 }
 
-model Chart {
-    id    String   @id @default(cuid())
-    order Int
-    paid  Boolean
-    title String
-    xAxis String[]
-    yAxis String[]
+model Sale {
+    id            String    @id @default(cuid())
+    saleType String
+    saleDate Float
+    propertyType String
+    address String
+    city String
+    state String
+    zip String
+    price BigInt
+    beds Float
+    baths Float
+    location String
+    squareFeet Float
+    lotSize Float
+    yearBuilt Float
+    daysOnMarket Float
+    pricePerSquareFoot Float
+    hoaPerMonth Float
+    status String
+    nextOpenHouseStart String
+    nextOpenHouseEnd String
+    url String
+    source String
+    mlsNumber String
+    favorite String
+    interested String
+    latitude Float
+    longitude Float
 }
 
-model Company {
-    id     String @id @default(cuid())
-    name   String
-    symbol String
+model Rental {
+    id           String    @id @default(cuid())
+    address String
+    city String
+    rent String
+    beds String
+    baths String
+    squareFeet String
+    daysOnMarket String
 }
+
+model Tax {
+    id          String    @id @default(cuid())
+    situsStateCode String
+    situsCountyCode String
+    combinedStatisticalArea String
+    cbsaName String
+    cbsaCode BigInt
+    MSAName String
+    MSACode BigInt
+    metropolitanDivisionName String
+    metropolitanDivisionCode Float
+    censusTract Float
+    censusGroup Float
+}
+
+
