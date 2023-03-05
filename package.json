@@ -1,13 +1,12 @@
 {
-  "name": "uncover.bi",
+  "name": "roiradar",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start",
-    "postinstall": "prisma generate"
+    "start": "next start"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.7.4",
