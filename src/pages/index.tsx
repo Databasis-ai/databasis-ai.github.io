@@ -16,10 +16,6 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
-export const sections = [
-  { title: 'Resources', id: 'resources' },
-  { title: 'Companies', id: 'companies' },
-];
 
 const codeString = `query TractData {
   tractData(tractID: "06001400100") {
@@ -96,12 +92,10 @@ export default function Home() {
             <div className="pl-6">
               <motion.button
                 whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.1 }}
                 onClick={() => {
-                  setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
-                }}
-              >
+                  setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi') }}>
                 <MapPinIcon
-                  onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
                   className={`
                 hover:scale-105
                 cursor-pointer
@@ -115,16 +109,18 @@ export default function Home() {
                 dark:fill-white/10
                 dark:stroke-zinc-400
                 dark:hover:fill-emerald-300/10
-                dark:hover:stroke-emerald-400`} />
+                dark:hover:stroke-emerald-400
+                ${activeSearchFilter === 'noi' ? 'stroke-emerald-400' : ''}
+                `} />
               </motion.button>
             </div>
             <div className="pl-12 ">
               <div className="controls">
                 <motion.button
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
-                  }}>
+                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}}>
                   <UsersIcon
                     className={`
                     hover:scale-105
@@ -139,7 +135,9 @@ export default function Home() {
                     dark:fill-white/10
                     dark:stroke-zinc-400
                     dark:hover:fill-emerald-300/10
-                    dark:hover:stroke-emerald-400`} />
+                    dark:hover:stroke-emerald-400
+                    ${activeSearchFilter === 'growth' ? 'stroke-emerald-400' : ''}
+                    `} />
                 </motion.button>
               </div>
             </div>
@@ -150,9 +148,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='h-12'>
+        <div className=''>
           <AnimatePresence>
-            {activeSearchFilter == 'noi' ? <Box items={[{ text: 'noi' }]} /> : activeSearchFilter == 'growth' ? <Box items={[{ text: 'growth' }]} /> : null}
+            {activeSearchFilter == 'noi' ?
+            <Box items={[{ text: 'noi' }]} /> :
+            activeSearchFilter == 'growth' ?
+            <Box items={[{ text: 'growth' }]} /> : null}
           </AnimatePresence>
         </div>
         <div className="
