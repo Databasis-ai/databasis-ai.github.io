@@ -19,8 +19,8 @@ export const authOptions: NextAuthOptions = {
 	},
 	providers: [
 		GoogleProvider({
-			clientId: '390510178312-ic9vpej0mrge0pkad7oa93fctvdgv85h.apps.googleusercontent.com',
-			clientSecret: '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',
+			clientId: '803493991264-jv4als9c5bhd6c37u58g89r4evn155f4.apps.googleusercontent.com',
+			clientSecret: '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',
 		})
 	],
 	events: {
