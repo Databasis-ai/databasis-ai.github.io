@@ -27,7 +27,6 @@ export default function Mapbox() {
 
   const onClick = useCallback((event: any) => {
     const county = event.features && event.features[0];
-    console.log(county);
 
     setFilter(["==", ["get", "geoid"], county.properties.geoid]);
     setTract({
