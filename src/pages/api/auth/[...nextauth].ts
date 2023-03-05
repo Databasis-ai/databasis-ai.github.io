@@ -7,7 +7,7 @@ import { env } from "../../../env/server.mjs";
 export const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
 	pages: {
-		signIn: '/enter'
+		// signIn: '/enter'
 	},
 	callbacks: {
 		session(params) {
