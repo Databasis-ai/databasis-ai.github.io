@@ -8,7 +8,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { trpc } from "../utils/api";
 import { Router } from 'next/router'
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/LayoutHome'
 import "../styles/globals.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
