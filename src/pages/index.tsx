@@ -16,6 +16,24 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
+const FILTERS = [
+  {
+    icon: <MapPinIcon />,
+    text: 'Housing',
+    value: 'housing',
+    subItems: [
+
+    ]
+  },
+  {
+    icon: <UsersIcon />,
+    text: 'Demographics',
+    value: 'demographics',
+    subItems: [
+
+    ]
+  }
+];
 
 const codeString = `query TractData {
   tractData(tractID: "06001400100") {
@@ -54,7 +72,30 @@ function Box({ items }: { items: any[] }) {
   }, [isPresent, safeToRemove]);
 
   return <div className="box" ref={ref} >
-    {items.map(item => item.text)}
+    {items.map((item, index) => {
+      return (
+        <motion.button
+          whileTap={{ scale: .95 }}
+          whileHover={{ scale: 1.05 }}
+          key={`filter-${item.text}-${index}`}>
+          <div className='
+          mr-10
+          pb-1
+          pt-1
+          pr-2 pl-2
+          shadow-sm
+          mb-3
+          rounded-lg
+          hover:shadow-md
+          transition-shadow
+          shadow-emerald-400
+          duration-300'>
+          {item.text}
+          </div>
+        </motion.button>
+      )
+    })}
+
   </div>;
 }
 
@@ -94,7 +135,8 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 whileHover={{ scale: 1.1 }}
                 onClick={() => {
-                  setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi') }}>
+                  setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')
+                }}>
                 <MapPinIcon
                   className={`
                 hover:scale-105
@@ -120,7 +162,8 @@ export default function Home() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}}>
+                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
+                  }}>
                   <UsersIcon
                     className={`
                     hover:scale-105
@@ -151,9 +194,16 @@ export default function Home() {
         <div className=''>
           <AnimatePresence>
             {activeSearchFilter == 'noi' ?
-            <Box items={[{ text: 'noi' }]} /> :
-            activeSearchFilter == 'growth' ?
-            <Box items={[{ text: 'growth' }]} /> : null}
+              <Box items={[{ text: 'Cap Rate', value: 'cap' },
+              { text: 'Vacancy', value: 'vancancy' },
+              { text: 'Sales', value: 'sales' },]}
+              /> :
+              activeSearchFilter == 'growth' ?
+                <Box
+                  items={[{ text: 'Population', value: 'population' },
+                  { text: 'Income', value: 'income' },
+                  { text: 'Net Migration', value: 'netMigration' },
+                  { text: 'Employment', value: 'employment' },]} /> : null}
           </AnimatePresence>
         </div>
         <div className="
