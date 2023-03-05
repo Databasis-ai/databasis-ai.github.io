@@ -38,6 +38,7 @@
     "daisyui": "^2.50.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^9.0.2",
+    "gsap": "^3.11.4",
     "mapbox-gl": "^2.13.0",
     "maplibre-gl": "^2.4.0",
     "mdx-annotations": "^0.1.1",

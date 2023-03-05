@@ -11,6 +11,10 @@ import { useState } from 'react';
 import Receipt from '@/components/Recipt';
 import Toggle from '@/components/Toggle';
 import { CopyBlock, dracula } from "react-code-blocks";
+import { AnimatePresence, motion, usePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
 export const sections = [
   { title: 'Resources', id: 'resources' },
@@ -40,11 +44,40 @@ const codeString = `query TractData {
 }
 `;
 
-type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
+function Box({ items }: { items: any[] }) {
+  const ref = useRef(null);
+  const [isPresent, safeToRemove] = usePresence();
+
+  useEffect(() => {
+    if (!isPresent) {
+      gsap.to(ref.current, {
+        opacity: 0,
+        onComplete: () => safeToRemove?.()
+      });
+    }
+  }, [isPresent, safeToRemove]);
+
+  return <div className="box" ref={ref} >
+    {items.map(item => item.text)}
+  </div>;
+}
+
 
 export default function Home() {
-  const [activeSearchFilter, setActiveSearchFilter] = useState<ActiveSearchFilter>('all');
+  const [activeSearchFilter, setActiveSearchFilter] = useState<ActiveSearchFilter>('noi');
   const [enabled, setEnabled] = useState(false);
+  const ref = useRef(null);
+  const [isPresent, safeToRemove] = usePresence();
+
+  useEffect(() => {
+    if (!isPresent) {
+      gsap.to(ref.current, {
+        opacity: 0,
+        onComplete: () => safeToRemove?.()
+      });
+    }
+  }, [isPresent, safeToRemove]);
+
 
   return <>
     <HeroPattern />
@@ -56,43 +89,59 @@ export default function Home() {
         <Search />
       </div>
     </div>
-
     <div className="grid grid-cols-3 gap-4 xl:max-w-none">
       <div className="col-span-2 ">
         <div className="flex justify-between">
           <div className='w-48 inline-flex pb-6'>
             <div className="pl-6">
-              <MapPinIcon
-                onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
-                className={`
-          hover:scale-105 cursor-pointer
-          h-5
-          w-5
-          fill-zinc-700/10
-          stroke-zinc-700
-          transition-colors
-          duration-300
-          hover:stroke-zinc-900
-          dark:fill-white/10
-          dark:stroke-zinc-400
-          dark:hover:fill-emerald-300/10
-          dark:hover:stroke-emerald-400`} />
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
+                }}
+              >
+                <MapPinIcon
+                  onClick={() => setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')}
+                  className={`
+                hover:scale-105
+                cursor-pointer
+                h-5
+                w-5
+                fill-zinc-700/10
+                stroke-zinc-700
+                transition-colors
+                duration-300
+                hover:stroke-zinc-900
+                dark:fill-white/10
+                dark:stroke-zinc-400
+                dark:hover:fill-emerald-300/10
+                dark:hover:stroke-emerald-400`} />
+              </motion.button>
             </div>
             <div className="pl-12 ">
-              <UsersIcon
-                onClick={() => setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')}
-                className={`
-          hover:scale-105 duration-200 cursor-pointer
-          h-5
-          w-5
-          fill-zinc-700/10
-          stroke-zinc-700
-          transition-colors
-          hover:stroke-zinc-900
-          dark:fill-white/10
-          dark:stroke-zinc-400
-          dark:hover:fill-emerald-300/10
-          dark:hover:stroke-emerald-400`} />
+              <div className="controls">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
+                  }}>
+                  <UsersIcon
+                    className={`
+                    hover:scale-105
+                    duration-200
+                    cursor-pointer
+                    h-5
+                    w-5
+                    fill-zinc-700/10
+                    stroke-zinc-700
+                    transition-colors
+                    hover:stroke-zinc-900
+                    dark:fill-white/10
+                    dark:stroke-zinc-400
+                    dark:hover:fill-emerald-300/10
+                    dark:hover:stroke-emerald-400`} />
+                </motion.button>
+              </div>
             </div>
           </div>
           <div className='inline-block'>
@@ -101,15 +150,27 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="border rounded-lg overflow-hidden drop-shadow-2xl hover:scale-[1.005] cursor-pointer duration-200	">
+        <div className='h-12'>
+          <AnimatePresence>
+            {activeSearchFilter == 'noi' ? <Box items={[{ text: 'noi' }]} /> : activeSearchFilter == 'growth' ? <Box items={[{ text: 'growth' }]} /> : null}
+          </AnimatePresence>
+        </div>
+        <div className="
+        border
+        rounded-lg
+        overflow-hidden
+        drop-shadow-2xl
+        hover:scale-[1.005]
+        cursor-pointer
+        duration-200">
           {enabled ? <CopyBlock
-          language={'graphql'}
-          text={codeString}
-          theme={dracula}
-          wrapLines={true}
-          codeBlock
-        /> : <Mapbox />
-        }
+            language={'graphql'}
+            text={codeString}
+            theme={dracula}
+            wrapLines={true}
+            codeBlock
+          /> : <Mapbox />
+          }
         </div>
       </div>
       <div className="col-span-1">
