@@ -5,9 +5,7 @@ import { prisma } from "../../../server/db/client";
 
 export const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
-	pages: {
-		signIn: '/enter'
-	},
+
 	callbacks: {
 		session(params) {
 			return params.session;

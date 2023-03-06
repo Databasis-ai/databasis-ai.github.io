@@ -16,7 +16,6 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
-
 const codeString = `query TractData {
   tractData(tractID: "06001400100") {
     id
@@ -77,7 +76,6 @@ function Box({ items }: { items: any[] }) {
         </motion.button>
       )
     })}
-
   </div>;
 }
 
