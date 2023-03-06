@@ -14,6 +14,7 @@ import { ModeToggle } from '@/components/ModeToggle'
 import { MobileSearch } from '@/components/Search'
 import ProjectSelect from './ProjectSelect';
 import NavTabs from './NavTabs';
+import { useRouter } from 'next/router'
 function TopLevelNavItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
@@ -35,6 +36,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
   const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
   const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
   const { data: sessionData } = useSession();
+  const router = useRouter();
 
   return (
     <motion.div
@@ -60,13 +62,9 @@ export const Header = forwardRef(function Header({ className }, ref) {
           'bg-zinc-900/7.5 dark:bg-white/7.5'
         )}
       />
-      <div>
-        <ProjectSelect />
-
-      </div>
-      <div>
-      <NavTabs />
-      </div>
+      {
+        router.pathname === '/' ? (<div></div>) : <><div><ProjectSelect /></div><div><NavTabs /></div></>
+      }
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />
         <Link href="/" aria-label="Home">
