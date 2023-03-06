@@ -71,7 +71,7 @@ function Box({ items }: { items: any[] }) {
           transition-shadow
           shadow-emerald-400
           duration-300'>
-          {item.text}
+            {item.text}
           </div>
         </motion.button>
       )
@@ -106,8 +106,8 @@ export default function Home() {
         <Search />
       </div>
     </div>
-    <div className="grid grid-cols-3 gap-4 xl:max-w-none">
-      <div className="col-span-2 ">
+    <div>
+      <div className=''>
         <div className="flex justify-between">
           <div className='w-48 inline-flex pb-6'>
             <div className="pl-6">
@@ -171,7 +171,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className=''>
+        <div>
           <AnimatePresence>
             {activeSearchFilter == 'noi' ?
               <Box items={[{ text: 'Cap Rate', value: 'cap' },
@@ -186,32 +186,35 @@ export default function Home() {
                   { text: 'Employment', value: 'employment' },]} /> : null}
           </AnimatePresence>
         </div>
-        <div className="
-        border
-        rounded-lg
-        overflow-hidden
-        drop-shadow-2xl
-        hover:scale-[1.005]
-        cursor-pointer
-        duration-200">
-          {enabled ? <CopyBlock
-            language={'graphql'}
-            text={codeString}
-            theme={dracula}
-            wrapLines={true}
-            codeBlock
-          /> : <Mapbox />
-          }
-        </div>
       </div>
-      <div className="col-span-1">
-        <Receipt items={[
-          { name: 'State Tax', price: 5.5 },
-          { name: 'Rent', price: 5.5 },
-          { name: 'Mortgage', price: 2_450 },
-          { name: 'Rental Estimate', price: 2_750 },
-          { name: 'Maintenance', price: 750 }
-        ]} tax={0} />
+      <div className='grid grid-cols-3 gap-4 xl:max-w-none'>
+        <div className='col-span-2'>
+          <div className="border
+                          rounded-lg
+                          overflow-hidden
+                          drop-shadow-2xl
+                          hover:scale-[1.005]
+                          cursor-pointer
+                          duration-200">
+            {enabled ? <CopyBlock
+              language={'graphql'}
+              text={codeString}
+              theme={dracula}
+              wrapLines={true}
+              codeBlock
+            /> : <Mapbox />
+            }
+          </div>
+        </div>
+        <div className='col-span-1'>
+          <Receipt items={[
+            { name: 'State Tax', price: 5.5 },
+            { name: 'Rent', price: 5.5 },
+            { name: 'Mortgage', price: 2_450 },
+            { name: 'Rental Estimate', price: 2_750 },
+            { name: 'Maintenance', price: 750 }
+          ]} tax={0} />
+        </div>
       </div>
     </div>
     <div className="not-prose pt-24">
