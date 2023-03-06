@@ -106,19 +106,18 @@ export default function Home() {
         <Search />
       </div>
     </div>
-    <div>
-      <div className=''>
-        <div className="flex justify-between">
-          <div className='w-48 inline-flex pb-6'>
-            <div className="pl-6">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                whileHover={{ scale: 1.1 }}
-                onClick={() => {
-                  setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')
-                }}>
-                <MapPinIcon
-                  className={`
+    <div className='w-full max-w-fit'>
+      <div className="flex justify-between">
+        <div className='w-48 inline-flex pb-6'>
+          <div className="pl-6">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.1 }}
+              onClick={() => {
+                setActiveSearchFilter(activeSearchFilter === 'noi' ? 'none' : 'noi')
+              }}>
+              <MapPinIcon
+                className={`
                 hover:scale-105
                 cursor-pointer
                 h-5
@@ -134,18 +133,18 @@ export default function Home() {
                 dark:hover:stroke-emerald-400
                 ${activeSearchFilter === 'noi' ? 'stroke-emerald-400' : ''}
                 `} />
-              </motion.button>
-            </div>
-            <div className="pl-12 ">
-              <div className="controls">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
-                  }}>
-                  <UsersIcon
-                    className={`
+            </motion.button>
+          </div>
+          <div className="pl-12 ">
+            <div className="controls">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setActiveSearchFilter(activeSearchFilter === 'growth' ? 'none' : 'growth')
+                }}>
+                <UsersIcon
+                  className={`
                     hover:scale-105
                     duration-200
                     cursor-pointer
@@ -161,31 +160,30 @@ export default function Home() {
                     dark:hover:stroke-emerald-400
                     ${activeSearchFilter === 'growth' ? 'stroke-emerald-400' : ''}
                     `} />
-                </motion.button>
-              </div>
-            </div>
-          </div>
-          <div className='inline-block'>
-            <div className='inline-block pr-5'>
-              <Toggle enabled={enabled} setEnabled={setEnabled} />
+              </motion.button>
             </div>
           </div>
         </div>
-        <div>
-          <AnimatePresence>
-            {activeSearchFilter == 'noi' ?
-              <Box items={[{ text: 'Cap Rate', value: 'cap' },
-              { text: 'Vacancy', value: 'vancancy' },
-              { text: 'Sales', value: 'sales' },]}
-              /> :
-              activeSearchFilter == 'growth' ?
-                <Box
-                  items={[{ text: 'Population', value: 'population' },
-                  { text: 'Income', value: 'income' },
-                  { text: 'Net Migration', value: 'netMigration' },
-                  { text: 'Employment', value: 'employment' },]} /> : null}
-          </AnimatePresence>
+        <div className='inline-block'>
+          <div className='inline-block pr-5'>
+            <Toggle enabled={enabled} setEnabled={setEnabled} />
+          </div>
         </div>
+      </div>
+      <div>
+        <AnimatePresence>
+          {activeSearchFilter == 'noi' ?
+            <Box items={[{ text: 'Cap Rate', value: 'cap' },
+            { text: 'Vacancy', value: 'vancancy' },
+            { text: 'Sales', value: 'sales' },]}
+            /> :
+            activeSearchFilter == 'growth' ?
+              <Box
+                items={[{ text: 'Population', value: 'population' },
+                { text: 'Income', value: 'income' },
+                { text: 'Net Migration', value: 'netMigration' },
+                { text: 'Employment', value: 'employment' },]} /> : null}
+        </AnimatePresence>
       </div>
       <div className='grid grid-cols-3 gap-4 xl:max-w-none'>
         <div className='col-span-2'>
