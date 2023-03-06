@@ -67,9 +67,10 @@ function Box({ items }: { items: any[] }) {
           shadow-sm
           mb-3
           rounded-lg
-          hover:shadow-md
+          hover:shadow-lg
           transition-shadow
           shadow-emerald-400
+          hover:shadow-emerald-500
           duration-300'>
             {item.text}
           </div>
@@ -170,7 +171,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className='h-12'>
         <AnimatePresence>
           {activeSearchFilter == 'noi' ?
             <Box items={[{ text: 'Cap Rate', value: 'cap' },
