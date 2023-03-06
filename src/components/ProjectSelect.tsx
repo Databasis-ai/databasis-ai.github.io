@@ -24,9 +24,9 @@ export default function ProjectSelect() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		const projects  = [{
 			id: 'asdf',
-			name: 'http://anonrose.com',
+			name: 'https://anonrose.com',
 			slug: 'asdf',
-			domain: 'http://anonrose.com',
+			domain: 'https://anonrose.com',
 			domainVerified: false,
 			ownerUsageLimit: 12
 		}] as ProjectProps[];
@@ -44,8 +44,8 @@ export default function ProjectSelect() {
     return (
       projects?.find((project) => project.slug === slug) || {
         name: "All",
-        slug: "http://anonrose.com",
-        domain: "http://anonrose.com",
+        slug: "https://anonrose.com",
+        domain: "https://anonrose.com",
         logo:
           `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`,
       }
@@ -162,7 +162,7 @@ function ProjectList({
           className="flex w-full cursor-pointer items-center space-x-2 rounded-md p-2 transition-all duration-75 hover:bg-gray-100"
         >
           <PlusCircle className="h-7 w-7 text-gray-600" />
-          <span className="block truncate">Add a property</span>
+          <span className="block truncate">Add a new website</span>
         </button>
     </div>
   );

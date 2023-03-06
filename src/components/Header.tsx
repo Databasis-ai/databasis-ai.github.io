@@ -12,8 +12,8 @@ import {
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { ModeToggle } from '@/components/ModeToggle'
 import { MobileSearch } from '@/components/Search'
-import { Divider } from './shared/icons';
 import ProjectSelect from './ProjectSelect';
+import NavTabs from './NavTabs';
 function TopLevelNavItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
@@ -62,6 +62,10 @@ export const Header = forwardRef(function Header({ className }, ref) {
       />
       <div>
         <ProjectSelect />
+
+      </div>
+      <div>
+      <NavTabs />
       </div>
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />
