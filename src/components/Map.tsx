@@ -14,7 +14,7 @@ const highlightLayer = {
   'source-layer': 'tractsclippedbystatenew',
   paint: {
     'fill-outline-color': '#484896',
-    'fill-color': '#6e599f',
+    'fill-color': '#f768a1',
     'fill-opacity': 0.5
   }
 };
@@ -33,7 +33,8 @@ export default function Mapbox() {
       longitude: event.lngLat.lng,
       latitude: event.lngLat.lat,
       employment: county.properties.employment,
-      geoid: county.properties.geoid
+      geoid: county.properties.geoid,
+      name: county.properties.name
     });
 
     const [minLng, minLat, maxLng, maxLat] = bbox(county);
@@ -74,7 +75,7 @@ export default function Mapbox() {
               ...COLOR_RANGE,
               '#000'
             ],
-            'fill-opacity': 0.45
+            'fill-opacity': 0.7
           }}
       />
       <Layer {...highlightLayer} filter={filter} />
