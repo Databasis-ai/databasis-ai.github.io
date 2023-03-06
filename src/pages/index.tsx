@@ -218,6 +218,13 @@ export default function Home() {
     <div className="not-prose pt-24">
       <Button href="/sdks" variant="text" arrow="right" className={''}>
         <div>
+          List your property
+        </div>
+      </Button>
+    </div>
+    <div className="not-prose pt-4">
+      <Button href="/sdks" variant="text" arrow="right" className={''}>
+        <div>
           Get your API key
         </div>
       </Button>
