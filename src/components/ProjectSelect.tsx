@@ -162,7 +162,7 @@ function ProjectList({
           className="flex w-full cursor-pointer items-center space-x-2 rounded-md p-2 transition-all duration-75 hover:bg-gray-100"
         >
           <PlusCircle className="h-7 w-7 text-gray-600" />
-          <span className="block truncate">Add a new website</span>
+          <span className="block truncate">Add a property</span>
         </button>
     </div>
   );

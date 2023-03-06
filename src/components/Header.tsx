@@ -12,7 +12,8 @@ import {
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { ModeToggle } from '@/components/ModeToggle'
 import { MobileSearch } from '@/components/Search'
-
+import { Divider } from './shared/icons';
+import ProjectSelect from './ProjectSelect';
 function TopLevelNavItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
@@ -34,7 +35,6 @@ export const Header = forwardRef(function Header({ className }, ref) {
   const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
   const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
   const { data: sessionData } = useSession();
-  console.log(sessionData);
 
   return (
     <motion.div
@@ -61,7 +61,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
         )}
       />
       <div>
-
+        <ProjectSelect />
       </div>
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />

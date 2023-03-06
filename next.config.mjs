@@ -14,6 +14,14 @@ const withMDX = nextMDX({
 })
 
 const config = {
+  images: {
+    remotePatterns: [
+      { hostname: 'www.google.com' }
+    ],
+    remotePatterns: [
+      { hostname: 'avatar.vercel.sh' }
+    ]
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
