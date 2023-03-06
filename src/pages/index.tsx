@@ -16,24 +16,6 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 type ActiveSearchFilter = 'cap' | 'noi' | 'growth' | 'all' | 'none';
 
-const FILTERS = [
-  {
-    icon: <MapPinIcon />,
-    text: 'Housing',
-    value: 'housing',
-    subItems: [
-
-    ]
-  },
-  {
-    icon: <UsersIcon />,
-    text: 'Demographics',
-    value: 'demographics',
-    subItems: [
-
-    ]
-  }
-];
 
 const codeString = `query TractData {
   tractData(tractID: "06001400100") {
