@@ -14,7 +14,7 @@ export default function App() {
 			<div className="flex h-36 items-center border-b border-gray-200 bg-white">
 				<MaxWidthWrapper>
 					<div className="flex items-center justify-between">
-						<h1 className="text-2xl text-gray-600">Reports for All Sites</h1>
+						<h1 className="text-2xl text-gray-600">Reports for All Properties</h1>
 					</div>
 				</MaxWidthWrapper>
 			</div>
