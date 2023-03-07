@@ -9,9 +9,6 @@ export const authOptions: NextAuthOptions = {
 	callbacks: {
 		session(params) {
 			return params.session;
-		},
-		async redirect({ url }) {
-			return '/reports'
 		}
 	},
 	providers: [
