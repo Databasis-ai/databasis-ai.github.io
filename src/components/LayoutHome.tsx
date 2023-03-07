@@ -4,10 +4,8 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Prose } from '@/components/Prose'
 import { SectionProvider } from '@/components/SectionProvider'
-import { useRouter } from 'next/router'
 
 export function Layout({ children, sections = [] }) {
-
   return (
     <SectionProvider sections={sections}>
       <div className="">

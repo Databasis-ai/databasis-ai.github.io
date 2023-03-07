@@ -38,14 +38,13 @@ export default function Mapbox() {
     });
 
     const [minLng, minLat, maxLng, maxLat] = bbox(county);
-      mapRef?.current?.fitBounds(
-        [
-          [minLng, minLat],
-          [maxLng, maxLat]
-        ],
-        { padding: 40, duration: 1000 }
-      );
-
+    mapRef?.current?.fitBounds(
+      [
+        [minLng, minLat],
+        [maxLng, maxLat]
+      ],
+      { padding: 40, duration: 1000 }
+    );
   }, []);
 
   const filter = useMemo(() => employmentFilter, [employmentFilter]);
@@ -53,9 +52,9 @@ export default function Mapbox() {
   return <Map
     ref={mapRef}
     initialViewState={{
-      latitude: 37.78,
-      longitude: -122.4,
-      zoom: 11
+      latitude: 35.2271,
+      longitude: -80.8496101,
+      zoom: 10
     }}
     style={{ width: '100%', height: '400px' }}
     mapStyle='mapbox://styles/mapbox/light-v9'
@@ -66,17 +65,17 @@ export default function Mapbox() {
       <Layer
         id='tractsclippedbystatenew'
         type='fill'
-          source='tractsclippedbystatenew'
-          source-layer='tractsclippedbystatenew'
-          paint={{
-            "fill-color": [
-              "step",
-              ["get", "total_est_2013-2017"],
-              ...COLOR_RANGE,
-              '#000'
-            ],
-            'fill-opacity': 0.7
-          }}
+        source='tractsclippedbystatenew'
+        source-layer='tractsclippedbystatenew'
+        paint={{
+          "fill-color": [
+            "step",
+            ["get", "total_est_2013-2017"],
+            ...COLOR_RANGE,
+            '#000'
+          ],
+          'fill-opacity': 0.6
+        }}
       />
       <Layer {...highlightLayer} filter={filter} />
     </Source>
