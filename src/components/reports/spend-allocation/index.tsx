@@ -11,37 +11,6 @@ export type XYChartProps = {
 
 type City = 'Facebook' | 'Instagram' | 'Google';
 
-
-// {children({
-//   accessors,
-//   animationTrajectory: 'center',
-//   annotationDatum: data[annotationDataIndex],
-//   annotationType: 'circle',
-//   config,
-//   curve: curveLinear,
-//   data,
-//   numTicks: 4,
-//   renderBarGroup: false,
-//   renderBarSeries: false,
-//   renderBarStack: false,
-//   renderGlyphSeries: false,
-//   enableTooltipGlyph: true,
-//   renderHorizontally: false,
-//   renderAreaStack: true,
-//   sharedTooltip: true,
-//   showGridColumns: false,
-//   showGridRows: false,
-//   showHorizontalCrosshair: false,
-//   showTooltip: true,
-//   showVerticalCrosshair: true,
-//   snapTooltipToDatumX: true,
-//   snapTooltipToDatumY: true,
-//   theme: lightTheme,
-//   xAxisOrientation: 'bottom',
-//   yAxisOrientation: 'left',
-//   ...getAnimatedOrUnanimatedComponents(true),
-// })}
-
 export default function Example({ height }: XYChartProps) {
   return (
     <Controls>

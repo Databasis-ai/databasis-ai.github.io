@@ -24,7 +24,7 @@ const Navigation = () => {
 							{
 								session.status === 'authenticated' &&
 								<li className="mr-9 font-medium hover:text-gray-700">
-								<Link href="/reports">Dashboard</Link>
+								<Link href="/portfolio">Portfolio</Link>
 							</li>
 							}
 							<li className="mr-9 font-medium hover:text-gray-700">

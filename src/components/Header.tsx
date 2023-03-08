@@ -74,7 +74,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <nav className="hidden md:block">
           <ul role="list" className="flex items-center gap-8">
             <TopLevelNavItem href="/api">API</TopLevelNavItem>
-            {router.pathname==='/' ? <TopLevelNavItem href="/reports">Reports</TopLevelNavItem> : <></>}
+            {router.pathname==='/' ? <TopLevelNavItem href="/portfolio">Portfolio</TopLevelNavItem> : <></>}
           </ul>
         </nav>
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />

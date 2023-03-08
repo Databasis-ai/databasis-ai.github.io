@@ -5,7 +5,7 @@ export default function NavTabs() {
   const router = useRouter();
   const tabs = [
 			{ name: "Research", href: `/research` },
-			{ name: "Reports", href: `/reports` },
+			{ name: "Portfolio", href: `/portfolio` },
 			{ name: "Settings", href: `/settings` },
 	];
 
