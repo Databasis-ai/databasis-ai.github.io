@@ -56,11 +56,10 @@ export default function Example({ height }: XYChartProps) {
           xScale={config.x}
           yScale={config.y}
           height={Math.min(400, height)}
-
         >
           <CustomChartBackground />
           <Grid
-            key={`grid-${animationTrajectory}`} // force animate on update
+            key={`grid-${animationTrajectory}`}
             rows={showGridRows}
             columns={showGridColumns}
             animationTrajectory={animationTrajectory}
@@ -106,7 +105,6 @@ export default function Example({ height }: XYChartProps) {
             orientation={renderHorizontally ? xAxisOrientation : yAxisOrientation}
             numTicks={numTicks}
             animationTrajectory={animationTrajectory}
-            // values don't make sense in stream graph
           />
           {annotationDataKey && annotationDatum && (
             <Annotation
@@ -143,7 +141,6 @@ export default function Example({ height }: XYChartProps) {
               renderGlyph={enableTooltipGlyph ? renderTooltipGlyph : undefined}
               renderTooltip={({ tooltipData, colorScale }: any) => (
                 <>
-                  {/** date */}
                   {(tooltipData?.nearestDatum?.datum &&
                     accessors.date(tooltipData?.nearestDatum?.datum)) ||
                     'No date'}
