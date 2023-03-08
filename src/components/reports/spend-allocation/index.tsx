@@ -9,7 +9,7 @@ export type XYChartProps = {
   height: number;
 };
 
-type City = 'Income' | 'Mortgage' | 'Google';
+type City = 'Income' | 'Mortgage' | 'Home Value';
 
 export default function Example({ height }: XYChartProps) {
   return (
@@ -68,10 +68,10 @@ export default function Example({ height }: XYChartProps) {
           {renderAreaStack && (
             <AreaStack curve={curve} >
               <AreaSeries
-                dataKey="Google"
+                dataKey='Home Value'
                 data={data}
-                xAccessor={accessors.x.Google}
-                yAccessor={accessors.y.Google}
+                xAccessor={accessors.x['Home Value']}
+                yAccessor={accessors.y['Home Value']}
                 fillOpacity={0.4}
               />
               <AreaSeries
@@ -100,7 +100,7 @@ export default function Example({ height }: XYChartProps) {
           <Axis
             key={`temp-axis-${animationTrajectory}-${renderHorizontally}`}
             label={
-              'Channel [Income, Mortgage, Google]'
+              'Channel [Income, Mortgage, Home Value]'
             }
             orientation={renderHorizontally ? xAxisOrientation : yAxisOrientation}
             numTicks={numTicks}

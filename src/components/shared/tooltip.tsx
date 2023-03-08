@@ -2,11 +2,11 @@
 
 /*  Tooltip Contents  */
 import Link from "next/link";
-import { ReactNode, useRef, useState } from "react";
+import type { ReactNode} from "react";
+import { useRef, useState } from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import BlurImage from "./blur-image";
-// import Slider from "@/components/shared/slider";
 
 export default function Tooltip({
   children,
@@ -41,8 +41,7 @@ export default function Tooltip({
       <button
         type="button"
         className={`${fullWidth ? "w-full" : "inline-flex"} sm:hidden`}
-        onClick={() => setOpenTooltip(true)}
-      >
+        onClick={() => setOpenTooltip(true)}>
         {children}
       </button>
       <AnimatePresence>

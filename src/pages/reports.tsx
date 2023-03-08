@@ -11,7 +11,7 @@ export default function App() {
 				<div className="my-10 gird grid-cols-1 gap 5">
 					<div className="flex px-4 flex-col items-center justify-center rounded-md border border-gray-200 bg-white py-12">
 						<div className="flex items-center justify-between">
-							<h1 className="text-2xl text-gray-600">Property Value</h1>
+							<h1 className="text-2xl text-gray-600">Investment Value</h1>
 						</div>
 						<ParentSize>
 							{({ width }) => <SpendAllocation width={width} height={250} />}
