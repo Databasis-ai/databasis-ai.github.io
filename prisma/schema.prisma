@@ -171,3 +171,12 @@ model PropertyToUser {
 
   @@id([propertyId, userId])
 }
+
+model Tract {
+  id                       String @id @default(cuid())
+  censusId           String
+  stateCode          String
+  countyCode         String
+  tract              String
+  name               String
+}
