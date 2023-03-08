@@ -35,13 +35,18 @@ export default function App() {
 										<div className="col-span-2">
 											<div className="text-lg text-left">
 												<div className="block">
-													💵 | {faker.finance.amount()} / per month | {faker.finance.amount()} / per year
+													💵 | {faker.finance.amount(200, 500)} / per month | {faker.finance.amount(200, 500)} / per year
 												</div>
+												<br />
 												<div className="block">
 													<div>
-														{faker.datatype.number(3)} beds
+														🏦 {faker.finance.amount(300_000, 500_000)} mortgage | 📅 15.3 years&nbsp;
 													</div>
+												</div>
+												<br />
+												<div className="block">
 													<div>
+														{faker.datatype.number(3)} beds |&nbsp;
 														{faker.datatype.number(5)} baths
 													</div>
 												</div>
