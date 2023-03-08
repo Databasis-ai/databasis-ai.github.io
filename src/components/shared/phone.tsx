@@ -3,7 +3,8 @@ import { FRAMER_MOTION_LIST_ITEM_VARIANTS } from '../../env/constants';
 import { RoundShape, TextBlock, TextRow } from 'react-placeholder/lib/placeholders';
 import Image from "next/image";
 
-const Phone: React.FC = () => (<div className="mockup-phone ">
+const Phone: React.FC = () => (
+<div className="mockup-phone ">
 	<div className="camera"/>
 	<div className="display">
 		<div className="artboard artboard-demo phone-1">

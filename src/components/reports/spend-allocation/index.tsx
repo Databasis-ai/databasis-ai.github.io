@@ -9,7 +9,7 @@ export type XYChartProps = {
   height: number;
 };
 
-type City = 'Facebook' | 'Instagram' | 'Google';
+type City = 'Income' | 'Mortgage' | 'Google';
 
 export default function Example({ height }: XYChartProps) {
   return (
@@ -75,17 +75,17 @@ export default function Example({ height }: XYChartProps) {
                 fillOpacity={0.4}
               />
               <AreaSeries
-                dataKey="Instagram"
+                dataKey="Mortgage"
                 data={data}
-                xAccessor={accessors.x['Instagram']}
-                yAccessor={accessors.y['Instagram']}
+                xAccessor={accessors.x['Mortgage']}
+                yAccessor={accessors.y['Mortgage']}
                 fillOpacity={0.4}
               />
               <AreaSeries
-                dataKey="Facebook"
+                dataKey="Income"
                 data={data}
-                xAccessor={accessors.x['Facebook']}
-                yAccessor={accessors.y['Facebook']}
+                xAccessor={accessors.x['Income']}
+                yAccessor={accessors.y['Income']}
                 fillOpacity={0.4}
               />
             </AreaStack>
@@ -100,7 +100,7 @@ export default function Example({ height }: XYChartProps) {
           <Axis
             key={`temp-axis-${animationTrajectory}-${renderHorizontally}`}
             label={
-              'Channel [Facebook, Instagram, Google]'
+              'Channel [Income, Mortgage, Google]'
             }
             orientation={renderHorizontally ? xAxisOrientation : yAxisOrientation}
             numTicks={numTicks}
@@ -146,7 +146,6 @@ export default function Example({ height }: XYChartProps) {
                     'No date'}
                   <br />
                   <br />
-                  {/** temperatures */}
                   {(
                     (sharedTooltip
                       ? Object.keys(tooltipData?.datumByKey ?? {})
@@ -156,7 +155,7 @@ export default function Example({ height }: XYChartProps) {
                     const temperature =
                       tooltipData?.nearestDatum?.datum &&
                       accessors[renderHorizontally ? 'x' : 'y'][city](
-                        tooltipData?.nearestDatum?.datum,
+                        tooltipData?.nearestDatum?.datum
                       );
 
                     return (
