@@ -144,8 +144,6 @@ export default function Example({ height }: XYChartProps) {
                   {(tooltipData?.nearestDatum?.datum &&
                     accessors.date(tooltipData?.nearestDatum?.datum)) ||
                     'No date'}
-                  <br />
-                  <br />
                   {(
                     (sharedTooltip
                       ? Object.keys(tooltipData?.datumByKey ?? {})
