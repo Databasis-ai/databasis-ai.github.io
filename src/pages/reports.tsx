@@ -11,13 +11,6 @@ export default function App() {
 
 	return (
 		<>
-			<div className="flex h-36 items-center border-b border-gray-200 bg-white">
-				<MaxWidthWrapper>
-					<div className="flex items-center justify-between">
-						<h1 className="text-2xl text-gray-600">Reports for All Properties</h1>
-					</div>
-				</MaxWidthWrapper>
-			</div>
 			<MaxWidthWrapper>
 				<div className="my-10 gird grid-cols-1 gap 5">
 					<div className="flex px-4 flex-col items-center justify-center rounded-md border border-gray-200 bg-white py-12">
@@ -25,7 +18,7 @@ export default function App() {
 							<h1 className="text-2xl text-gray-600">Property Value</h1>
 						</div>
 						<ParentSize>
-							{({ width }) => <Visitors width={width} height={400} />}
+							{({ width }) => <Visitors width={width} height={200} />}
 						</ParentSize>
 					</div>
 				</div>

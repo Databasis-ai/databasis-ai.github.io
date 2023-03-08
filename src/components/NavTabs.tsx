@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function NavTabs() {
   const router = useRouter();
   const tabs = [
-			{ name: "Properties", href: `/properties` },
+			{ name: "Research", href: `/research` },
 			{ name: "Reports", href: `/reports` },
 			{ name: "Settings", href: `/settings` },
 	];

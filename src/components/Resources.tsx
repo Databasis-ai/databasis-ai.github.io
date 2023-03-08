@@ -52,7 +52,7 @@ const resources = [
     },
   },
   {
-    href: '/apis',
+    href: '/api',
     name: 'Data access',
     description:
       'We have an API or you can have us drop data into the cloud provider of your choice.',
