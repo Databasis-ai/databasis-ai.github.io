@@ -1,4 +1,4 @@
-export const COLOR_RANGE_PAGE = [
+export const COLOR_RANGE = [
 	'#e5f5e0', 19_230,
 	'#D6EFD0', 38_461,
 	'#c7e9c0', 57_691,
