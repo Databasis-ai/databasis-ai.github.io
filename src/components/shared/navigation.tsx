@@ -3,9 +3,7 @@ import Image from 'next/image';
 import Link from "next/link";
 
 const Navigation = () => {
-
 	const session = useSession();
-
 	return <div className="container mx-auto overflow-hidden">
 		<div className="flex items-center justify-between px-4 py-5 bg-blueGray-50">
 			<div className="w-auto">

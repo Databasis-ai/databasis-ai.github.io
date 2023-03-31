@@ -10,6 +10,10 @@
 	--shiki-token-punctuation: theme('colors.zinc.200');
 }
 
+code {
+	font-size: large !important;
+}
+
 
 @tailwind base;
 @tailwind components;

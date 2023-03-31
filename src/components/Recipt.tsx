@@ -11,7 +11,7 @@ const Receipt: React.FC<ReceiptProps> = ({ items, tax }) => {
 	const grandTotal = total + taxAmount;
 
 	return (
-		<div className="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
+		<div className="w-full max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
 			<div className="bg-gray-100 px-4 py-3 font-bold text-lg">Cap Rate</div>
 			<div className="p-4">
 				<ul>
@@ -27,14 +27,14 @@ const Receipt: React.FC<ReceiptProps> = ({ items, tax }) => {
 					<span>${total.toFixed(2)}</span>
 				</div>
 				<div className="flex justify-between">
-					<span>Property Tax({tax}%)</span>
-					<span>County Tax({tax}%)</span>
-					<span>
+					<p>Property Tax({tax}%)</p>
+					<p>County Tax({tax}%)</p>
+					<p>
 						{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, }).format(grandTotal)}
-					</span>
+					</p>
 				</div>
 				<div className="flex justify-between font-bold mt-4">
-					<span>Cap Rate / Yield</span>
+					<p>Cap Rate / Yield</p>
 					<span>3.4%</span>
 				</div>
 			</div>
