@@ -1,17 +1,4 @@
-import nextMDX from '@next/mdx'
-import { remarkPlugins } from './mdx/remark.mjs'
-import { rehypePlugins } from './mdx/rehype.mjs'
-import { recmaPlugins } from './mdx/recma.mjs'
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
-
-const withMDX = nextMDX({
-  options: {
-    remarkPlugins,
-    rehypePlugins,
-    recmaPlugins,
-    providerImportSource: '@mdx-js/react',
-  },
-})
 
 const config = {
   images: {
@@ -39,4 +26,4 @@ const config = {
   },
 };
 
-export default withMDX(config);
+export default config;
