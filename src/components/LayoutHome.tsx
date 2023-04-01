@@ -3,8 +3,6 @@ import { Header } from '@/components/Header'
 import { SectionProvider } from '@/components/SectionProvider'
 import Footer from './shared/footer'
 
-
-
 export function Layout({ children, sections = [] }) {
   return (
     <SectionProvider sections={sections}>
