@@ -1,228 +1,84 @@
-import { useRef } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import clsx from 'clsx'
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
 
-import { Button } from '@/components/Button'
-import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
-import { useSectionStore } from '@/components/SectionProvider'
-import { Tag } from '@/components/Tag'
-import { remToPx } from '@/lib/remToPx'
 
-function useInitialValue(value, condition = true) {
-  const initialValue = useRef(value).current
-  return condition ? initialValue : value
-}
-
-function TopLevelNavItem({ href, children }) {
-  return (
-    <li className="md:hidden">
-      <Link
-        href={href}
-        className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-      >
-        {children}
-      </Link>
-    </li>
-  )
-}
-
-function NavLink({ href, tag, active, isAnchorLink = false, children }) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? 'page' : undefined}
-      className={clsx(
-        'flex justify-between gap-2 py-1 pr-3 text-sm transition',
-        isAnchorLink ? 'pl-7' : 'pl-4',
-        active
-          ? 'text-zinc-900 dark:text-white'
-          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-      )}
-    >
-      <span className="truncate">{children}</span>
-      {tag && (
-        <Tag variant="small" color="zinc">
-          {tag}
-        </Tag>
-      )}
-    </Link>
-  )
-}
-
-function VisibleSectionHighlight({ group, pathname }) {
-  const [sections, visibleSections] = useInitialValue(
-    [
-      useSectionStore((s) => s.sections),
-      useSectionStore((s) => s.visibleSections),
-    ],
-    useIsInsideMobileNavigation()
-  )
-
-  const isPresent = useIsPresent()
-  const firstVisibleSectionIndex = Math.max(
-    0,
-    [{ id: '_top' }, ...sections].findIndex(
-      (section) => section.id === visibleSections[0]
-    )
-  )
-  const itemHeight = remToPx(2)
-  const height = isPresent
-    ? Math.max(1, visibleSections.length) * itemHeight
-    : itemHeight
-  const top =
-    group.links.findIndex((link) => link.href === pathname) * itemHeight +
-    firstVisibleSectionIndex * itemHeight
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
-      style={{ borderRadius: 8, height, top }}
-    />
-  )
-}
-
-function ActivePageMarker({ group, pathname }) {
-  const itemHeight = remToPx(2)
-  const offset = remToPx(0.25)
-  const activePageIndex = group.links.findIndex((link) => link.href === pathname)
-  const top = offset + activePageIndex * itemHeight
-
-  return (
-    <motion.div
-      layout
-      className="absolute left-2 h-6 w-px bg-emerald-500"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      style={{ top }}
-    />
-  )
-}
-
-function NavigationGroup({ group, className }) {
-  // If this is the mobile navigation then we always render the initial
-  // state, so that the state does not change during the close animation.
-  // The state will still update when we re-open (re-render) the navigation.
-  const isInsideMobileNavigation = useIsInsideMobileNavigation()
-  const [router, sections] = useInitialValue(
-    [useRouter(), useSectionStore((s) => s.sections)],
-    isInsideMobileNavigation
-  )
-
-  const isActiveGroup =
-    group.links.findIndex((link) => link.href === router.pathname) !== -1
-
-  return (
-    <li className={clsx('relative mt-6', className)}>
-      <motion.h2
-        layout="position"
-        className="text-xs font-semibold text-zinc-900 dark:text-white"
-      >
-        {group.title}
-      </motion.h2>
-      <div className="relative mt-3 pl-2">
-        <AnimatePresence initial={!isInsideMobileNavigation}>
-          {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
-        <motion.div
-          layout
-          className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-        />
-        <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
-        <ul role="list" className="border-l border-transparent">
-          {group.links.map((link) => (
-            <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === router.pathname}>
-                {link.title}
-              </NavLink>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {link.href === router.pathname && sections.length > 0 && (
-                  <motion.ul
-                    role="list"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { delay: 0.1 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15 },
-                    }}
-                  >
-                    {sections.map((section) => (
-                      <li key={section.id}>
-                        <NavLink
-                          href={`${link.href}#${section.id}`}
-                          tag={section.tag}
-                          isAnchorLink
-                        >
-                          {section.title}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.li>
-          ))}
-        </ul>
-      </div>
-    </li>
-  )
-}
-
-export const navigation = [
-  {
-    title: 'Resources',
-    links: [
-      { title: 'Home', href: '/' },
-      { title: 'Calendar', href: '/calendar' },
-      { title: 'News', href: '/news' },
-      { title: 'API', href: '/api' }
-    ],
-  },
-  // {
-  //   title: 'Companies',
-  //   links: [
-  //     { title: 'Amazon', href: '/amazon' },
-  //     { title: 'Apple', href: '/conversations' },
-  //     { title: 'Tesla', href: '/messages' },
-  //     { title: 'Salesforce', href: '/attachments' }
-  //   ],
-  // },
-]
-
-export function Navigation(props) {
-  return (
-    <nav {...props}>
-      <ul role="list">
-        <TopLevelNavItem href="/">API</TopLevelNavItem>
-        <TopLevelNavItem href="/portfolio">Portfolio</TopLevelNavItem>
-        {navigation.map((group, groupIndex) => (
-          <NavigationGroup
-            key={group.title}
-            group={group}
-            className={groupIndex === 0 && 'md:mt-0'}
-          />
-        ))}
-        <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
-            Sign in
-          </Button>
-        </li>
-      </ul>
-    </nav>
-  )
+export default function Navigation() {
+	return <>
+		<section className="pt-6 pb-20 overflow-hidden">
+			<div className="container mx-auto px-4">
+				<div className="mb-6">
+					<div className="flex items-center justify-between px-6 py-3.5 bg-gray-900 rounded-full">
+						<div className="w-auto">
+							<div className="flex flex-wrap items-center">
+								<div className="w-auto">
+									<a href="#">
+										<img src="zanrly-assets/logos/zanrly-logo-white.svg" alt="" />
+									</a>
+								</div>
+							</div>
+						</div>
+						<div className="w-auto">
+							<div className="flex flex-wrap items-center">
+								<div className="w-auto hidden lg:block">
+									<ul className="flex items-center justify-center">
+										<li className="mr-9">
+											<a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">
+												Features
+											</a>
+										</li>
+										<li className="mr-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Solutions</a></li>
+										<li className="mr-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Resources</a></li>
+										<li><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Pricing</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className="w-auto">
+							<div className="flex flex-wrap items-center">
+								<div className="w-auto hidden lg:block">
+									<div className="flex flex-wrap -m-2">
+										<div className="w-full md:w-auto p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 rounded-full" href="#">Log In</a></div>
+										<div className="w-full md:w-auto p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">Get Started</a></div>
+									</div>
+								</div>
+								<div className="w-auto lg:hidden"><a className="inline-block" href="#">
+									<svg className="navbar-burger text-blue-500" width="45" height="45" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect width="56" height="56" rx="28" fill="currentColor"></rect>
+										<path d="M37 32H19M37 24H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg></a></div>
+							</div>
+						</div>
+					</div>
+					<div className="hidden navbar-menu fixed top-0 left-0 bottom-0 w-4/6 sm:max-w-xs z-50">
+						<div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80"></div>
+						<nav className="relative z-10 px-9 pt-8 bg-gray-900 h-full overflow-y-auto">
+							<div className="flex flex-wrap justify-between h-full">
+								<div className="w-full">
+									<div className="flex items-center justify-between -m-2">
+										<div className="w-auto p-2"><a className="inline-block" href="#"><img src="zanrly-assets/logos/zanrly-logo-white.svg" alt="" /></a></div>
+										<div className="w-auto p-2"><a className="inline-block navbar-burger" href="#">
+											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M6 18L18 6M6 6L18 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg></a></div>
+									</div>
+								</div>
+								<div className="flex flex-col justify-center py-8 w-full">
+									<ul>
+										<li className="mb-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Features</a></li>
+										<li className="mb-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Solutions</a></li>
+										<li className="mb-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Resources</a></li>
+										<li><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Pricing</a></li>
+									</ul>
+								</div>
+								<div className="flex flex-col justify-end w-full pb-8">
+									<div className="flex flex-wrap -m-2">
+										<div className="w-full p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 border border-gray-700 rounded-full" href="#">Log In</a></div>
+										<div className="w-full p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">Get Started</a></div>
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</section >
+	</>
 }
