@@ -32,7 +32,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Connect</h3>
-                    <p className="text-gray-500 font-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className="text-gray-500 font-bold">Connect your data source</p>
                   </div>
                 </div>
               </div>
@@ -49,8 +49,8 @@ export default function Features() {
                     <div className="w-px h-24 bg-gray-700"></div>
                   </div>
                   <div className="flex-1 p-4">
-                    <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Store</h3>
-                    <p className="text-gray-500 font-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Stream</h3>
+                    <p className="text-gray-500 font-bold">Stream your data</p>
                   </div>
                 </div>
               </div>
@@ -67,8 +67,8 @@ export default function Features() {
                     <div className="md:hidden w-px h-24 bg-gray-700"></div>
                   </div>
                   <div className="flex-1 p-4">
-                    <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Ship</h3>
-                    <p className="text-gray-500 font-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Inspect</h3>
+                    <p className="text-gray-500 font-bold">Inspect your data at any given point in time</p>
                   </div>
                 </div>
               </div>
