@@ -28,13 +28,6 @@ export const Header = function () {
                 <li className="mr-9">
                   <Link
                     className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
-                    href="/features">
-                    Features
-                  </Link>
-                </li>
-                <li className="mr-9">
-                  <Link
-                    className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
                     href="/pricing">
                     Pricing
                   </Link>

@@ -1,6 +1,6 @@
 
 
-import Heading from "@/components/static/pages/features/Heading";
+import Heading from "@/components/static/pages/pricing/Heading";
 
 
 export default function Features() {

@@ -7,7 +7,7 @@ export default function Heading() {
 		<div className="p-8 py-20 bg-gray-900 overflow-hidden rounded-3xl" style={
 			{
 				'backgroundImage': `url('logo-cover-transparent.png')`,
-				'backgroundSize': '90%',
+				'backgroundSize': '85%',
 				'backgroundPosition': 'center',
 				'backgroundRepeat': 'no-repeat',
 				// backgroundColor: 'rgb(17, 24, 39,.1)'
