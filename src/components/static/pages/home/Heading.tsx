@@ -1,16 +1,19 @@
-export const description =
-	'Learn everything there is to know about the Protocol API and integrate Protocol into your product.'
+
 import Timeline from '@/components/Timeline'
 import Typewriter from "typewriter-effect";
 import { CodeBlock, dracula } from "react-code-blocks";
-const CODE = `SELECT
-    address
-    FROM USERS U
-    JOIN ADDRESSES A ON U.ID = A.USER_ID
-    WHERE U.ID = '1'
+import useViewportSize from '@/utils/hooks/use-viewport-size';
+
+const SMALL_SCREEN_CODE = `SELECT address
+				FROM USERS
+				WHERE U.ID = '1'
 AS OF '12-25-20';`;
+const	LARGE_SCREEN_CODE = `SELECT address FROM USERS WHERE U.ID = '1' AS OF '12-25-20';`;
 
 export default function Heading() {
+	const { width } = useViewportSize();
+	const CODE = width < 1500 ? SMALL_SCREEN_CODE : LARGE_SCREEN_CODE;
+
 	return <>
 		<section className="pt-6 pb-20 bg-gray-800 overflow-hidden w-full">
 			<div className="w-full">
