@@ -6,9 +6,9 @@ import useViewportSize from '@/utils/hooks/use-viewport-size';
 
 const SMALL_SCREEN_CODE = `SELECT address
 				FROM USERS
-				WHERE U.ID = '1'
+				WHERE ID = '1'
 AS OF '12-25-20';`;
-const	LARGE_SCREEN_CODE = `SELECT address FROM USERS WHERE U.ID = '1' AS OF '12-25-20';`;
+const	LARGE_SCREEN_CODE = `SELECT address FROM USERS WHERE ID = '1' AS OF '12-25-20';`;
 
 export default function Heading() {
 	const { width } = useViewportSize();
