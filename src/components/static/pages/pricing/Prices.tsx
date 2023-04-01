@@ -3,7 +3,7 @@ export default function Prices() {
 		<section className="py-16 bg-gray-800 overflow-hidden">
 			<div className="container mx-auto px-4">
 				<div className="mb-12 max-w-2xl mx-auto text-center">
-					<h2 className="font-heading text-4xl md:text-5xl text-gray-100 font-black tracking-tight">Choose a plan that suits you. Grow business fast.</h2>
+					<h2 className="font-heading text-4xl md:text-5xl text-gray-100 font-black tracking-tight">Pricing that scales with you.</h2>
 				</div>
 				<div className="flex flex-wrap -m-4">
 					<div className="w-full md:w-1/3 p-4">
