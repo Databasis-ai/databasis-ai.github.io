@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer: React.FC = () => {
 	return <>
-		<section className="bg-gray-800 overflow-hidden">
+		<section className="bg-gray-800 mt-12 overflow-hidden">
 			<div className="mx-auto">
 				<div className="py-16 bg-gray-900 rounded-3xl">
 					<div className="flex flex-col justify-centers">

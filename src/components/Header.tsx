@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-
+import {RiHome2Line} from "react-icons/ri"
 export const Header = function () {
   return (
     <div className="pb-5 bg-gray-800 w-full">
@@ -19,13 +19,33 @@ export const Header = function () {
             <div className="w-auto hidden lg:block">
               <ul className="flex items-center justify-center">
                 <li className="mr-9">
-                  <a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">
-                    Features
-                  </a>
+                  <Link
+                    className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
+                    href="/">
+                    Home
+                  </Link>
                 </li>
-                <li className="mr-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Solutions</a></li>
-                <li className="mr-9"><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Resources</a></li>
-                <li><a className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href="#">Pricing</a></li>
+                <li className="mr-9">
+                  <Link
+                    className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
+                    href="/features">
+                    Features
+                  </Link>
+                </li>
+                <li className="mr-9">
+                  <Link
+                    className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
+                    href="/pricing">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
+                    href="/docs">
+                    Docs
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
