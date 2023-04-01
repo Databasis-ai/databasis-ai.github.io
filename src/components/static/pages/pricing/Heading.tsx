@@ -19,7 +19,7 @@ export default function Heading() {
 					<span>Build at any point in time</span>
 				</h1>
 				<p className="pt-12 text-xl text-gray-400 font-bold">
-					Thousands of companies trust in our apps, you could be part of our community too.
+					Thousands of companies trust in our tooling, you could be part of our community too.
 				</p>
 			</div>
 		</div>
