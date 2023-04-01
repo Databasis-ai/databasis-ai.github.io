@@ -9,7 +9,7 @@ export const Header = function () {
           <div className="flex flex-wrap items-center">
             <div className="w-auto pl-8">
               <Link href="/">
-                <Image src="/images/logo-transparent.png" alt="" width={200} height={75} />
+                <Image src="/images/logo-transparent.png" alt="" width={200} height={25} />
               </Link>
             </div>
           </div>
