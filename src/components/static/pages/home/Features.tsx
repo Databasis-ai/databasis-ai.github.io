@@ -8,7 +8,7 @@ export default function Features() {
       <div className="w-full md:w-1/2 p-8">
         <div className="md:max-w-md"><span className="inline-block mb-4 text-sm text-blue-500 font-bold uppercase tracking-widest">How it works</span>
           <h2 className="font-heading mb-6 text-4xl md:text-5xl text-gray-100 font-black tracking-tight">All-in-one data streaming for ML and Data Engineering teams</h2>
-          <p className="mb-5 text-gray-500 font-bold">.</p>
+          <p className="mb-5 text-gray-500 font-bold">We store context for all your data, so you don't have to.</p>
           <div className="flex flex-wrap -m-2">
             <div className="w-full md:w-auto p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">Learn more</a></div>
           </div>
