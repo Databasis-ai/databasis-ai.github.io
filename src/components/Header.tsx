@@ -1,7 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import {RiHome2Line} from "react-icons/ri"
+
+import { signIn, signOut, useSession } from "next-auth/react";
+
+
 export const Header = function () {
+  const { data, status } = useSession();
+
   return (
     <div className="pb-5 bg-gray-800 w-full">
       <div className="flex items-center justify-between px-6 py-3.5 bg-gray-900 rounded-full">
@@ -47,8 +52,20 @@ export const Header = function () {
           <div className="flex flex-wrap items-center">
             <div className="w-auto hidden lg:block">
               <div className="flex flex-wrap -m-2">
-                <div className="w-full md:w-auto p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 rounded-full" href="#">Log In</a></div>
-                <div className="w-full md:w-auto p-2"><a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">Get Started</a></div>
+                <div className="w-full md:w-auto p-2">
+                  <a onClick={() => status === 'authenticated' ? signOut() : signIn()} className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 rounded-full" href="#">
+                    {status === 'authenticated' ? 'Sign Out' : 'Sign In'}
+                  </a>
+                </div>
+                {
+                  status !== 'authenticated' && (
+                    <div className="w-full md:w-auto p-2">
+                      <a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">
+                        Get Started
+                      </a>
+                    </div>
+                  )
+                }
               </div>
             </div>
             <div className="w-auto lg:hidden"><a className="inline-block" href="#">
