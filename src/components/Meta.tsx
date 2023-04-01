@@ -3,7 +3,7 @@ import Head from "next/head";
 export default function Meta({
   title = "Rowvolution",
   description = "Rowvolution is a platform for recording historical records as they change within your company's data.",
-  image = "https://niche-advertising.vercel.app/_static/logos/niche-logo.png",
+  image = "https://rowvolution.io/logo-cover.png",
 }: {
   title?: string;
   description?: string;
@@ -17,13 +17,13 @@ export default function Meta({
         rel="icon"
         type="image/ico"
         sizes="32x32"
-        href={`/_static/logos/favicon-32x32.ico`}
+        href={`/favicon.png`}
       />
       <link
         rel="icon"
         type="image/ico"
         sizes="16x16"
-        href={`/_static/logos/favicon-16x16.ico`}
+        href={`/favicon.png`}
       />
       <link rel="manifest" href="/site.webmanifest" />
       {/* <link
@@ -36,7 +36,7 @@ export default function Meta({
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta itemProp="image" content={image} />
-      <meta property="og:logo" content="https://niche-advertising.vercel.app/_static/logos/niche-logo.png"></meta>
+      <meta property="og:logo" content="/favicon.png"></meta>
       <meta property="og:title" content='Rowvolution' />
       <meta property="og:description" content='Column Level Historical Diffs' />
       <meta property="og:image" content={image} />
