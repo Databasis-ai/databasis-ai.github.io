@@ -3,11 +3,13 @@ import Timeline from '@/components/Timeline'
 import Typewriter from "typewriter-effect";
 import { CodeBlock, dracula } from "react-code-blocks";
 import useViewportSize from '@/utils/hooks/use-viewport-size';
+import { SiPostgresql, SiMysql, SiAmazondynamodb, SiRedis } from 'react-icons/si';
 
 const SMALL_SCREEN_CODE = `SELECT address
 				FROM USERS
 				WHERE ID = '1'
 AS OF '12-25-20';`;
+
 const	LARGE_SCREEN_CODE = `SELECT address FROM USERS WHERE ID = '1' AS OF '12-25-20';`;
 
 export default function Heading() {
@@ -79,16 +81,16 @@ export default function Heading() {
 				<div className="px-8 py-11 bg-gray-900 rounded-3xl">
 					<div className="flex flex-wrap justify-center sm:justify-around -m-2">
 						<div className="w-full sm:w-auto p-2">
-							<img className="mx-auto" src="zanrly-assets/images/headers/brand-dark.png" alt="" />
+							<SiPostgresql size={65}/>
 						</div>
 						<div className="w-full sm:w-auto p-2">
-							<img className="mx-auto" src="zanrly-assets/images/headers/brand-dark2.png" alt="" />
+							<SiMysql	size={65}/>
 						</div>
 						<div className="w-full sm:w-auto p-2">
-							<img className="mx-auto" src="zanrly-assets/images/headers/brand-dark3.png" alt="" />
+							<SiAmazondynamodb size={65}/>
 						</div>
 						<div className="w-full sm:w-auto p-2">
-							<img className="mx-auto" src="zanrly-assets/images/headers/brand-dark4.png" alt="" />
+							<SiRedis size={65}/>
 						</div>
 					</div>
 				</div>
