@@ -5,6 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { trpc } from "../utils/api";
 import { Layout } from '@/components/LayoutHome'
 import "../styles/globals.css";
+import Meta from "@/components/Meta";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,6 +13,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <>
+      <Meta/>
       <SessionProvider session={session}>
       <Layout {...pageProps}>
           <Component {...pageProps} />
