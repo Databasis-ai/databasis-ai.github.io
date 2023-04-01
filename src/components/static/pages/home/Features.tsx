@@ -32,7 +32,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Connect</h3>
-                    <p className="text-gray-500 font-bold">Connect your data source</p>
+                    <p className="text-gray-500 font-bold">Connect your data source, we support all major databases allowing you to bring what you've got</p>
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Stream</h3>
-                    <p className="text-gray-500 font-bold">Stream your data</p>
+                    <p className="text-gray-500 font-bold">Stream your data, you can opt into either streaming or cron differentials</p>
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Inspect</h3>
-                    <p className="text-gray-500 font-bold">Inspect your data at any given point in time</p>
+                    <p className="text-gray-500 font-bold">Inspect your data at any given point in time allowing you to get point in time inspection</p>
                   </div>
                 </div>
               </div>
