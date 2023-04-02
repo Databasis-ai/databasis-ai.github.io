@@ -57,15 +57,13 @@ export const Header = function () {
                     {status === 'authenticated' ? 'Sign Out' : 'Sign In'}
                   </a>
                 </div>
-                {
-                  status !== 'authenticated' && (
-                    <div className="w-full md:w-auto p-2">
-                      <a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">
-                        Get Started
-                      </a>
-                    </div>
-                  )
-                }
+                <div className="w-full md:w-auto p-2">
+                  <Link className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href={
+                    status === 'authenticated' ? '/dashboard' : '/'
+                  }>
+                    {status === 'authenticated' ? 'Dashboard' : 'Sign In'}
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="w-auto lg:hidden"><a className="inline-block" href="#">
