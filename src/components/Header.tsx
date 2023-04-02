@@ -61,7 +61,7 @@ export const Header = function () {
                   <Link className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href={
                     status === 'authenticated' ? '/dashboard' : '/'
                   }>
-                    {status === 'authenticated' ? 'Dashboard' : 'Sign In'}
+                    {status === 'authenticated' ? 'Dashboard' : 'Get Started'}
                   </Link>
                 </div>
               </div>
