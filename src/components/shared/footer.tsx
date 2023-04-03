@@ -26,12 +26,12 @@ const Footer: React.FC = () => {
 						</ul>
 						<div className="flex flex-wrap justify-center -m-1.5 mb-10">
 							<div className="w-auto p-1.5">
-								<Link className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full" href='https://github.com/rovolution' target="_blank" >
+								<Link className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full" href='https://github.com/rowvolution' target="_blank" >
 									<AiOutlineGithub size={25}></AiOutlineGithub>
 								</Link>
 							</div>
 							<div className="w-auto p-1.5">
-								<Link className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full" href='https://github.com/rovolution' target="_blank" >
+								<Link className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full" href='https://twitter.com/rowvolution_io' target="_blank" >
 									<AiOutlineTwitter size={25}></AiOutlineTwitter>
 								</Link>
 							</div>
