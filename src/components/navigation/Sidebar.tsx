@@ -3,6 +3,7 @@ import { AiFillSetting, AiOutlineRadarChart } from "react-icons/ai";
 import { GiSplashyStream } from "react-icons/gi";
 import { TbDatabaseImport } from "react-icons/tb";
 import Link from "next/link";
+import {Tag} from "@/components/Tag";
 
 const ExampleSidebar: FC = function () {
 	return (
@@ -19,16 +20,24 @@ const ExampleSidebar: FC = function () {
 						<Link href="/dashboard/databases" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<TbDatabaseImport color="#6b7280" size={25}/>
 							<span className="ml-3">Databases</span>
-							<span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+							<span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium  rounded-full">
+							<Tag color={'sky'}>
 								3
+							</Tag>
 							</span>
 						</Link>
 					</li>
 					<li>
 						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<GiSplashyStream color="#6b7280" size={25}/>
-							<span className="flex-1 ml-3 whitespace-nowrap">Streams</span>
-							<span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full">Pro</span>
+							<span className="flex-1 ml-3 whitespace-nowrap">
+								Streams
+								</span>
+							<span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full">
+							<Tag color={'amber'}>
+							 Preview
+							</Tag>
+								</span>
 						</a>
 					</li>
 					<li>

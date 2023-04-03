@@ -2,7 +2,7 @@
 import type { FC } from "react";
 import { Fragment } from "react";
 import { useState } from "react";
-
+import { Tag } from "@/components/Tag";
 
 import { ReactSortable } from "react-sortablejs";
 import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
@@ -201,7 +201,9 @@ const DatabasePage: FC = function () {
                               ))}
                             </div>
                             <div className="flex items-center justify-center rounded-lg bg-purple-100 px-3 text-sm font-medium text-purple-800 dark:bg-purple-200">
-																												<SiPostgresql size={16} />
+																												<Tag>
+																													asdf
+																												</Tag>
                             </div>
                           </div>
                         </div>
