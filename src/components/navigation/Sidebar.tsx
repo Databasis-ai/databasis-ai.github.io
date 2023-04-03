@@ -3,7 +3,7 @@ import { AiFillSetting, AiOutlineRadarChart } from "react-icons/ai";
 import { GiSplashyStream } from "react-icons/gi";
 import { TbDatabaseImport } from "react-icons/tb";
 import Link from "next/link";
-import {Tag} from "@/components/Tag";
+import { Tag } from "@/components/Tag";
 
 const ExampleSidebar: FC = function () {
 	return (
@@ -12,37 +12,37 @@ const ExampleSidebar: FC = function () {
 				<ul className="space-y-2 font-medium">
 					<li>
 						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
-							<AiOutlineRadarChart color="#6b7280" size={25}/>
+							<AiOutlineRadarChart color="#6b7280" size={25} />
 							<span className="ml-3">Query</span>
 						</a>
 					</li>
 					<li>
 						<Link href="/dashboard/databases" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
-							<TbDatabaseImport color="#6b7280" size={25}/>
+							<TbDatabaseImport color="#6b7280" size={25} />
 							<span className="ml-3">Databases</span>
 							<span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium  rounded-full">
-							<Tag color={'sky'}>
-								3
-							</Tag>
+								<Tag color={'sky'}>
+									3
+								</Tag>
 							</span>
 						</Link>
 					</li>
 					<li>
 						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
-							<GiSplashyStream color="#6b7280" size={25}/>
+							<GiSplashyStream color="#6b7280" size={25} />
 							<span className="flex-1 ml-3 whitespace-nowrap">
 								Streams
-								</span>
+							</span>
 							<span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full">
-							<Tag color={'amber'}>
-							 Preview
-							</Tag>
-								</span>
+								<Tag color={'amber'}>
+									Preview
+								</Tag>
+							</span>
 						</a>
 					</li>
 					<li>
 						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
-							<AiFillSetting	color="#6b7280" size={25}/>
+							<AiFillSetting color="#6b7280" size={25} />
 							<span className="flex-1 ml-3 whitespace-nowrap">
 								Settings
 							</span>
@@ -54,8 +54,8 @@ const ExampleSidebar: FC = function () {
 						<span className="text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded bg-orange-200">Beta</span>
 					</div>
 					<p className="mb-3 text-sm  text-blue-400">
-						We're currently in beta so don't hate us<br/>
-						&nbsp;&nbsp;🥰<br/>
+						We're currently in beta so don't hate us<br />
+						&nbsp;&nbsp;🥰<br />
 						👉👈
 					</p>
 				</div>

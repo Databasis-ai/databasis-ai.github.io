@@ -10,7 +10,8 @@ import { useState } from "react";
 export const COMMON_PAGES = [
   { name: 'Home', href: '/' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Docs', href: '/docs' }
+  { name: 'Docs', href: '/docs' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export const Header = function () {
