@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Header } from '@/components/Header'
+import { Header } from '@/components/navigation/Header'
 import { SectionProvider } from '@/components/SectionProvider'
 import Footer from './shared/footer'
 import Sidebar from '@/components/navigation/Sidebar';
