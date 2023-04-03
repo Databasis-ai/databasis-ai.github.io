@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 						<ul className="-m-6 mb-7 text-center">
 							{
 								COMMON_PAGES.map((page, index) =>
-								<li key={`footer-links-${index}`} className="inline-flex p-6">
+								<li key={`footer-links-${index}`} className="cursor-pointer inline-flex p-6">
 								<Link href={page.href} className="inline-block text-gray-500 hover:text-gray-600 font-bold">
 										{page.name}
 									</Link>
