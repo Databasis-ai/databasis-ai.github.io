@@ -4,6 +4,7 @@ import Typewriter from "typewriter-effect";
 import { CodeBlock, dracula } from "react-code-blocks";
 import useViewportSize from '@/utils/hooks/use-viewport-size';
 import { SiPostgresql, SiMysql, SiAmazondynamodb, SiRedis } from 'react-icons/si';
+import { signIn } from 'next-auth/react';
 
 const SMALL_SCREEN_CODE = `SELECT address
 				FROM USERS
@@ -51,15 +52,15 @@ export default function Heading() {
 								</p>
 								<div className="flex flex-wrap -m-2">
 									<div className="w-full md:w-auto p-2">
-										<a className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="#">
-											Get Started
-										</a>
+										<div className="cursor-pointer block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" onClick={() => signIn()}>
+											Get Started 🧑‍🚀
+										</div>
 									</div>
-									<div className="w-full md:w-auto p-2">
+									{/* <div className="w-full md:w-auto p-2">
 										<a className="block w-full px-4 py-2.5 text-sm text-center text-gray-900 font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 rounded-full" href="#">
 											Watch Video
 										</a>
-									</div>
+									</div> */}
 								</div>
 							</div>
 						</div>
