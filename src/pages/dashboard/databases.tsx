@@ -2,94 +2,6 @@
 import type { FC } from "react";
 import { Fragment } from "react";
 import { useState } from "react";
-const kanbanBoards = [
-  {
-    "id": 1,
-    "title": "To Do",
-    "tasks": [
-      {
-        "id": 32,
-        "name": "Change charts javascript",
-        "description": "In _variables.scss on line 672 you define $table_variants. Each instance of \"color-level\" needs to be changed to \"shift-color\".",
-        "completed": false,
-        "daysLeft": 5,
-        "members": [
-          {
-            "id": 1,
-            "name": "Bonnie Green",
-            "avatar": "bonnie-green.png"
-          },
-          {
-            "id": 2,
-            "name": "Roberta Casas",
-            "avatar": "roberta-casas.png"
-          },
-          {
-            "id": 3,
-            "name": "Michael Gough",
-            "avatar": "michael-gough.png"
-          }
-        ]
-      },
-      {
-        "id": 23,
-        "name": "Change homepage",
-        "description": "Change homepage for Volt Dashboard.",
-        "completed": false,
-        "daysLeft": 22,
-        "attachment": "/images/kanban/task-3.jpg",
-        "members": [
-          {
-            "id": 1,
-            "name": "Bonnie Green",
-            "avatar": "bonnie-green.png"
-          },
-          {
-            "id": 2,
-            "name": "Roberta Casas",
-            "avatar": "roberta-casas.png"
-          },
-          {
-            "id": 3,
-            "name": "Michael Gough",
-            "avatar": "michael-gough.png"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "In Progress",
-    "tasks": [
-      {
-        "id": 76,
-        "name": "Redesign tables card",
-        "description": "In _variables.scss on line 672 you define $table_variants. Each instance of \"color-level\" needs to be changed to \"shift-color\".",
-        "completed": false,
-        "daysLeft": 9,
-        "attachment": "/images/kanban/task-1.jpg",
-        "members": [
-          {
-            "id": 1,
-            "name": "Bonnie Green",
-            "avatar": "bonnie-green.png"
-          },
-          {
-            "id": 2,
-            "name": "Roberta Casas",
-            "avatar": "roberta-casas.png"
-          },
-          {
-            "id": 3,
-            "name": "Michael Gough",
-            "avatar": "michael-gough.png"
-          }
-        ]
-      }
-    ]
-  }
-]
 
 
 import { ReactSortable } from "react-sortablejs";
@@ -105,7 +17,94 @@ import {
   HiPlus,
 } from "react-icons/hi";
 import { SiPostgresql } from "react-icons/si";
-
+const kanbanBoards = [
+	{
+			"id": 1,
+			"title": "To Do",
+			"tasks": [
+					{
+							"id": 32,
+							"name": "Change charts javascript",
+							"description": "In _variables.scss on line 672 you define $table_variants. Each instance of \"color-level\" needs to be changed to \"shift-color\".",
+							"completed": false,
+							"daysLeft": 5,
+							"members": [
+									{
+											"id": 1,
+											"name": "Bonnie Green",
+											"avatar": "bonnie-green.png"
+									},
+									{
+											"id": 2,
+											"name": "Roberta Casas",
+											"avatar": "roberta-casas.png"
+									},
+									{
+											"id": 3,
+											"name": "Michael Gough",
+											"avatar": "michael-gough.png"
+									}
+							]
+					},
+					{
+							"id": 23,
+							"name": "Change homepage",
+							"description": "Change homepage for Volt Dashboard.",
+							"completed": false,
+							"daysLeft": 22,
+							"attachment": "/images/kanban/task-3.jpg",
+							"members": [
+									{
+											"id": 1,
+											"name": "Bonnie Green",
+											"avatar": "bonnie-green.png"
+									},
+									{
+											"id": 2,
+											"name": "Roberta Casas",
+											"avatar": "roberta-casas.png"
+									},
+									{
+											"id": 3,
+											"name": "Michael Gough",
+											"avatar": "michael-gough.png"
+									}
+							]
+					}
+			]
+	},
+	{
+			"id": 2,
+			"title": "In Progress",
+			"tasks": [
+					{
+							"id": 76,
+							"name": "Redesign tables card",
+							"description": "In _variables.scss on line 672 you define $table_variants. Each instance of \"color-level\" needs to be changed to \"shift-color\".",
+							"completed": false,
+							"daysLeft": 9,
+							"attachment": "/images/kanban/task-1.jpg",
+							"members": [
+									{
+											"id": 1,
+											"name": "Bonnie Green",
+											"avatar": "bonnie-green.png"
+									},
+									{
+											"id": 2,
+											"name": "Roberta Casas",
+											"avatar": "roberta-casas.png"
+									},
+									{
+											"id": 3,
+											"name": "Michael Gough",
+											"avatar": "michael-gough.png"
+									}
+							]
+					}
+			]
+	}
+]
 interface KanbanBoard {
   id: number;
   title: string;
@@ -128,11 +127,11 @@ interface KanbanItemMember {
   avatar: string;
 }
 
-const KanbanPage: FC = function () {
+const DatabasePage: FC = function () {
   const [list, setList] = useState<KanbanBoard[]>(kanbanBoards);
 
   return (
-      <div className="overflow-x-auto">
+      <div className="bg-gray-900 rounded-lg">
         <div className="inline-block min-w-full align-middle">
           <div className="mb-6 flex items-start justify-start space-x-4 px-4">
             {list.map((board) => (
@@ -596,6 +595,6 @@ const AddAnotherCardModal: FC = function () {
   );
 };
 
-KanbanPage.requireAuthorization	= true;
+DatabasePage.requireAuthorization	= true;
 
-export default KanbanPage;
+export default DatabasePage;

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
 import Link from "next/link";
+import { COMMON_PAGES } from "../navigation/Header";
 
 const Footer: React.FC = () => {
 	return <>
@@ -13,16 +14,15 @@ const Footer: React.FC = () => {
 							<Image src="/images/logo-transparent.png" alt="" width={200} height={25} />
 						</Link>
 						<ul className="-m-6 mb-7 text-center">
-							<li className="inline-flex p-6">
-							<Link href="/pricing" className="inline-block text-gray-500 hover:text-gray-600 font-bold">
-									Pricing
-								</Link>
-							</li>
-							<li className="inline-flex p-6">
-								<Link href="/docs" className="inline-block text-gray-500 hover:text-gray-600 font-bold">
-									Docs
-								</Link>
-							</li>
+							{
+								COMMON_PAGES.map((page, index) =>
+								<li key={`footer-links-${index}`} className="inline-flex p-6">
+								<Link href={page.href} className="inline-block text-gray-500 hover:text-gray-600 font-bold">
+										{page.name}
+									</Link>
+								</li>
+								)
+							}
 						</ul>
 						<div className="flex flex-wrap justify-center -m-1.5 mb-10">
 							<div className="w-auto p-1.5">

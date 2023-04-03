@@ -15,7 +15,7 @@ export const COMMON_PAGES = [
 
 export const Header = function () {
   const { status } = useSession();
-  const [sideNavOpen, setSideNavOpen] = useState(true);
+  const [sideNavOpen, setSideNavOpen] = useState(false);
   const { width } = useViewportSize();
 
   useEffect(() => {
