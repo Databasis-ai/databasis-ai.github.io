@@ -6,7 +6,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 export const Header = function () {
   const { data, status } = useSession();
-
   return (
     <div className="pb-5 bg-gray-800 w-full">
       <div className="flex items-center justify-between px-6 py-3.5 bg-gray-900 rounded-full">
