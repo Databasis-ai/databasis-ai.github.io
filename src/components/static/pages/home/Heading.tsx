@@ -81,16 +81,16 @@ export default function Heading() {
 				</div>
 				<div className="px-8 py-11 bg-gray-900 rounded-3xl">
 					<div className="flex flex-wrap justify-center sm:justify-around -m-2">
-						<div className="w-full sm:w-auto p-2">
+						<div className="w-full sm:w-auto p-2 flex justify-center">
 							<SiPostgresql size={65}/>
 						</div>
-						<div className="w-full sm:w-auto p-2">
+						<div className="w-full sm:w-auto p-2 flex justify-center">
 							<SiMysql	size={65}/>
 						</div>
-						<div className="w-full sm:w-auto p-2">
+						<div className="w-full sm:w-auto p-2 flex justify-center">
 							<SiAmazondynamodb size={65}/>
 						</div>
-						<div className="w-full sm:w-auto p-2">
+						<div className="w-full sm:w-auto p-2 flex justify-center">
 							<SiRedis size={65}/>
 						</div>
 					</div>
