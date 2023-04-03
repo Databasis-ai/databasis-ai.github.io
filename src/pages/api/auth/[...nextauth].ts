@@ -10,7 +10,7 @@ export const authOptions: NextAuthOptions = {
 		session(params) {
 			return params.session;
 		},
-		async redirect({ url }) {
+		redirect() {
 			return '/dashboard'
 		}
 	},
