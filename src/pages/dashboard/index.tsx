@@ -2,7 +2,7 @@
 
 const Dashboard = () => {
 		return (
-				<div>
+				<div className="rounded-xl bg-gray-900">
 
 				</div>
 		);
