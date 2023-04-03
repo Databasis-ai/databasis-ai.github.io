@@ -28,7 +28,7 @@ export const Header = function () {
       <div className="flex items-center justify-between px-6 py-3.5 bg-gray-900 rounded-full">
         <div className="w-auto">
           <div className="flex flex-wrap items-center">
-            <div className="w-auto pl-8">
+            <div className="w-auto cursor-pointer pl-8">
               <Link href="/">
                 <Image src="/images/logo-transparent.png" alt="" width={200} height={25} />
               </Link>
