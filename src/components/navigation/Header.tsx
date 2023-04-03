@@ -8,7 +8,7 @@ import { useState } from "react";
 export const COMMON_PAGES = [
   { name: 'Home', href: '/' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Docs', href: '/docs' },
+  // { name: 'Docs', href: '/docs' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -30,7 +30,7 @@ export const Header = function () {
           <div className="flex flex-wrap items-center">
             <div className="w-auto cursor-pointer pl-8">
               <Link href="/">
-                <Image src="/images/logo-transparent.png" alt="" width={200} height={25} />
+                <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25} />
               </Link>
             </div>
           </div>
@@ -93,7 +93,9 @@ export const Header = function () {
             <div className="w-full">
               <div className="flex items-center justify-between -m-2">
                 <div className="w-auto p-2">
-                  <a className="inline-block" href="#"><img src="zanrly-assets/logos/zanrly-logo-white.svg" alt="" /></a>
+                  <Link className="inline-block" href="/">
+                    <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25}  />
+                    </Link>
                 </div>
                 <div className="w-auto p-2">
                   <a className="inline-block navbar-burger" onClick={() => setSideNavOpen(false)} href="#">
