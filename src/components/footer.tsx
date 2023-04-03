@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
 import Link from "next/link";
-import { COMMON_PAGES } from "../navigation/Header";
+import { COMMON_PAGES } from "./navigation/Header";
 
 const Footer: React.FC = () => {
 	return <>
@@ -16,11 +16,11 @@ const Footer: React.FC = () => {
 						<ul className="-m-6 mb-7 text-center">
 							{
 								COMMON_PAGES.map((page, index) =>
-								<li key={`footer-links-${index}`} className="cursor-pointer inline-flex p-6">
-								<Link href={page.href} className="inline-block text-gray-500 hover:text-gray-600 font-bold">
-										{page.name}
-									</Link>
-								</li>
+									<li key={`footer-links-${index}`} className="cursor-pointer inline-flex p-6">
+										<Link href={page.href} className="inline-block text-gray-500 hover:text-gray-600 font-bold">
+											{page.name}
+										</Link>
+									</li>
 								)
 							}
 						</ul>

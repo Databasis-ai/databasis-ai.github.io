@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Header } from '@/components/navigation/Header'
 import { SectionProvider } from '@/components/SectionProvider'
-import Footer from './shared/footer'
+import Footer from './footer'
 import Sidebar from '@/components/navigation/Sidebar';
 import { useRouter } from 'next/router';
 
