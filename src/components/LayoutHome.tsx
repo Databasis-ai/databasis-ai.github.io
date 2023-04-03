@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Header } from '@/components/navigation/Header'
 import { SectionProvider } from '@/components/SectionProvider'
-import Footer from '@/components/Footer';
+import Footer from '@/components/footer';
 import Sidebar from '@/components/navigation/Sidebar';
 import { useRouter } from 'next/router';
 
@@ -17,8 +17,8 @@ export function Layout({ children, sections = [] }) {
         </motion.header>
         <div className="flex items-start">
           {router.pathname.includes('/dashboard') ? <Sidebar /> : <></>}
-          <main className='overflow-y-auto relative w-full h-full bg-gray-900'>
-            <div>{children}</div>
+          <main className='overflow-y-auto relative w-full h-full rounded-xl bg-gray-900'>
+            {children}
           </main>
         </div>
         <Footer />

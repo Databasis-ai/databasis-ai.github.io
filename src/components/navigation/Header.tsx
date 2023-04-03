@@ -1,11 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-
 import { signIn, signOut, useSession } from "next-auth/react";
 import useViewportSize from "@/utils/hooks/use-viewport-size";
 import { useEffect } from "react";
 import { useState } from "react";
-
 
 export const COMMON_PAGES = [
   { name: 'Home', href: '/' },
