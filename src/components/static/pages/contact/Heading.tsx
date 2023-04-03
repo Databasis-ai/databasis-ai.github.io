@@ -19,7 +19,7 @@ export default function Heading() {
 					style={{
 						backgroundColor: 'black',
 						width: '600px',
-						height: '778px'
+						height: '1031px'
 					}}></div>
 				</div>
 			</div>
