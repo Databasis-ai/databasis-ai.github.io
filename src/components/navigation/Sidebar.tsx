@@ -1,8 +1,6 @@
 import type { FC } from "react";
 import { AiOutlineRadarChart } from "react-icons/ai";
-
 const ExampleSidebar: FC = function () {
-
 	return (
 		<aside id="cta-button-sidebar" className=" top-0 left-0 z-40 w-64 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
 			<div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
@@ -35,10 +33,8 @@ const ExampleSidebar: FC = function () {
 							<span className="flex-1 ml-3 whitespace-nowrap">
 								Settings
 							</span>
-
 						</a>
 					</li>
-
 				</ul>
 				<div id="dropdown-cta" className="p-4 mt-6 rounded-lg  bg-blue-900" role="alert">
 					<div className="flex items-center mb-3">
