@@ -7,6 +7,7 @@ import { Layout } from '@/components/LayoutHome'
 import "../styles/globals.css";
 import Meta from "@/components/Meta";
 import { type ReactNode } from "react";
+import { SidebarProvider } from '@/context/SidebarContext';
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -16,21 +17,23 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <>
       <Meta />
       <SessionProvider session={session}>
-        <Layout {...pageProps}>
-          {Component.requireAuthorization ? (
-            <Auth>
+        <SidebarProvider>
+          <Layout {...pageProps}>
+            {Component.requireAuthorization ? (
+              <Auth>
+                <Component {...pageProps} />
+              </Auth>
+            ) : (
               <Component {...pageProps} />
-            </Auth>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </Layout>
+            )}
+          </Layout>
+        </SidebarProvider>
       </SessionProvider>
     </>
   );
 };
 
-function Auth({ children } : { children: ReactNode }) {
+function Auth({ children }: { children: ReactNode }) {
   const { status } = useSession({ required: true });
 
   if (status === 'loading') {
