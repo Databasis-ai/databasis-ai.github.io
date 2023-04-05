@@ -7,6 +7,7 @@ import { Layout } from '@/components/pages/shared/Layout'
 import "../styles/globals.css";
 import Meta from "@/components/pages/shared/Meta";
 import { type ReactNode } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -15,6 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <>
       <Meta />
+      <Analytics/>
       <SessionProvider session={session}>
           <Layout {...pageProps}>
             {Component.requireAuthorization ? (
