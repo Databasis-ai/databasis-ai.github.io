@@ -66,7 +66,8 @@ export default function Timeline() {
                     }
                   </time>
                   <p className="mb-4 text-base font-normal text-gray-500 ">
-                    Updated with [{updatedWith.map(fellowUpdate => <><a className="text-blue-500" href="#">{fellowUpdate}</a>,&nbsp;</>)}]
+                    Updated with [{updatedWith.map((fellowUpdate, index) => <>
+                    <a className="text-blue-500" href="#">{fellowUpdate}</a>{index == updatedWith.length -1 ? '' : ', '}</>)}]
                     <span className="text-blue-400 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ml-3">
                       View statement
                     </span>
