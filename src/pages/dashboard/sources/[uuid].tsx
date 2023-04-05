@@ -1,10 +1,10 @@
 import SourcesInspect from '@/components/pages/dashboard/sources/inspect';
 
-const SourceInspectViewPage = ({uuid}) => {
+const SourceInspectViewPage = ({ uuid }: { uuid: string }) => {
 	return <SourcesInspect uuid={uuid} />;
 }
 
-export const getServerSideProps	= async (context: { params: any; }) => {
+export const getServerSideProps = async (context: { params: any; }) => {
 	const { params } = context;
 
 	return {
