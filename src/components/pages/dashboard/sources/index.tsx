@@ -23,24 +23,9 @@ const DataSources = [
 		uuid: "1",
 		name: "Rowvolution DB",
 		description: "This is a database",
-		dbProvider: "Postgres",
+		provider: "Postgres",
 		premisis: "GCP",
-		metrics: {
-			size: {
-				amount: `100`,
-				unit: "GB",
-			},
-			transactions: {
-				30: 100,
-				60: 200,
-				90: 300
-			}
-		},
-		tables: [
-			{
-				name: "Table 1",
-			}
-		]
+		status: "operational"
 	}
 ]
 
@@ -168,7 +153,7 @@ const DatabasePage = function () {
 						<div className="h-full rounded-lg bg-sky-50 p-4 shadow-md">
 							<div className="flex h-auto items-center justify-between pb-4">
 								<div className="text-base font-semibold text-gray-900">
-									asdf
+									Rowvolution Prod
 								</div>
 								<div className="w-8">
 									<EditCardModal />
@@ -176,7 +161,7 @@ const DatabasePage = function () {
 							</div>
 							<div className="flex flex-col">
 								<div className="pb-4 text-sm font-normal text-gray-700 dark:text-gray-400">
-									asdf
+									Production don't touch
 								</div>
 								<div className="flex pt-24  h-full justify-between">
 									<div className="flex items-center justify-start">

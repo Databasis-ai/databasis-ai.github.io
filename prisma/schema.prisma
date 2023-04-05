@@ -43,15 +43,15 @@ model Session {
 }
 
 model User {
-  id                    String                  @id @default(cuid())
-  name                  String?
-  email                 String?                 @unique
-  emailVerified         DateTime?
-  image                 String?
-  accounts              Account[]
-  sessions              Session[]
-  organizations         Organization[]
-  OrganizationesToUsers OrganizationesToUsers[]
+  id                   String                 @id @default(cuid())
+  name                 String?
+  email                String?                @unique
+  emailVerified        DateTime?
+  image                String?
+  accounts             Account[]
+  sessions             Session[]
+  organizations        Organization[]
+  OrganizationsToUsers OrganizationsToUsers[]
 }
 
 model VerificationToken {
@@ -63,13 +63,15 @@ model VerificationToken {
 }
 
 model Organization {
-  id                    String                  @id @default(cuid())
-  users                 User[]
-  name                  String?
-  OrganizationesToUsers OrganizationesToUsers[]
+  id                     String                   @id @default(cuid())
+  name                   String?
+  users                  User[]
+  sources                Source[]
+  OrganizationsToUsers   OrganizationsToUsers[]
+  OrganizationsToSources OrganizationsToSources[]
 }
 
-model OrganizationesToUsers {
+model OrganizationsToUsers {
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String // relation scalar field (used in the `@relation` attribute above)
   user           User         @relation(fields: [userId], references: [id])
@@ -77,4 +79,31 @@ model OrganizationesToUsers {
   assignedAt     DateTime     @default(now())
 
   @@id([organizationId, userId])
+}
+
+// this will likely evolve over time simple for now
+model Source {
+  id                     String                   @id @default(cuid())
+  organizationId         String
+  organization           Organization             @relation(fields: [organizationId], references: [id])
+  name                   String
+  description            String
+  provider               String
+  premisis               String
+  status                 String
+  connectionString       String
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  deletedAt              DateTime?
+  OrganizationsToSources OrganizationsToSources[]
+}
+
+model OrganizationsToSources {
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String // relation scalar field (used in the `@relation` attribute above)
+  source         Source       @relation(fields: [sourceId], references: [id])
+  sourceId       String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt     DateTime     @default(now())
+
+  @@id([organizationId, sourceId])
 }
