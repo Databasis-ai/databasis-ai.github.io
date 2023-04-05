@@ -1,5 +1,5 @@
-import Features from '@/components/static/pages/home/Features';
-import Heading from '@/components/static/pages/home/Heading';
+import Features from '@/components/pages/home/Features';
+import Heading from '@/components/pages/home/Heading';
 
 export default function Home() {
   return <>

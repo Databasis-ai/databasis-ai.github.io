@@ -1,7 +1,7 @@
 
 
-import Heading from "@/components/static/pages/pricing/Heading";
-import Prices from "@/components/static/pages/pricing/Prices";
+import Heading from "@/components/pages/pricing/Heading";
+import Prices from "@/components/pages/pricing/Prices";
 
 
 export default function Features() {

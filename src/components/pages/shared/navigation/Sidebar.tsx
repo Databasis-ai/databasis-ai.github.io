@@ -3,7 +3,7 @@ import { AiFillSetting, AiOutlineRadarChart } from "react-icons/ai";
 import { GiSplashyStream } from "react-icons/gi";
 import { TbDatabaseImport } from "react-icons/tb";
 import Link from "next/link";
-import { Tag } from "@/components/Tag";
+import { Tag } from "@/components/pages/shared/Tag";
 
 const ExampleSidebar: FC = function () {
 	return (
@@ -11,15 +11,15 @@ const ExampleSidebar: FC = function () {
 			<div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
 				<ul className="space-y-2 font-medium">
 					<li>
-						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
+						<Link href="/dashboard/insights" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<AiOutlineRadarChart color="#6b7280" size={25} />
-							<span className="ml-3">Query</span>
-						</a>
+							<span className="ml-3">Insights</span>
+						</Link>
 					</li>
 					<li>
-						<Link href="/dashboard/databases" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
+						<Link href="/dashboard/sources" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<TbDatabaseImport color="#6b7280" size={25} />
-							<span className="ml-3">Databases</span>
+							<span className="ml-3">Sources</span>
 							<span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium  rounded-full">
 								<Tag color={'sky'}>
 									3
@@ -28,7 +28,7 @@ const ExampleSidebar: FC = function () {
 						</Link>
 					</li>
 					<li>
-						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
+						<Link href="/dashboard/streams" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<GiSplashyStream color="#6b7280" size={25} />
 							<span className="flex-1 ml-3 whitespace-nowrap">
 								Streams
@@ -38,15 +38,15 @@ const ExampleSidebar: FC = function () {
 									Preview
 								</Tag>
 							</span>
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="#" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
+						<Link href="/dashboard/settings" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<AiFillSetting color="#6b7280" size={25} />
 							<span className="flex-1 ml-3 whitespace-nowrap">
 								Settings
 							</span>
-						</a>
+						</Link>
 					</li>
 				</ul>
 				<div id="dropdown-cta" className="p-4 mt-6 rounded-lg  bg-blue-900" role="alert">

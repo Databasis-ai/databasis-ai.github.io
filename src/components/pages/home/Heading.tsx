@@ -1,5 +1,5 @@
 
-import Timeline from '@/components/Timeline'
+import Timeline from '@/components/pages/shared/Timeline'
 import Typewriter from "typewriter-effect";
 import { CodeBlock, dracula } from "react-code-blocks";
 import useViewportSize from '@/utils/hooks/use-viewport-size';

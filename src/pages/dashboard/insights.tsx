@@ -2,8 +2,8 @@
 import type { FC } from "react";
 import { Fragment } from "react";
 import { useState } from "react";
-import { Tag } from "@/components/Tag";
-import {trpc} from '@/utils/api'
+import { Tag } from "@/components/pages/shared/Tag";
+// import {trpc} from '@/utils/api'
 
 import { ReactSortable } from "react-sortablejs";
 import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
@@ -18,7 +18,32 @@ import {
 	HiPlus,
 } from "react-icons/hi";
 
-import { useSession } from "next-auth/react";
+const DatabaseOverviews = [
+	{
+		uuid: "1",
+		name: "Rowvolution DB",
+		description: "This is a database",
+		dbProvider: "Postgres",
+		premisis: "GCP",
+		metrics: {
+			size: {
+				amount: `100`,
+				unit: "GB",
+			},
+			transactions: {
+				30: 100,
+				60: 200,
+				90: 300
+			}
+		},
+		tables: [
+			{
+				name: "Table 1",
+			}
+		]
+	}
+]
+
 
 const kanbanBoards = [
 	{
@@ -113,7 +138,6 @@ interface KanbanBoard {
 	title: string;
 	tasks: KanbanItem[];
 }
-
 interface KanbanItem {
 	id: number;
 	name: string;
@@ -132,9 +156,6 @@ interface KanbanItemMember {
 
 const DatabasePage = function () {
 	const [list, setList] = useState<KanbanBoard[]>(kanbanBoards);
-	const session = useSession();
-
-	const hellp = trpc.public.insights.useQuery({ text: "from tRPC" });
 
 	return (
 		<div className="bg-gray-900 rounded-lg">

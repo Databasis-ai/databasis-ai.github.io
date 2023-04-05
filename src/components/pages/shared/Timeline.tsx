@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FRAMER_MOTION_LIST_ITEM_VARIANTS } from "../env/constants";
+import { FRAMER_MOTION_LIST_ITEM_VARIANTS } from "../../../env/constants";
 
 
 type TimelineObject = {

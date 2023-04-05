@@ -3,9 +3,9 @@ import { type Session } from "next-auth";
 import { SessionProvider, useSession } from "next-auth/react";
 
 import { trpc } from "../utils/api";
-import { Layout } from '@/components/LayoutHome'
+import { Layout } from '@/components/pages/shared/Layout'
 import "../styles/globals.css";
-import Meta from "@/components/Meta";
+import Meta from "@/components/pages/shared/Meta";
 import { type ReactNode } from "react";
 
 const MyApp: AppType<{ session: Session | null }> = ({

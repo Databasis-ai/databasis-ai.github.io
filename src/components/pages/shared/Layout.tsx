@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion'
-import { Header } from '@/components/navigation/Header'
-import { SectionProvider } from '@/components/SectionProvider'
-import Footer from '@/components/footer';
-import Sidebar from '@/components/navigation/Sidebar';
+import { Header } from '@/components/pages/shared/navigation/Header'
+import Footer from '@/components/pages/shared/Footer';
+import Sidebar from '@/components/pages/shared/navigation/Sidebar';
 import { useRouter } from 'next/router';
 
-export function Layout({ children, sections = [] }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function Layout({ children }: any) {
   const router = useRouter()
   return (
-    <SectionProvider sections={sections}>
       <div className="p-6 bg-gray-800">
         <motion.header
           layoutScroll
@@ -23,6 +22,5 @@ export function Layout({ children, sections = [] }) {
         </div>
         <Footer />
       </div>
-    </SectionProvider>
   )
 }
