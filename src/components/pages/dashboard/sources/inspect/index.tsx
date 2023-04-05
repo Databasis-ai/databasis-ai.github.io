@@ -4,43 +4,25 @@ import { Breadcrumb } from 'flowbite-react';
 import Rows from './table/rows';
 import Head from './table/head';
 
+export type RowsType = Array<Array<string | number | JSON>>;
+
 const Inspect = ({ uuid }) => {
-	const [newUUID, setNewUUID] = useState(uuid);
 	const now = new Date;
 	const timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
 		now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
-	const [rows, setRows] = useState([
-		{
-			id: 1,
-			first_name: 'John',
-			last_name: 'Doe',
-			email: 'kyle@foo.com'
-		}, {
-			id: 1,
-			first_name: 'John',
-			last_name: 'Doe',
-			email: 'kyle@foo.com'
-		}, {
-			id: 1,
-			first_name: 'John',
-			last_name: 'Doe',
-			email: 'kyle@foo.com'
-		}, {
-			id: 1,
-			first_name: 'John',
-			last_name: 'Doe',
-			email: 'kyle@foo.com'
-		}, {
-			id: 1,
-			first_name: 'John',
-			last_name: 'Doe',
-			email: 'kyle@foo.com'
-		}
+
+	const [rows] = useState<RowsType>([
+		['first_name', 'last_name', 'age', 'email'],
+		['Kyle', 'Rose', 24, 'email@gmail.com'],
+		['Kyle', 'Rose', 24, 'email@gmail.com'],
+		['Kyle', 'Rose', 24, 'email@gmail.com'],
+		['Kyle', 'Rose', 24, 'email@gmail.com'],
+		['Kyle', 'Rose', 24, 'email@gmail.com']
 	]);
 
 	return <>
 		<div className="p-4 relative overflow-x-auto shadow-md rounded-lg">
-			<Breadcrumb aria-label="Data source inspection breadcrumbs">
+			<Breadcrumb aria-label="Data source inspection breadcrumbs " className='border-b border-gray-300 border-opacity-15 pb-3'>
 				<Breadcrumb.Item>
 					GCP
 				</Breadcrumb.Item>
@@ -48,19 +30,20 @@ const Inspect = ({ uuid }) => {
 					Rowvolution Production
 				</Breadcrumb.Item>
 			</Breadcrumb>
-			<div className='w-full flex justify-start gap-x-5 pb-4'>
+			<div className='w-full flex justify-start gap-x-5 pb-4 pt-4'>
 				<div className='w-64'>
-					<label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+					<label htmlFor="first_name" className="block mb-2 text-sm font-mediu text-white">table</label>
 					<input type="text" id="first_name" className="caret-blue-500 focus:caret-indigo-500 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Table" required />
 				</div>
 				<div className='w-64'>
-					<label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+					<label htmlFor="first_name" className="block mb-2 text-sm font-medium text-white">timestamp</label>
 					<input type="text" id="first_name" className="caret-blue-500 focus:caret-indigo-500 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={'' + timestamp} required />
 				</div>
 			</div>
 			<table className="w-full text-sm text-left text-gray-200 dark:text-gray-400">
-					<Head	/>
-					<Rows rows={rows} />
+				{/* first row is always column names */}
+				<Head rowNames={rows[0] as string[]} />
+				<Rows rows={rows.slice(1, rows.length)} />
 			</table>
 			<nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
 				<span className="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span className="font-semibold  text-white">1-10</span> of <span className="font-semibold  text-white">1000</span></span>

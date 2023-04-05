@@ -53,9 +53,12 @@ const ExampleSidebar: FC = function () {
 					<div className="flex items-center mb-3">
 						<span className="text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded bg-orange-200">Beta</span>
 					</div>
-					<p className="mb-3 text-sm  text-blue-400">
-						We're currently in beta so don't hate us<br />
-						&nbsp;&nbsp;🥰<br />
+					<p  className="mb-3 text-sm text-blue-400">
+					We're currently in beta so don't hate us
+					</p>
+					<p className="mb-3 text-sm  text-blue-400 text-center">
+
+						🥰<br />
 						👉👈
 					</p>
 				</div>
