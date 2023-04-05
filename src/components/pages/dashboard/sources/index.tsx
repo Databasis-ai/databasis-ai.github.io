@@ -166,7 +166,7 @@ const DatabasePage = function () {
 								</div>
 								<div className="flex pt-24  h-full justify-between">
 									<div className="flex items-center justify-start">
-										<Link href="/" className="-mr-3 text-blue-500">
+										<Link href={"/dashboard/sources/7486129e-d364-11ed-afa1-0242ac120002"} className="-mr-3 text-blue-500">
 											View data
 										</Link>
 									</div>
