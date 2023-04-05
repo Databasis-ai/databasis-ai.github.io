@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
 			return params.session;
 		},
 		redirect() {
-			return '/dashboard'
+			return '/dashboard/insights'
 		}
 	},
 	providers: [
