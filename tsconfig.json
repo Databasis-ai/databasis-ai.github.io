@@ -3,7 +3,8 @@
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@api": ["./src/utils/api"],
     },
     "allowJs": true,
     "skipLibCheck": true,
