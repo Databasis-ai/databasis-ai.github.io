@@ -53,7 +53,7 @@ const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source }: 
 						);
 					}}>
 						<HiPlus className="text-lg" />
-						Add Source
+						Save Source
 					</Button>
 				</div>
 			</Modal.Footer>
