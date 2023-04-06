@@ -2,7 +2,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { Tag } from "@/components/pages/shared/Tag";
-import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
+import { Button, Modal } from "flowbite-react";
 import { SiPostgresql } from "react-icons/si";
 import {
 	HiArrowsExpand,
@@ -12,7 +12,8 @@ import {
 	HiPlus,
 } from "react-icons/hi";
 import Link from "next/link";
-import {trpc} from '@api'
+import { trpc } from '@api';
+import AddSource from './overview/AddSource';
 
 const DataSources = [
 	{
@@ -23,9 +24,9 @@ const DataSources = [
 		premisis: "GCP",
 		status: "operational"
 	}
-]
+];
 
-const DatabasePage = function () {
+const SourcesTable = function () {
 
 	return (
 		<div className="bg-gray-900 rounded-lg">
@@ -33,7 +34,7 @@ const DatabasePage = function () {
 				<div className="mb-6 flex ">
 					<div className="grid grid-cols-3 gap-4 w-full p-6">
 						<div className="h-64">
-							<AddAnotherCardModal />
+							<AddSource />
 						</div>
 						<div className="h-full rounded-lg bg-sky-50 p-4 shadow-md">
 							<div className="flex h-auto items-center justify-between pb-4">
@@ -349,95 +350,6 @@ const EditCardModal: FC = function () {
 	);
 };
 
-const AddAnotherCardModal: FC = function () {
-	const [isOpen, setOpen] = useState(false);
 
-	return (
-		<>
-			<button
-				onClick={() => setOpen(true)}
-				className="h-full flex w-full items-center justify-center whitespace-nowrap rounded-lg border-2 border-dashed border-gray-200 px-5 py-2 font-semibold text-gray-500 hover:border-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:hover:border-gray-700 dark:hover:bg-gray-800 dark:hover:text-white"
-			>
-				<svg
-					className="h-6 w-6"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						fillRule="evenodd"
-						d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-						clipRule="evenodd"
-					/>
-				</svg>
-				Add Source
-				<br />
-			</button>
-			<Modal onClose={() => setOpen(false)} show={isOpen} className="w-full h-full bg-opacity-50">
-				<Modal.Header className="border-b border-gray-200 !p-6 dark:border-gray-700">
-					<strong>Add new task</strong>
-				</Modal.Header>
-				<Modal.Body>
-					<form>
-						<div className="mb-4 grid grid-cols-1 gap-y-2">
-							<Label htmlFor="taskName">Task name</Label>
-							<TextInput
-								id="taskName"
-								name="taskName"
-								placeholder="Redesign homepage"
-							/>
-						</div>
-						<div className="mb-4 grid grid-cols-1 gap-y-2">
-							<Label htmlFor="description">Enter a description</Label>
-							<Textarea
-								id="description"
-								name="description"
-								placeholder="On line 672 you ..."
-								rows={6}
-							/>
-						</div>
-						<div className="flex w-full items-center justify-center">
-							<label className="flex h-32 w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-gray-500 hover:border-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white">
-								<div className="flex items-center justify-center space-x-2">
-									<svg
-										className="h-8 w-8"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-										></path>
-									</svg>
-									<p className="text-base">Drop files to upload</p>
-								</div>
-								<input type="file" className="hidden" />
-							</label>
-						</div>
-					</form>
-				</Modal.Body>
-				<Modal.Footer>
-					<div className="flex items-center gap-x-3">
-						<Button color="" onClick={() => setOpen(false)}>
-							<div className="flex items-center gap-x-2">
-								<HiPlus className="text-lg" />
-								Add card
-							</div>
-						</Button>
-						<Button color="gray" onClick={() => setOpen(false)}>
-							Close
-						</Button>
-					</div>
-				</Modal.Footer>
-			</Modal>
-		</>
-	);
-};
 
-DatabasePage.requireAuthorization = true;
-
-export default DatabasePage;
+export default SourcesTable;
