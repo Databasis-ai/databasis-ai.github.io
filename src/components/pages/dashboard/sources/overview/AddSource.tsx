@@ -2,6 +2,7 @@ import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { HiPlus } from "react-icons/hi";
 import { SiGooglecloud, SiAmazonaws } from "react-icons/si";
+import SourceModal from './SourceModal';
 // {
 // 	uuid: "1",
 // 	name: "Rowvolution DB",
@@ -12,9 +13,8 @@ import { SiGooglecloud, SiAmazonaws } from "react-icons/si";
 // }
 // ];
 
-const AddSource = ({ onSourceAdd }) => {
+const AddSource = ({ onSaveSource }) => {
 	const [isOpen, setOpen] = useState(false);
-
 	return (
 		<>
 			<button
@@ -36,58 +36,7 @@ const AddSource = ({ onSourceAdd }) => {
 				Add Source
 				<br />
 			</button>
-			<Modal onClose={() => setOpen(false)} show={isOpen} className="w-full h-full bg-opacity-50">
-				<Modal.Header className="border-b !p-6 border-gray-700">
-					<strong>Add new source</strong>
-				</Modal.Header>
-				<Modal.Body>
-					<form>
-						<div className="mb-4 grid grid-cols-1 gap-y-2">
-							<Label htmlFor="sourceName">Source Name</Label>
-							<TextInput
-								id="sourceName"
-								name="sourceName"
-								placeholder="Production DB 🦁"
-							/>
-						</div>
-						<Label htmlFor="provider">Premisis</Label>
-						<div className="mb-4 grid grid-cols-2 gap-x-8">
-							<div onclick={() => {}} className="w-full cursor-pointer justify-center flex">
-								<SiGooglecloud color={'blue'} size={25} />
-								<p className="pl-3 text-gray-800">GCP PGSql</p>
-							</div>
-							<div onclick={() => {}} className="w-full cursor-pointer justify-center flex">
-								<SiAmazonaws size={25} color={'red'} />
-								<p className="pl-3 text-gray-800">AWS Aurora</p>
-							</div>
-						</div>
-						<div className="mb-4 grid grid-cols-1 gap-y-2">
-							<Label htmlFor="description"></Label>
-							<Textarea
-								id="description"
-								name="description"
-								placeholder="On line 672 you ..."
-								rows={6}
-							/>
-						</div>
-					</form>
-				</Modal.Body>
-				<Modal.Footer>
-					<div className="flex justify-between gap-x-3 w-full">
-						<Button color="gray" className="text-red-700 color-black" onClick={() => setOpen(false)}>
-							Close
-						</Button>
-						<Button color="gray" className="text-green-700" onClick={() => {
-							onSourceAdd().then(
-								() => setOpen(false)
-							);
-						}}>
-							<HiPlus className="text-lg" />
-							Add Source
-						</Button>
-					</div>
-				</Modal.Footer>
-			</Modal>
+			<SourceModal sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 }
