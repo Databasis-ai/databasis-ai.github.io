@@ -5,7 +5,6 @@ import { CodeBlock, dracula } from "react-code-blocks";
 import useViewportSize from '@/utils/hooks/use-viewport-size';
 import { SiPostgresql, SiMysql, SiAmazondynamodb, SiRedis } from 'react-icons/si';
 import { signIn } from 'next-auth/react';
-
 const SMALL_SCREEN_CODE = `SELECT address
 				FROM USERS
 				WHERE ID = '1'
