@@ -12,7 +12,7 @@ const EditSource: FC = function () {
 				<span className="sr-only">Edit card</span>
 				<HiPencilAlt className="text-lg" />
 			</button>
-			<SourceModal sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal title={'Edit source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 };

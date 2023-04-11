@@ -1,7 +1,6 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider, useSession } from "next-auth/react";
-
 import { trpc } from "../utils/api";
 import { Layout } from '@/components/pages/shared/Layout'
 import "../styles/globals.css";

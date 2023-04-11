@@ -1,6 +1,10 @@
 import SourcesInspect from '@/components/pages/dashboard/sources/inspect';
+import { trpc } from '@api';
+
 
 const SourceInspectViewPage = ({ uuid }: { uuid: string }) => {
+	const data = trpc.auth.getSecretMessage.useQuery();
+
 	return <SourcesInspect uuid={uuid} />;
 }
 

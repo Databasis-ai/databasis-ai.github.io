@@ -1,14 +1,42 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions, type Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "../../../server/db/client";
+import { type Organization } from "@prisma/client";
+import type { DefaultUser, DefaultSession } from "next-auth";
+
+
+interface User extends DefaultUser {
+	organizations: Organization[]
+	id: string
+}
 
 export const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
 
 	callbacks: {
-		session(params) {
-			return params.session;
+		// session is the session we're sending to the client, user is the user we're getting from the database
+		// to add additional properties to the session, we need to return the session with those props attached
+		async session({ session, user, token }) {
+			const sessionUser = session?.user as User;
+			// if we already have the user's organization, we've already done the statement below
+			if (sessionUser?.organizations) {
+				const DB_USER = await prisma.user.findUnique({
+					where: {
+						id: user.id
+					},
+					include: {
+						organizations: true
+					}
+				});
+
+				if (!DB_USER) {
+					throw new Error('User not found in database');
+				}
+				session.user = DB_USER;
+			}
+
+			return session;
 		},
 		redirect() {
 			return '/dashboard/insights'

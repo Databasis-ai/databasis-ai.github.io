@@ -4,11 +4,11 @@ import { HiPlus } from "react-icons/hi";
 import { SiGooglecloud, SiAmazonaws } from "react-icons/si";
 
 
-const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source }: any) => {
+const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, title='' }: any) => {
 	return (
 		<Modal onClose={() => onCloseSourceModal()} show={sourceIsOpen} className="w-full h-full bg-opacity-50">
 			<Modal.Header className="border-b !p-6 border-gray-700">
-				<strong>Add new source</strong>
+				<strong>{title}</strong>
 			</Modal.Header>
 			<Modal.Body>
 				<form>

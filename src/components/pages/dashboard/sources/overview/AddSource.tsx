@@ -1,17 +1,7 @@
 import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
 import { useState } from "react";
-import { HiPlus } from "react-icons/hi";
-import { SiGooglecloud, SiAmazonaws } from "react-icons/si";
 import SourceModal from './SourceModal';
-// {
-// 	uuid: "1",
-// 	name: "Rowvolution DB",
-// 	description: "This is a database",
-// 	provider: "Postgres",
-// 	premisis: "GCP",
-// 	status: "operational"
-// }
-// ];
+
 
 const AddSource = ({ onSaveSource }) => {
 	const [isOpen, setOpen] = useState(false);
@@ -36,7 +26,7 @@ const AddSource = ({ onSaveSource }) => {
 				Add Source
 				<br />
 			</button>
-			<SourceModal sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal title={'Add new source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 }
