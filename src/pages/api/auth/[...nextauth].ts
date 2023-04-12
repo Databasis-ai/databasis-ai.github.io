@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
 		// to add additional properties to the session, we need to return the session with those props attached
 		async session({ session, user, token }) {
 			const sessionUser = session?.user as User;
-			// if we already have the user's organization, we've already done the statement below
+			// if we already have the user's organizations, we've already done the statement below
 			if (sessionUser?.organizations) {
 				const DB_USER = await prisma.user.findUnique({
 					where: {
