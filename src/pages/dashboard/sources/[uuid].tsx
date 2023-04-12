@@ -4,7 +4,7 @@ import { trpc } from '@api';
 
 const SourceInspectViewPage = ({ uuid }: { uuid: string }) => {
 	const data = trpc.auth.getSecretMessage.useQuery();
-
+	console.log('asdfas')
 	return <SourcesInspect uuid={uuid} />;
 }
 
