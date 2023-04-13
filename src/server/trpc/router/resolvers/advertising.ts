@@ -1,6 +1,6 @@
 
 import { env } from '../../../../env/server.mjs';
-type AdvertisingResolverInput = {
+type GoogleCloudRunAdvertisingInput = {
 	website: string
 }
 type GoogleCloudRunAdvertisingOutput = {
@@ -9,7 +9,7 @@ type GoogleCloudRunAdvertisingOutput = {
 }
 
 export default async function handler(
-	input: AdvertisingResolverInput
+	input: GoogleCloudRunAdvertisingInput
 ) {
 
 	const rawResponse = await fetch(`${env.GOOGLE_CLOUD_RUN_API}?website=${input.website}`);
