@@ -19,7 +19,8 @@ export const authOptions: NextAuthOptions = {
 		async session({ session, user, token }) {
 			const sessionUser = session?.user as User;
 			// if we already have the user's organizations, we've already done the statement below
-			if (sessionUser?.organizations) {
+
+			if (!sessionUser?.organizations) {
 				const DB_USER = await prisma.user.findUnique({
 					where: {
 						id: user.id
@@ -34,7 +35,7 @@ export const authOptions: NextAuthOptions = {
 				}
 				session.user = DB_USER;
 			}
-
+			console.log('sessionserver: ', session)
 			return session;
 		},
 		redirect() {

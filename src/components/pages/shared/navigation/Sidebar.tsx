@@ -4,8 +4,12 @@ import { GiSplashyStream } from "react-icons/gi";
 import { TbDatabaseImport } from "react-icons/tb";
 import Link from "next/link";
 import { Tag } from "@/components/pages/shared/Tag";
+import { useSession } from "next-auth/react";
 
-const ExampleSidebar: FC = function () {
+
+const Sidebar: FC = function () {
+	const session = useSession();
+	console.log('client side session: ',session);
 	return (
 		<aside id="cta-button-sidebar" className="top-0 left-0 z-40 w-64 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
 			<div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
@@ -70,4 +74,4 @@ const ExampleSidebar: FC = function () {
 
 
 
-export default ExampleSidebar;
+export default Sidebar;
