@@ -68,7 +68,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Inspect</h3>
-                    <p className="text-gray-500 font-bold">Inspect your data at any given point in time allowing you to get point in time data</p>
+                    <p className="text-gray-500 font-bold">Inspect your data at any given point in time</p>
                   </div>
                 </div>
               </div>

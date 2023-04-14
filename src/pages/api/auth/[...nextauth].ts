@@ -3,8 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "../../../server/db/client";
 import { type Organization } from "@prisma/client";
-import type { DefaultUser, DefaultSession } from "next-auth";
-
+import type { DefaultUser } from "next-auth";
 
 interface User extends DefaultUser {
 	organizations: Organization[]
