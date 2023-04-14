@@ -5,7 +5,7 @@ import { prisma } from "../../../server/db/client";
 import { type Organization } from "@prisma/client";
 import type { DefaultUser } from "next-auth";
 
-interface User extends DefaultUser {
+export interface User extends DefaultUser {
 	organizations: Organization[]
 	id: string
 }

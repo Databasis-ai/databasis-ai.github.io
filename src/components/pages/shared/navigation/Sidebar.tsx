@@ -2,18 +2,35 @@ import type { FC } from "react";
 import { AiFillSetting, AiOutlineRadarChart } from "react-icons/ai";
 import { GiSplashyStream } from "react-icons/gi";
 import { TbDatabaseImport } from "react-icons/tb";
+import { VscOrganization } from "react-icons/vsc";
 import Link from "next/link";
 import { Tag } from "@/components/pages/shared/Tag";
 import { useSession } from "next-auth/react";
+import { useCurrentOrganization } from "@/utils/hooks/use-organization";
+import type { User } from '@/types/User';
 
 
 const Sidebar: FC = function () {
-	const session = useSession();
-	console.log('client side session: ',session);
+	const { data } = useSession();
+	const { organization, setOrganization } = useCurrentOrganization();
+
+	if (data?.user) { // default to first organization user has, in future we'll want them to be able to select their organization
+		const user = data?.user as User;
+		setOrganization(user.organizations[0] ? user.organizations[0] : null);
+	}
+
+	console.log(organization);
+
 	return (
 		<aside id="cta-button-sidebar" className="top-0 left-0 z-40 w-64 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
 			<div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
 				<ul className="space-y-2 font-medium">
+					<li className="cursor-default border-2 border-blue-800 rounded-lg">
+						<div className="flex items-center p-2  rounded-lg text-white  ">
+							<VscOrganization color="#6b7280" size={25} />
+							<span className="ml-3">Org: {organization?.name === 'unknown' ? 'Default' : organization?.name}</span>
+						</div>
+					</li>
 					<li>
 						<Link href="/dashboard/insights" className="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700">
 							<AiOutlineRadarChart color="#6b7280" size={25} />
@@ -57,8 +74,8 @@ const Sidebar: FC = function () {
 					<div className="flex items-center mb-3">
 						<span className="text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded bg-orange-200">Beta</span>
 					</div>
-					<p  className="mb-3 text-sm text-blue-400">
-					We're currently in beta so don't hate us
+					<p className="mb-3 text-sm text-blue-400">
+						We're currently in beta so don't hate us
 					</p>
 					<p className="mb-3 text-sm  text-blue-400 text-center">
 
