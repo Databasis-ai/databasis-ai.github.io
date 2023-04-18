@@ -3,64 +3,7 @@ import { useCurrentOrganization } from '@/utils/hooks/use-organization';
 import AddSource from './overview/AddSource';
 import SourceOverlay from "./overview/SourceOverlay";
 import { trpc } from '@api';
-[
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"name"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"description"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"provider"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"premisis"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"status"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"connectionString"
-			],
-	},
-	{
-			"code": "invalid_type",
-			"expected": "string",
-			"received": "undefined",
-			"path": [
-					"organizationId"
-			],
-	}
-]
+import { type Source } from '@prisma/client';
 
 const SourcesTable = function () {
 	const { organization } = useCurrentOrganization();
@@ -69,7 +12,7 @@ const SourcesTable = function () {
 	const { data: sources } = trpc.auth.getSources.useQuery({ organizationId: organization.id });
 	const { mutate: createOrUpdateSource } = trpc.auth.createOrUpdateSource.useMutation();
 
-	const saveSource = (source: any) => {
+	const saveSource = async (source: Source) => {
 		createOrUpdateSource({ ...source, organizationId: organization.id });
 	};
 

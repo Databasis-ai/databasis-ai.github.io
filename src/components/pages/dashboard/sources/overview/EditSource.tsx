@@ -3,11 +3,14 @@ import { useState } from "react";
 import { HiPencilAlt } from "react-icons/hi";
 import { useCurrentOrganization } from "@/utils/hooks/use-organization";
 import { trpc } from '@api';
+import { type Source } from "@prisma/client";
 
-const EditSource = function ({ source }) {
+const EditSource = function ({ source }: { source: Source }) {
 	const [isOpen, setOpen] = useState(false);
 	const { organization } = useCurrentOrganization();
 	const { mutate: createOrUpdateSource } = trpc.auth.createOrUpdateSource.useMutation();
+
+	if (!organization) return <></>;
 
 	return (
 		<>
@@ -18,7 +21,10 @@ const EditSource = function ({ source }) {
 				<span className="sr-only">Edit card</span>
 				<HiPencilAlt className="text-lg" />
 			</button>
-			<SourceModal source={source} title={'Edit source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal saveSource={async (source: Source) => {
+				createOrUpdateSource({ ...source, organizationId: organization.id });
+				setOpen(false)
+			}} source={source} title={'Edit source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 };

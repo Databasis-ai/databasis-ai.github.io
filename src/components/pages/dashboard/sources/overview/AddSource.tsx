@@ -1,8 +1,11 @@
 import { useState } from "react";
 import SourceModal from './SourceModal';
+import { type Source } from '@prisma/client';
 
-const AddSource = ({ saveSource }: { saveSource: (source: any) => void }) => {
+const AddSource = ({ saveSource }: { saveSource: (source: Source) => Promise<void> }) => {
 	const [isOpen, setOpen] = useState(false);
+	const EMPTY_SOURCE = {} as Source;
+
 	return (
 		<>
 			<button
@@ -24,7 +27,7 @@ const AddSource = ({ saveSource }: { saveSource: (source: any) => void }) => {
 				Add Source
 				<br />
 			</button>
-			<SourceModal saveSource={saveSource} title={'Add new source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal source={EMPTY_SOURCE} saveSource={saveSource} title={'Add new source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 }
