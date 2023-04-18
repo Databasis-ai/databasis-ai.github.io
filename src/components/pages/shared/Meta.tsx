@@ -38,14 +38,14 @@ export default function Meta({
       <meta itemProp="image" content={image} />
       <meta property="og:logo" content="/favicon.png"></meta>
       <meta property="og:title" content='Rowvolution' />
-      <meta property="og:description" content='Column Level Historical Diffs' />
+      <meta property="og:description" content='The Marketplace for Data Scientists and Engineers' />
       <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@rowvolution" />
       <meta name="twitter:creator" content="@rowvolution" />
       <meta
         name="twitter:title"
-        content="Rowvolution - Column Level Historical Diffs"
+        content="Rowvolution - The Marketplace for Data Scientists and Engineers"
       />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
