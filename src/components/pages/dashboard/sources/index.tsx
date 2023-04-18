@@ -66,18 +66,11 @@ const SourcesTable = function () {
 	const { organization } = useCurrentOrganization();
 	if (!organization) return <></>
 
-	const { data: sources, refetch: refetchSources } = trpc.auth.getSources.useQuery({ organizationId: organization.id });
+	const { data: sources } = trpc.auth.getSources.useQuery({ organizationId: organization.id });
 	const { mutate: createOrUpdateSource } = trpc.auth.createOrUpdateSource.useMutation();
 
-	const saveSource = async (source: any) => {
-		createOrUpdateSource({ name: 'asdf',
-			description: 'asdf',
-			provider: 'asdf',
-			premisis: 'asdf',
-			status: 'asdf',
-			connectionString: 'asdf',
-			organizationId: organization.id });
-		await refetchSources();
+	const saveSource = (source: any) => {
+		createOrUpdateSource({ ...source, organizationId: organization.id });
 	};
 
 	return (

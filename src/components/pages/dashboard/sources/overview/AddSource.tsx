@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SourceModal from './SourceModal';
 
-const AddSource = ({ saveSource }: { saveSource: () => Promise<void> }) => {
+const AddSource = ({ saveSource }: { saveSource: (source: any) => void }) => {
 	const [isOpen, setOpen] = useState(false);
 	return (
 		<>
