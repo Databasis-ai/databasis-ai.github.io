@@ -26,7 +26,7 @@ export default function Heading() {
 								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">COLUMN LEVEL HISTORICAL DIFFS</span>
 								<h1 className="font-heading mb-4 text-5xl text-white font-black tracking-tight">
 									<span>
-										POINT IN TIME&nbsp;
+										INSTANT&nbsp;
 									</span>
 									<span className="text-red-400">
 									<Typewriter
@@ -39,12 +39,13 @@ export default function Heading() {
 													.typeString("DATA LAKES")
 													.pauseFor(3500)
 													.deleteChars(10)
-													.typeString("DATABASES")
+													.typeString("CDC")
 													.pauseFor(3500)
-													.deleteChars(9)
+													.deleteChars(3)
 													.start();
 											}} />
 									</span>
+									TO SAVE YOU TIME
 								</h1>
 								<p className="mb-6 text-xl text-gray-500 font-bold">
 									Your data is your company. Why lose it?
