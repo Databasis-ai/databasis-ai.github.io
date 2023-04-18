@@ -1,10 +1,32 @@
 import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
-import { useState } from "react";
 import { HiPlus } from "react-icons/hi";
 import { SiGooglecloud, SiAmazonaws } from "react-icons/si";
+import { useState } from "react";
 
+const SourceModal = ({
+	saveSource,
+	sourceIsOpen,
+	onCloseSourceModal,
+	source = {
+		id: null,
+		organizationId: '',
+		name: 'source name',
+		description: 'source description',
+		provider: 'google',
+		premisis: 'gcp',
+		status: 'active',
+		connectionString: 'postgres://localhost:5432',
+	},
+	title = '' }: {
+		sourceIsOpen: boolean;
+		onCloseSourceModal: () => void;
+		source?: any;
+		title?: string;
+		saveSource: (source: any) => Promise<void>;
+	}) => {
 
-const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, title='' }: any) => {
+	const [editingSource, setEditingSource] = useState(source);
+
 	return (
 		<Modal onClose={() => onCloseSourceModal()} show={sourceIsOpen} className="w-full h-full bg-opacity-50">
 			<Modal.Header className="border-b !p-6 border-gray-700">
@@ -13,7 +35,7 @@ const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, ti
 			<Modal.Body>
 				<form>
 					<div className="mb-4 grid grid-cols-1 gap-y-2">
-						<Label htmlFor="sourceName">Source Name</Label>
+						<Label htmlFor="sourceName">{editingSource.name}</Label>
 						<TextInput
 							id="sourceName"
 							name="sourceName"
@@ -22,14 +44,14 @@ const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, ti
 					</div>
 					<Label htmlFor="provider">Premisis</Label>
 					<div className="mb-4 grid grid-cols-2 gap-x-8">
-						<button onClick={() => 1} className="w-full cursor-pointer justify-center flex">
+						<div  className="w-full cursor-pointer justify-center flex">
 							<SiGooglecloud color={'blue'} size={25} />
 							<p className="pl-3 text-gray-800">GCP PGSql</p>
-						</button>
-						<button onClick={() => 1} className="w-full cursor-pointer justify-center flex">
+						</div>
+						<div className="w-full cursor-pointer justify-center flex">
 							<SiAmazonaws size={25} color={'red'} />
 							<p className="pl-3 text-gray-800">AWS Aurora</p>
-						</button>
+						</div>
 					</div>
 					<div className="mb-4 grid grid-cols-1 gap-y-2">
 						<Label htmlFor="description"></Label>
@@ -44,11 +66,11 @@ const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, ti
 			</Modal.Body>
 			<Modal.Footer>
 				<div className="flex justify-between gap-x-3 w-full">
-					<Button color="gray" className="text-red-700 color-black" onClick={() => setOpen(false)}>
+					<Button color="gray" className="text-red-700 color-black" onClick={onCloseSourceModal}>
 						Close
 					</Button>
 					<Button color="gray" className="text-green-700" onClick={() => {
-						onSourceSave().then(
+						saveSource(editingSource).then(
 							() => onCloseSourceModal()
 						);
 					}}>
@@ -61,4 +83,4 @@ const EditSource = ({ onSourceSave, sourceIsOpen, onCloseSourceModal, source, ti
 	)
 }
 
-export default EditSource;
+export default SourceModal;

@@ -3,11 +3,8 @@ import { authRouter } from "./auth";
 import { publicRouter } from "./public";
 
 export const appRouter = router({
-  // public resources that are available to anyone
-  public: publicRouter,
-
-  // private resources for getting data associated with signed in user
-  auth: authRouter,
+  public: publicRouter, // public resources
+  auth: authRouter, // private resources for getting data associated with signed in user
 });
 
 // export type definition of API

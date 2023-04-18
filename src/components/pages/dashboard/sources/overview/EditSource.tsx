@@ -1,8 +1,14 @@
 import SourceModal from "./SourceModal";
-import {	useState } from "react";
+import { useState } from "react";
 import { HiPencilAlt } from "react-icons/hi";
-const EditSource: FC = function () {
+import { useCurrentOrganization } from "@/utils/hooks/use-organization";
+import { trpc } from '@api';
+
+const EditSource = function ({ source }) {
 	const [isOpen, setOpen] = useState(false);
+	const { organization } = useCurrentOrganization();
+	const { mutate: createOrUpdateSource } = trpc.auth.createOrUpdateSource.useMutation();
+
 	return (
 		<>
 			<button
@@ -12,7 +18,7 @@ const EditSource: FC = function () {
 				<span className="sr-only">Edit card</span>
 				<HiPencilAlt className="text-lg" />
 			</button>
-			<SourceModal title={'Edit source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal source={source} title={'Edit source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 };

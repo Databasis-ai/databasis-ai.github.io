@@ -1,9 +1,7 @@
-import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
 import { useState } from "react";
 import SourceModal from './SourceModal';
 
-
-const AddSource = ({ onSaveSource }) => {
+const AddSource = ({ saveSource }: { saveSource: () => Promise<void> }) => {
 	const [isOpen, setOpen] = useState(false);
 	return (
 		<>
@@ -26,7 +24,7 @@ const AddSource = ({ onSaveSource }) => {
 				Add Source
 				<br />
 			</button>
-			<SourceModal title={'Add new source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
+			<SourceModal saveSource={saveSource} title={'Add new source'} sourceIsOpen={isOpen} onCloseSourceModal={() => setOpen(false)} />
 		</>
 	);
 }

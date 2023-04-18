@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
 	callbacks: {
 		// session is the session we're sending to the client, user is the user we're getting from the database
 		// to add additional properties to the session, we need to return the session with those props attached
-		async session({ session, user, token }) {
+		async session({ session, user }) {
 			const sessionUser = session?.user as User;
 			// if we already have the user's organizations, we've already done the statement below
 
@@ -35,7 +35,6 @@ export const authOptions: NextAuthOptions = {
 				}
 				session.user = DB_USER;
 			}
-			console.log('sessionserver: ', session)
 			return session;
 		},
 		redirect() {
