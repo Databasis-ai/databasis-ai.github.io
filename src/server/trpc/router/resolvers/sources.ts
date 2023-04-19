@@ -16,7 +16,7 @@ export default async function handler(
 ) {
 	if (!input) return;
 	const { id, name, description, provider, premisis, status, connectionString, organizationId } = input;
-	const saved = await await prisma.source.upsert({
+	return await await prisma.source.upsert({
 		where: {
 			id: id || ''
 		},
@@ -40,6 +40,4 @@ export default async function handler(
 			organizationId
 		}
 	});
-	console.log(saved)
-	return saved
 }
