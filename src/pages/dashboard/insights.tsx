@@ -3,7 +3,6 @@ import type { FC } from "react";
 import { Fragment } from "react";
 import { useState } from "react";
 import { Tag } from "@/components/pages/shared/Tag";
-// import {trpc} from '@/utils/api'
 
 import { ReactSortable } from "react-sortablejs";
 import { Button, Label, Modal, Textarea, TextInput } from "flowbite-react";
@@ -17,33 +16,6 @@ import {
 	HiPencilAlt,
 	HiPlus,
 } from "react-icons/hi";
-
-const DatabaseOverviews = [
-	{
-		uuid: "1",
-		name: "Rowvolution DB",
-		description: "This is a database",
-		dbProvider: "Postgres",
-		premisis: "GCP",
-		metrics: {
-			size: {
-				amount: `100`,
-				unit: "GB",
-			},
-			transactions: {
-				30: 100,
-				60: 200,
-				90: 300
-			}
-		},
-		tables: [
-			{
-				name: "Table 1",
-			}
-		]
-	}
-]
-
 
 const kanbanBoards = [
 	{
