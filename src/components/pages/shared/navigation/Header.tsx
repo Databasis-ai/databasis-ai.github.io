@@ -6,9 +6,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export const COMMON_PAGES = [
-  { name: 'Home', href: '/' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Contact', href: '/contact' }
+  { name: 'Home', href: '/', target: '_self' },
+  { name: 'Documentation', href: 'http://rowvolution.mintlify.app/', target: '_blank' },
+  { name: 'Pricing', href: '/pricing', target: '_self' },
+  { name: 'Contact', href: '/contact', target: '_self' }
 ]
 
 export const Header = function () {
@@ -41,6 +42,7 @@ export const Header = function () {
                 {
                   COMMON_PAGES.map((page, index) => (<li key={`top-level-nav-${index}`} className="mr-9">
                     <Link
+                    target={page.target || '_self'}
                       className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
                       href={page.href}>
                       {page.name}
