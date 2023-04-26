@@ -6,10 +6,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export const COMMON_PAGES = [
-  { name: 'Home', href: '/', target: '_self' },
-  { name: 'Docs', href: 'http://rowvolution.mintlify.app/', target: '_blank' },
-  { name: 'Pricing', href: '/pricing', target: '_self' },
-  { name: 'Contact', href: '/contact', target: '_self' }
+  { name: 'Home', href: '/', target: '_self', header: true, footer: true },
+  { name: 'Marketplace', href: '/marketplace', target: '_self', header: true, footer: true },
+  { name: 'Docs', href: 'http://rowvolution.mintlify.app/', target: '_blank', header: true, footer: true },
+  { name: 'Pricing', href: '/pricing', target: '_self', header: true, footer: true },
+  { name: 'Contact', href: '/contact', target: '_self', header: false, footer: true }
 ]
 
 export const Header = function () {
@@ -40,14 +41,15 @@ export const Header = function () {
             <div className="w-auto hidden lg:block">
               <ul className="flex items-center justify-center">
                 {
-                  COMMON_PAGES.map((page, index) => (<li key={`top-level-nav-${index}`} className="mr-9">
-                    <Link
-                    target={page.target || '_self'}
-                      className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
-                      href={page.href}>
-                      {page.name}
-                    </Link>
-                  </li>))
+                  COMMON_PAGES.map((page, index) => (
+                    page.header ? (<li key={`top-level-nav-${index}`} className="mr-9">
+                      <Link
+                        target={page.target || '_self'}
+                        className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300"
+                        href={page.href}>
+                        {page.name}
+                      </Link>
+                    </li>) : null))
                 }
               </ul>
             </div>
@@ -95,8 +97,8 @@ export const Header = function () {
               <div className="flex items-center justify-between -m-2">
                 <div className="w-auto p-2">
                   <Link className="inline-block" href="/">
-                    <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25}  />
-                    </Link>
+                    <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25} />
+                  </Link>
                 </div>
                 <div className="w-auto p-2">
                   <a className="inline-block navbar-burger" onClick={() => setSideNavOpen(false)} href="#">
@@ -112,11 +114,11 @@ export const Header = function () {
                 {
                   COMMON_PAGES.map((page, index) => {
                     return (
-                      <li key={`sidenav-${index}`} className="mb-9">
+                      (page.header ? <li key={`sidenav-${index}`} className="mb-9">
                         <Link className="inline-block text-sm font-bold text-gray-200 hover:text-gray-300" href={page.href}>
                           {page.name}
                         </Link>
-                      </li>
+                      </li> : null)
                     )
                   })
                 }
