@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export const COMMON_PAGES = [
   { name: 'Home', href: '/', target: '_self' },
-  { name: 'Documentation', href: 'http://rowvolution.mintlify.app/', target: '_blank' },
+  { name: 'Docs', href: 'http://rowvolution.mintlify.app/', target: '_blank' },
   { name: 'Pricing', href: '/pricing', target: '_self' },
   { name: 'Contact', href: '/contact', target: '_self' }
 ]
