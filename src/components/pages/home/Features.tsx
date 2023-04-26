@@ -50,7 +50,7 @@ export default function Features() {
                   </div>
                   <div className="flex-1 p-4">
                     <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Stream</h3>
-                    <p className="text-gray-500 font-bold">Stream your data, you can opt into either streaming or cron differentials</p>
+                    <p className="text-gray-500 font-bold">Stream your data, you can opt into either data streaming or cron</p>
                   </div>
                 </div>
               </div>

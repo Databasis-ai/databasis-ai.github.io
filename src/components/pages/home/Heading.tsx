@@ -23,7 +23,7 @@ export default function Heading() {
 					<div className="flex flex-wrap lg:items-center -m-8">
 						<div className="w-full md:w-1/2 p-8">
 							<div className="md:max-w-lg mx-auto">
-								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">COLUMN LEVEL HISTORICAL DIFFS</span>
+								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">Automagic Machine Learning Pipeline</span>
 								<h1 className="font-heading mb-4 text-5xl text-white font-black tracking-tight">
 									<span>
 										INSTANT&nbsp;
