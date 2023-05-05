@@ -23,7 +23,9 @@ export default function Heading() {
 					<div className="flex flex-wrap lg:items-center -m-8">
 						<div className="w-full md:w-1/2 p-8">
 							<div className="md:max-w-lg mx-auto">
-								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">Automagic Machine Learning Pipeline</span>
+								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">
+									An Automagic Machine Learning Pipeline
+									</span>
 								<h1 className="font-heading mb-4 text-5xl text-white font-black tracking-tight">
 									<span>
 										INSTANT&nbsp;
@@ -48,7 +50,7 @@ export default function Heading() {
 									TO SAVE YOU TIME
 								</h1>
 								<p className="mb-6 text-xl text-gray-500 font-bold">
-									Your data is your company. Why lose it?
+									{/* Your data is your company. Why lose it? */}
 								</p>
 								<div className="flex flex-wrap -m-2">
 									<div className="w-full md:w-auto p-2">
