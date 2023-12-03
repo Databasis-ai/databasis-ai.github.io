@@ -8,14 +8,14 @@ export default function Heading() {
 					<span>Contact us</span>
 				</h1>
 				<p className="text-xl text-gray-400 font-bold">
-					Reach out via <a href="mailto:kyle@rowvolution.io" className="text-blue-400">email here</a>
+					Reach out via <a href="mailto:kirk@4db.io" className="text-blue-400">email here</a>
 				</p>
 				<br/>
 				<br/>
 				<Script src="https://assets.calendly.com/assets/external/widget.js" />
 				<div className="flex justify-center w-full">
 				<div className="calendly-inline-widget"
-					data-url="https://calendly.com/rowvolution/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1f2937&text_color=ffffff&primary_color=3b82f6"
+					data-url="https://calendly.com/kirk-4db/4db-intro-call"
 					style={{
 						backgroundColor: 'black',
 						width: '600px',

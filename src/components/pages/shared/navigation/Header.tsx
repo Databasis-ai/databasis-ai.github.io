@@ -9,7 +9,7 @@ export const COMMON_PAGES = [
   { name: 'Home', href: '/', target: '_self', header: true, footer: true },
   // { name: 'Docs', href: 'http://rowvolution.mintlify.app/', target: '_blank', header: true, footer: true },
   { name: 'Pricing', href: '/pricing', target: '_self', header: true, footer: true },
-  { name: 'Contact', href: '/contact', target: '_self', header: false, footer: true }
+  { name: 'Contact', href: '/contact', target: '_self', header: true, footer: true }
 ]
 
 export const Header = function () {
@@ -30,7 +30,7 @@ export const Header = function () {
           <div className="flex flex-wrap items-center">
             <div className="w-auto cursor-pointer pl-8">
               <Link href="/">
-                <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25} />
+                <Image src="/images/4db_logo_transparent.png" alt="rowvolution logo" width={200} height={25} />
               </Link>
             </div>
           </div>
@@ -96,7 +96,7 @@ export const Header = function () {
               <div className="flex items-center justify-between -m-2">
                 <div className="w-auto p-2">
                   <Link className="inline-block" href="/">
-                    <Image src="/images/logo-transparent.png" alt="rowvolution logo" width={200} height={25} />
+                    <Image src="/images/4db_logo_transparent.png" alt="4db logo" width={200} height={25} />
                   </Link>
                 </div>
                 <div className="w-auto p-2">

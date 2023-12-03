@@ -10,7 +10,7 @@ const SMALL_SCREEN_CODE = `SELECT address
 				WHERE ID = '1'
 AS OF '12-25-20';`;
 
-const	LARGE_SCREEN_CODE = `SELECT address FROM USERS WHERE ID = '1' AS OF '12-25-20';`;
+const	LARGE_SCREEN_CODE = `SELECT who PARTITION BY 'when' FROM what WHERE `;
 
 export default function Heading() {
 	const { width } = useViewportSize();
@@ -24,30 +24,32 @@ export default function Heading() {
 						<div className="w-full md:w-1/2 p-8">
 							<div className="md:max-w-lg mx-auto">
 								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">
-									An Automagic Machine Learning Pipeline
+									A Time-Based Data Platform	
 									</span>
 								<h1 className="font-heading mb-4 text-5xl text-white font-black tracking-tight">
 									<span>
-										INSTANT&nbsp;
+										TIME SAVING SOLUTIONS FOR&nbsp;
 									</span>
 									<span className="text-red-400">
 									<Typewriter
 											options={{ loop: true, delay: 25, deleteSpeed: 25 }}
 											onInit={(typewriter) => {
 												typewriter
-													.typeString('FEATURE STORES')
+													.typeString("DATA ENGINEERS")
 													.pauseFor(3500)
 													.deleteChars(14)
-													.typeString("DATA LAKES")
+													.typeString("DATA ANALYSTS")
 													.pauseFor(3500)
-													.deleteChars(10)
-													.typeString("CDC")
+													.deleteChars(13)
+													.typeString("DATA SCIENTISTS")
 													.pauseFor(3500)
-													.deleteChars(3)
+													.deleteChars(15)
+													// .typeString('FEATURE STORE')
+													// .pauseFor(3500)
+													// .deleteChars(14)
 													.start();
 											}} />
 									</span>
-									TO SAVE YOU TIME
 								</h1>
 								<p className="mb-6 text-xl text-gray-500 font-bold">
 									{/* Your data is your company. Why lose it? */}

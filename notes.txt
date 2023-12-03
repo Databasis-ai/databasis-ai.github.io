@@ -1,0 +1,9 @@
+Notes for copy:
+Problems:
+- Stuck in Time
+- Coupled to upstream data sources
+- 
+
+Slogans:
+- Time is money
+- See past the event horizon

@@ -7,8 +7,8 @@ export default function Features() {
         <div className="flex flex-wrap lg:items-center -m-8">
           <div className="w-full md:w-1/2 p-8">
             <div className="md:max-w-md"><span className="inline-block mb-4 text-sm text-blue-500 font-bold uppercase tracking-widest">How it works</span>
-              <h2 className="font-heading mb-6 text-4xl md:text-5xl text-gray-100 font-black tracking-tight">All-in-one data streaming for ML and Data Engineering teams</h2>
-              <p className="mb-5 text-gray-500 font-bold">We store context for all your data, so you don't have to.</p>
+              <h2 className="font-heading mb-6 text-4xl md:text-5xl text-gray-100 font-black tracking-tight">Data lifecycle management has never been so easy</h2>
+              <p className="mb-5 text-gray-500 font-bold">Focus on what truly matters: adding value for your data analysts and scientists</p>
               <div className="flex flex-wrap -m-2">
                 <div className="w-full md:w-auto p-2">
                   <Link className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full" href="https://rowvolution.mintlify.app/introduction" target="_blank">
@@ -35,8 +35,8 @@ export default function Features() {
                         <div className="w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Connect</h3>
-                        <p className="text-gray-500 font-bold">Connect your data source, we support all major databases allowing you to bring what you've got</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Source</h3>
+                        <p className="text-gray-500 font-bold">Connect your data source, we support CDC for all major databases and API destinations.</p>
                       </div>
                     </div>
                   </div>
@@ -53,8 +53,8 @@ export default function Features() {
                         <div className="w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Stream</h3>
-                        <p className="text-gray-500 font-bold">Stream your data, you can opt into either data streaming or cron</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Load</h3>
+                        <p className="text-gray-500 font-bold">Your data is automatically loaded as 4db's flexible storage format into the warehouse of your choosing.</p>
                       </div>
                     </div>
                   </div>
@@ -71,8 +71,8 @@ export default function Features() {
                         <div className="md:hidden w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Inspect</h3>
-                        <p className="text-gray-500 font-bold">Inspect your data at any given point in time</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Time Travel</h3>
+                        <p className="text-gray-500 font-bold">Use time as a metric to inspect and validate your data. Build transformations and never worry about upstream migrations again.</p>
                       </div>
                     </div>
                   </div>
