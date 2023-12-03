@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
 			<div className="mx-auto">
 				<div className="py-16 bg-gray-900 rounded-3xl">
 					<div className="flex flex-col justify-centers">
-						<Link className="inline-block max-w-max mx-auto mb-10" href="/">
-							<Image src="/images/logo-transparent.png" alt="" width={200} height={25} />
+						<Link className="inline-block max-w-max mx-auto" href="/">
+							<Image src="/images/4db_logo_transparent.png" alt="4db" width={100} height={25} />
 						</Link>
 						<ul className="-m-6 mb-7 text-center">
 							{
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
 								)
 							}
 						</ul>
-						<div className="flex flex-wrap justify-center -m-1.5 mb-10">
+						{/* <div className="flex flex-wrap justify-center -m-1.5 mb-10">
 							<div className="w-auto p-1.5">
 								<Link className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full" href='https://github.com/rowvolution' target="_blank" >
 									<AiOutlineGithub size={25}></AiOutlineGithub>
@@ -36,10 +36,10 @@ const Footer: React.FC = () => {
 									<AiOutlineTwitter size={25}></AiOutlineTwitter>
 								</Link>
 							</div>
-						</div>
+						</div> */}
 						<p className="text-gray-500 text-center font-bold">
 							<span>Ⓒ Copyright. All rights reserved by </span>
-							<Link href={'/'} className="text-blue-500 hover:text-blue-600">Rowvolution</Link>
+							<Link href={'/'} className="text-blue-500 hover:text-blue-600">4db</Link>
 						</p>
 					</div>
 				</div>

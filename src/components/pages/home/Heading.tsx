@@ -24,7 +24,7 @@ export default function Heading() {
 						<div className="w-full md:w-1/2 p-8">
 							<div className="md:max-w-lg mx-auto">
 								<span className="inline-block mb-3 text-sm text-blue-500 font-bold uppercase tracking-widest">
-									A Time-Based Data Platform	
+									A Fourth Dimensional, Time-Segmented Data Platform	
 									</span>
 								<h1 className="font-heading mb-4 text-5xl text-white font-black tracking-tight">
 									<span>
@@ -37,11 +37,11 @@ export default function Heading() {
 												typewriter
 													.typeString("DATA ENGINEERS")
 													.pauseFor(3500)
-													.deleteChars(14)
-													.typeString("DATA ANALYSTS")
+													.deleteChars(9)
+													.typeString("ANALYSTS")
 													.pauseFor(3500)
-													.deleteChars(13)
-													.typeString("DATA SCIENTISTS")
+													.deleteChars(8)
+													.typeString("SCIENTISTS")
 													.pauseFor(3500)
 													.deleteChars(15)
 													// .typeString('FEATURE STORE')

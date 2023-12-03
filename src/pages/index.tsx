@@ -7,7 +7,7 @@ export default function Home() {
   return <>
     <ValueProp />
     <Heading />
-    <Statistics />
     <Features />
+    <Statistics />
   </>
 }

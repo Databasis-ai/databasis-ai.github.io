@@ -57,3 +57,7 @@ code {
 	box-shadow: none !important;
 		 background-color: transparent !important;
 }
+
+.center-text {
+	text-align: center;
+}
