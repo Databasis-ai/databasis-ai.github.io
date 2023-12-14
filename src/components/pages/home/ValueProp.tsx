@@ -24,7 +24,7 @@ const ValueProp = () => {
 					<div className="flex flex-col justify-end p-10  bg-gray-900 h-full rounded-3xl">
 						<h2 className="font-heading text-3xl text-gray-100 font-bold tracking-tight center-text">
 							<span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-yellow-600">
-								&nbsp;Effortlessly observable, remarkably durable, and easily traceable data&nbsp;
+								&nbsp;Effortlessly observable, remarkably durable, data like you've never seen&nbsp;
 							</span>
 							{/* <span>More than </span>
 							<span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">

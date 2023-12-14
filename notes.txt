@@ -7,3 +7,11 @@ Problems:
 Slogans:
 - Time is money
 - See past the event horizon
+
+
+Value Props:
+- Unifying Backend + Data Teams
+- Never go down from a migration
+- Never lose data from a "convenient" auto-migration
+- Instant Data ELT Platform
+- Real-time streaming, analytics, models

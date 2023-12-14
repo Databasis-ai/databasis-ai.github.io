@@ -1,9 +1,9 @@
 import Head from "next/head";
 
 export default function Meta({
-  title = "Rowvolution",
-  description = "Rowvolution is a platform for recording historical records as they change within your company's data.",
-  image = "https://rowvolution.io/logo-cover.png",
+  title = "4db",
+  description = "4db is an ELT-lite platform for making your data more durable, accessible, and useful.",
+  image = "https://4db.io/4db_logo_transparent.png",
 }: {
   title?: string;
   description?: string;
@@ -37,15 +37,15 @@ export default function Meta({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta itemProp="image" content={image} />
       <meta property="og:logo" content="/favicon.png"></meta>
-      <meta property="og:title" content='Rowvolution' />
-      <meta property="og:description" content='Column Level Historical Diffs' />
+      <meta property="og:title" content='4db' />
+      <meta property="og:description" content='Time travel made easy' />
       <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@rowvolution" />
       <meta name="twitter:creator" content="@rowvolution" />
       <meta
         name="twitter:title"
-        content="Rowvolution - Column Level Historical Diffs"
+        content="4db - Time travel made easy"
       />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />

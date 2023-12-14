@@ -35,8 +35,10 @@ export default function Features() {
                         <div className="w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Source</h3>
-                        <p className="text-gray-500 font-bold">Connect your data source, we support CDC for all major databases and API destinations.</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Real-time Stream</h3>
+                        <p className="text-gray-500 font-bold">Stream data to your warehouse the second it is transacted.</p>
+                        &nbsp;
+                        <p className="text-gray-500 font-bold">CDC supported for all major databases and API destinations.</p>
                       </div>
                     </div>
                   </div>
@@ -53,8 +55,8 @@ export default function Features() {
                         <div className="w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Load</h3>
-                        <p className="text-gray-500 font-bold">Your data is automatically loaded as 4db's flexible storage format into the warehouse of your choosing.</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Migration-Proof Data</h3>
+                        <p className="text-gray-500 font-bold">Load data into 4db's infinitely flexible storage format, where nothing is lost to migrations.</p>
                       </div>
                     </div>
                   </div>
@@ -71,8 +73,8 @@ export default function Features() {
                         <div className="md:hidden w-px h-24 bg-gray-700"></div>
                       </div>
                       <div className="flex-1 p-4">
-                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Time Travel</h3>
-                        <p className="text-gray-500 font-bold">Use time as a metric to inspect and validate your data. Build transformations and never worry about upstream migrations again.</p>
+                        <h3 className="font-heading mb-3 text-2xl text-gray-100 font-bold">Stream Time Transformations</h3>
+                        <p className="text-gray-500 font-bold">Create streaming transformation and time travel layers to supercharge your data teams.</p>
                       </div>
                     </div>
                   </div>
